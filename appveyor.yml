@@ -1,0 +1,18 @@
+version: 1.0.{build}
+
+build_script:
+- ps: Pretzel/Pretzel bake site
+
+artifacts:
+- path: site/_site
+  name: compiled site
+
+deploy:
+- provider: FTP
+  host: laedit.net
+  protocol: ftp
+  username: zlaeditn12713ne
+  password:
+    secure: eK/zCvZEGU6BcRfo1CoYng2sjeywm69Q0JpJoJBdYqA=
+  folder: /httpdocs/readinglist
+  artifact: compiled site

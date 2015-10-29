@@ -1,0 +1,26 @@
+---
+layout: layout
+---
+
+<article>
+	<h1> {{page.title}} </h1>
+	<time class="postdate" pubdate="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%e %B %Y"  }}</time>
+	<ul class="book-infos">
+		<li>{{ page.author }}</li>
+		<li>{{ page.editor }}</li>
+		<li>{{ page.isbn }}</li>
+	</ul>
+	{{ content }}
+</article>
+
+{% if page.previous or page.next %}
+<nav id="page-navigation"> 
+	{% if page.previous %}
+		<div class="left"> {% if page.previous.url %} <a href="{{page.previous.url}}" title="Livre précédent: {{page.previous.title}}">&larr; {{page.previous.title}}</a> {% endif %} </div>
+	{% endif %}
+	{% if page.next %} 
+		<div class="right"> {% if page.next.url %} <a href="{{page.next.url}}" title="Livre suivant: {{page.next.title}}">{{page.next.title}} &rarr; </a> {% endif %} </div>
+	{% endif %} 
+	<div class="clear">&nbsp;</div>
+</nav>
+{% endif %}
