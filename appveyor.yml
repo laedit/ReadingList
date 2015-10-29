@@ -16,3 +16,4 @@ deploy:
     secure: eK/zCvZEGU6BcRfo1CoYng2sjeywm69Q0JpJoJBdYqA=
   folder: /httpdocs/readinglist
   artifact: site\compiled_site.zip
+  application: site\compiled_site
