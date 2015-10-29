@@ -5,7 +5,7 @@ build_script:
 
 artifacts:
 - path: site/_site
-  name: compiled site
+  name: compiled_site.zip
 
 deploy:
 - provider: FTP
@@ -15,4 +15,4 @@ deploy:
   password:
     secure: eK/zCvZEGU6BcRfo1CoYng2sjeywm69Q0JpJoJBdYqA=
   folder: /httpdocs/readinglist
-  artifact: compiled site
+  artifact: site/compiled_site.zip
