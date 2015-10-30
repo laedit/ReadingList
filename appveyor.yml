@@ -14,7 +14,7 @@ artifacts:
   name: compiled_site
 
 before_deploy:
-- ps: "$ftprequest = [System.Net.FtpWebRequest]::Create('ftp://laedit.net:21/httpdocs/readinglist') \n\n$ftprequest.Credentials = New-Object System.Net.NetworkCredential('zlaeditn12713ne', $env:ftppassword) \n\n$ftprequest.Method = [System.Net.WebRequestMethods+Ftp]::DeleteFile \n\n$ftprequest.GetResponse()"
+- ps: "$ftprequest = [System.Net.FtpWebRequest]::Create('ftp://laedit.net:21/httpdocs/readinglist/header.js') \n\n$ftprequest.Credentials = New-Object System.Net.NetworkCredential('zlaeditn12713ne', $env:ftppassword) \n\n$ftprequest.Method = [System.Net.WebRequestMethods+Ftp]::DeleteFile \n\n$ftprequest.GetResponse()"
 
 deploy:
 - provider: FTP
