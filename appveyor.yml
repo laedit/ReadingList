@@ -1,5 +1,9 @@
 version: 1.0.{build}
 
+environment:
+  ftp-password:
+    secure: eK/zCvZEGU6BcRfo1CoYng2sjeywm69Q0JpJoJBdYqA=
+    
 build_script:
 - ps: Pretzel/Pretzel bake site
 
@@ -9,6 +13,9 @@ artifacts:
 - path: site/_site
   name: compiled_site
 
+before_deploy:
+- ps: "$ftprequest = [System.Net.FtpWebRequest]::Create(laedit.net:21/httpdocs/readinglist) \n\n$ftprequest.Credentials = New-Object System.Net.NetworkCredential(zlaeditn12713ne, $env:ftp-password) \n\n$ftprequest.Method = [System.Net.WebRequestMethods+Ftp]::DeleteFile \n\n$ftprequest.GetResponse()"
+
 deploy:
 - provider: FTP
   host: laedit.net
@@ -17,5 +24,4 @@ deploy:
   password:
     secure: eK/zCvZEGU6BcRfo1CoYng2sjeywm69Q0JpJoJBdYqA=
   folder: /httpdocs/readinglist
-  artifact: site\compiled_site.zip
   application: site\compiled_site.zip
