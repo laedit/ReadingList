@@ -1,62 +1,53 @@
-$urlbase = "ftp://laedit.net/httpdocs/readinglist"
+$server = "ftp://laedit.net/"
 $user = "zlaeditn12713ne"
-$pass = 'gl%$$91PN..-mj$#%' #$env:ftppassword
+$pass = $env:ftppassword
+$rootDirectory = "httpdocs/readinglist/"
 
-function Get-FtpCredential()
+function Get-FtpResponse($ftpUrl, $ftpMethod)
 {
-	Return New-Object System.Net.NetworkCredential($user, $pass)
+	# create the FtpWebRequest and configure it
+	$ftp = [System.Net.FtpWebRequest]::Create($ftpUrl)
+	$ftp.Method = $ftpMethod
+	$ftp.Credentials = New-Object System.Net.NetworkCredential($user, $pass)
+	$ftp.UsePassive = $true
+
+	$response = [System.Net.FtpWebResponse]$ftp.GetResponse()
+	Return $response
 }
 
 function Delete-FtpFile ($fileToDelete)
 {
-	if($fileToDelete)
-	{
-		# Create the direct path to the file you want to delete
-		$ftpPath = "$urlbase/$fileToDelete"
-		Write-Host $ftpPath
-		# create the FtpWebRequest and configure it
-		$ftp = [System.Net.FtpWebRequest]::Create($ftpPath)
-	
-		$ftp.Method = [System.Net.WebRequestMethods+Ftp]::DeleteFile
-	
-		$ftp.Credentials = Get-FtpCredential
-	
-		$ftp.UseBinary = $true
-		$ftp.UsePassive = $true
-	
-		$response = [System.Net.FtpWebResponse]$ftp.GetResponse()
-		$response.Close()
-	}
+	# Create the direct path to the file you want to delete
+	$ftpPath = "$Server/$fileToDelete"
+	$response = Get-FtpResponse $ftpPath ([System.Net.WebRequestMethods+Ftp]::DeleteFile)
+	$response.Close()
 }
 
-Function List-FtpDirectory() {
+function Delete-FtpFolder ($folderToDelete)
+{
+	# Create the direct path to the folder you want to delete
+	$ftpPath = "$Server/$folderToDelete"
+	$response = Get-FtpResponse $ftpPath ([System.Net.WebRequestMethods+Ftp]::RemoveDirectory)
+	$response.Close()
+}
+
+Function List-FtpDirectory($Directory) {
     
     # Credentials
-    $FTPRequest = [System.Net.FtpWebRequest]::Create($urlbase)
-    $FTPRequest.Credentials = Get-FtpCredential
-    $FTPRequest.Method = [System.Net.WebRequestMethods+FTP]::ListDirectoryDetails
-
-    # Don't want Binary, Keep Alive unecessary.
-    $FTPRequest.UseBinary = $False
-    $FTPRequest.KeepAlive = $False
-
-    $FTPResponse = $FTPRequest.GetResponse()
+	$FTPResponse = Get-FtpResponse "$($Server)$($Directory)" ([System.Net.WebRequestMethods+Ftp]::ListDirectoryDetails)
     $ResponseStream = $FTPResponse.GetResponseStream()
 
     # Create a nice Array of the detailed directory listing
     $StreamReader = New-Object System.IO.Streamreader $ResponseStream
     $DirListing = (($StreamReader.ReadToEnd()) -split [Environment]::NewLine)
     $StreamReader.Close()
-Write-Host $DirListing
-    # Remove first two elements ( . and .. ) and last element (\n)
-    #$DirListing = $DirListing[2..($DirListing.Length-2)] 
 
     # Close the FTP connection so only one is open at a time
     $FTPResponse.Close()
     
     # This array will hold the final result
-    $FileTree = @()
-
+    $FileTree = @(,@())
+	
     # Loop through the listings
     foreach ($CurLine in $DirListing) {
 
@@ -65,25 +56,40 @@ Write-Host $DirListing
 
         # Get the filename (can even contain spaces)
         $CurFile = $LineTok[8..($LineTok.Length-1)]
-Write-Host $LineTok[2]
-        # Figure out if it's a directory. Super hax.
-        $DirBool = $LineTok[2].Contains("DIR")
 
+        # Figure out if it's a directory. Super hax.
+		if ($LineTok[2]) {
+        	$DirBool = $LineTok[2].Contains("DIR")
+		}
+		
         # Determine what to do next (file or dir?)
-        If ($DirBool) {
-            # Recursively traverse sub-directories
-            $FileTree += ,(List-FtpDirectory "$($Directory)$($CurFile)/")
-        } Else {
-            # Add the output to the file tree
-            $FileTree += ,"$($Directory)$($CurFile)"
-        }
+		if($CurFile) {
+			
+			If ($DirBool) {
+				# Recursively traverse sub-directories
+				$FileTree += List-FtpDirectory "$($Directory)$($CurFile)/"
+				
+				$FileTree += ,("$($Directory)$($CurFile)", $True)
+			} 
+			Else {
+				# Add the output to the file tree
+				$FileTree += ,("$($Directory)$($CurFile)", $False)
+			}
+		}
     }
-    
+	
     Return $FileTree
 }
 
 
-foreach	($file in List-FtpDirectory)
+foreach	($file in List-FtpDirectory $rootDirectory)
 {
-	Delete-FtpFile($file)
+	If($file) {
+		If ($file[1]) {
+			Delete-FtpFolder $file[0]
+		}
+		Else {
+			Delete-FtpFile $file[0]
+		}
+	}
 }
