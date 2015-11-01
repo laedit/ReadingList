@@ -2,10 +2,10 @@ version: 1.0.{build}
 
 environment:
   ftppassword:
-    secure: eK/zCvZEGU6BcRfo1CoYng2sjeywm69Q0JpJoJBdYqA=
+    secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
     
 build_script:
-- ps: Pretzel/Pretzel bake site
+- ps: "Set-Culture fr-FR\r\nPretzel/Pretzel bake site"
 
 test: off
 
@@ -22,6 +22,6 @@ deploy:
   protocol: ftp
   username: zlaeditn12713ne
   password:
-    secure: eK/zCvZEGU6BcRfo1CoYng2sjeywm69Q0JpJoJBdYqA=
+    secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
   folder: /httpdocs/readinglist
   application: site\compiled_site.zip
