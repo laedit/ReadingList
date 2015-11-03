@@ -5,7 +5,9 @@ environment:
     secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
     
 build_script:
-- ps: "Set-Culture fr-FR\r\nPretzel/Pretzel bake site"
+- fsi GetBooksInfo.fsx
+- Set-Culture fr-FR
+- libs/Pretzel bake site
 
 test: off
 
