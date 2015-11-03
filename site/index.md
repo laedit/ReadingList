@@ -1,6 +1,5 @@
 ---
 layout : layout
-title : Laedit's reading list
 ---
 
 <section>
