@@ -22,8 +22,10 @@ type BookConfig =
         val mutable Isbn : string
         val mutable Date : string
         val mutable Generated : bool
-        new( isbn, date, generated) = { Isbn = isbn; Date = date; Generated = generated;}
-
+        new(isbn, date, generated) = 
+            { Isbn = isbn
+              Date = date
+              Generated = generated }
     end
 
 let (template : Printf.StringFormat<_>) = "---
@@ -50,37 +52,41 @@ module Data =
         (specifications.Descendants
              (fun descendant -> 
              descendant.Name() = "li" && (descendant.Elements().Head.Elements().Head.InnerText() = infoName)))
-        |> Seq.item 0
+        |> Seq.head
         |> (fun li -> li.Elements())
-        |> Seq.item 1
+        |> Seq.nth 1
         |> (fun span -> span.InnerText())
     
     let private getInfosFromHtml (book : BookInfo) = 
         printfn "\tbackup search"
         let searchResult = HtmlDocument.Load(Constants.FnacSearchUrl + book.Isbn)
         
+        let noResult = 
+            searchResult.Descendants
+                (fun element -> element.Name() = "div" && element.AttributeValue("class").Trim() = "txt_c noResults mrg_b_xlg")
+        if not (Seq.isEmpty noResult) then failwith "data not found"
+
         let bookPage = 
-            searchResult
-            |> (fun htmlDoc -> htmlDoc.Descendants [ "a" ])
-            |> Seq.find (fun link -> link.AttributeValue("class") = "js-minifa-title")
+            searchResult.Descendants [ "a" ]
+            |> Seq.find (fun link -> link.AttributeValue("class").Trim() = "js-minifa-title")
             |> (fun link -> link.AttributeValue("href"))
             |> HtmlDocument.Load
         
         let sections = bookPage.Descendants [ "section" ]
-        let specifications = sections |> Seq.find (fun sec -> sec.AttributeValue("id") = "specifications")
+        let specifications = sections |> Seq.find (fun sec -> sec.AttributeValue("id").Trim() = "specifications")
         let author = getInfoFromHtml specifications "Auteur"
         let editor = getInfoFromHtml specifications "Editeur"
         
         let imageUrl = 
             (bookPage.Descendants
-                 (fun node -> node.Name() = "img" && node.AttributeValue("class") = "js-ProductVisuals-imagePreview"))
-            |> Seq.item 0
+                 (fun node -> node.Name() = "img" && node.AttributeValue("class").Trim() = "js-ProductVisuals-imagePreview"))
+            |> Seq.head
             |> (fun img -> img.AttributeValue("src"))
         
         let title = 
             (bookPage.Descendants
-                 (fun node -> node.Name() = "h1" && node.AttributeValue("class") = "ProductSummary-title"))
-            |> Seq.item 0
+                 (fun node -> node.Name() = "h1" && node.AttributeValue("class").Trim() = "ProductSummary-title"))
+            |> Seq.head
             |> (fun h1 -> h1.Elements().Item(0).InnerText().Trim())
         
         let summary = 
@@ -182,7 +188,7 @@ module Utils =
 module Main = 
     open SharpYaml.Serialization
     
-    let private generatePost (bookConfig: BookConfig) = 
+    let private generatePost (bookConfig : BookConfig) = 
         if bookConfig.Generated then 
             printfn "book '%s' already generated" bookConfig.Isbn
             bookConfig
@@ -196,34 +202,28 @@ module Main =
                      (Utils.downloadImageToSite book.ImageUrl book.Isbn) book.Summary)
             new BookConfig(bookConfig.Isbn, bookConfig.Date, true)
     
-    let private getYamlSerializer =
+    let private getYamlSerializer = 
         let serializerSettings = new SerializerSettings()
-    
         serializerSettings.NamingConvention <- new FlatNamingConvention()
         serializerSettings.EmitTags <- false
         new Serializer(serializerSettings)
-
-    let private getBooksConfig configFileName =
+    
+    let private getBooksConfig configFileName = 
         let serializer = getYamlSerializer
         use configFile = new FileStream(configFileName, FileMode.Open)
         let books = serializer.Deserialize<List<BookConfig>>(configFile)
         books
-
-    let private writeConfig configFileName booksConfig =
+    
+    let private writeConfig configFileName booksConfig = 
         let serializer = getYamlSerializer
-
         use configFile = new FileStream(configFileName, FileMode.Create)
         serializer.Serialize(configFile, booksConfig)
-
-    let generatePosts configFileName =
+    
+    let generatePosts configFileName = 
         printfn "start posts generation"
         let books = getBooksConfig configFileName
-        
         let newBooksConfig = books |> Seq.map generatePost
-        
         writeConfig configFileName (new List<BookConfig>(Seq.toArray newBooksConfig))
-        
         printfn "end posts generation"
-
 
 Main.generatePosts "books.yml"
