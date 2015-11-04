@@ -11,7 +11,7 @@ environment:
     secure: bh3TjAp9X66mDDJ46/g8wghjC5nce34YA3Y9EGXz+qY=
     
 build_script:
-- fsi GetBooksInfo.fsx
+- "C:\\Program Files (x86)\\Microsoft SDKs\\F#\\3.1\\Framework\\v4.0\\fsi GetBooksInfo.fsx"
 - Set-Culture fr-FR
 - libs/Pretzel bake site
 - git config --global credential.helper store
