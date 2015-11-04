@@ -12,13 +12,13 @@ environment:
     
 build_script:
 - "\"C:\\Program Files (x86)\\Microsoft SDKs\\F#\\3.1\\Framework\\v4.0\\fsi\" GetBooksInfo.fsx"
-- Set-Culture fr-FR
-- libs/Pretzel bake site
 - git config --global credential.helper store
 - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
 - git add .
 - git commit -m "Add new posts [skip ci]"
 - git push origin master
+- ps: Set-Culture fr-FR
+- libs/Pretzel bake site
 
 test: off
 
