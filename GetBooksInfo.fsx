@@ -219,9 +219,15 @@ module Main =
         use configFile = new FileStream(configFileName, FileMode.Create)
         serializer.Serialize(configFile, booksConfig)
     
+    let private createFolderIfNotExists folderPath =
+        if not (Directory.Exists folderPath) then
+            (Directory.CreateDirectory folderPath) |> ignore
+
     let generatePosts configFileName = 
         printfn "start posts generation"
         let books = getBooksConfig configFileName
+        createFolderIfNotExists Constants.PostsFolder
+        createFolderIfNotExists Constants.ImagesFolder
         let newBooksConfig = books |> Seq.map generatePost
         writeConfig configFileName (new List<BookConfig>(Seq.toArray newBooksConfig))
         printfn "end posts generation"
