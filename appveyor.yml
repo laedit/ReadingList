@@ -16,7 +16,7 @@ before_build:
 build_script:
 - "\"C:\\Program Files (x86)\\Microsoft SDKs\\F#\\3.1\\Framework\\v4.0\\fsi\" GetBooksInfo.fsx"
 - ps: Set-Culture fr-FR
-- libs/Pretzel bake site
+- libs\Pretzel bake site
 
 on_success:
 - git config --global credential.helper store
