@@ -1,13 +1,24 @@
 version: 1.0.{build}
 
 environment:
-  ftppassword:
+  ftp_password:
     secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
+  access_token:
+    secure: g4hGmfvl8StffAXQY63BZSqe3chiJJfiiK/ilehXBVCd5uhjLLjWj8xHFEZ8kUYM
+  publisher_id:
+    secure: cGDidYlVbJZkd9Fy7m1nRw==
+  publisher_password:
+    secure: bh3TjAp9X66mDDJ46/g8wghjC5nce34YA3Y9EGXz+qY=
     
 build_script:
 - fsi GetBooksInfo.fsx
 - Set-Culture fr-FR
 - libs/Pretzel bake site
+- git config --global credential.helper store
+- ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+- git add .
+- git commit -m "Add new posts [skip ci]"
+- git push origin master
 
 test: off
 

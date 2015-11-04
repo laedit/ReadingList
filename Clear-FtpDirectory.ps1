@@ -1,6 +1,6 @@
 $server = "ftp://laedit.net/"
 $user = "zlaeditn12713ne"
-$pass = $env:ftppassword
+$pass = $env:ftp_password
 $rootDirectory = "httpdocs/readinglist/"
 
 function Get-FtpResponse($ftpUrl, $ftpMethod)
