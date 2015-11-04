@@ -9,16 +9,21 @@ environment:
     secure: cGDidYlVbJZkd9Fy7m1nRw==
   publisher_password:
     secure: bh3TjAp9X66mDDJ46/g8wghjC5nce34YA3Y9EGXz+qY=
-    
+
+before_build:
+- git config --global core.autocrlf true
+
 build_script:
 - "\"C:\\Program Files (x86)\\Microsoft SDKs\\F#\\3.1\\Framework\\v4.0\\fsi\" GetBooksInfo.fsx"
+- ps: Set-Culture fr-FR
+- libs/Pretzel bake site
+
+on_success:
 - git config --global credential.helper store
 - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
 - git add .
 - git commit -m "Add new posts [skip ci]"
 - git push origin master
-- ps: Set-Culture fr-FR
-- libs/Pretzel bake site
 
 test: off
 
