@@ -226,6 +226,7 @@ module Main =
     let generatePosts configFileName = 
         printfn "start posts generation"
         let books = getBooksConfig configFileName
+        if not (books|> Seq.exists (fun book -> not book.Generated)) then failwith "no posts to generate"
         createFolderIfNotExists Constants.PostsFolder
         createFolderIfNotExists Constants.ImagesFolder
         let newBooksConfig = books |> Seq.map generatePost
