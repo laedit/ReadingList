@@ -11,12 +11,8 @@ environment:
     secure: bh3TjAp9X66mDDJ46/g8wghjC5nce34YA3Y9EGXz+qY=
   git_mail:
     secure: bVPyDjOtyByKm9rSo/rjN79B6Z6/pI1hhbhYZHiAJ/E=
-    
-init:
-- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 build_script:
-- git remote -v
 - git checkout master
 - "\"C:\\Program Files (x86)\\Microsoft SDKs\\F#\\3.1\\Framework\\v4.0\\fsi\" GetBooksInfo.fsx"
 - git config --global user.name "Jérémie Bertrand"
