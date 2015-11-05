@@ -17,6 +17,7 @@ init:
 
 build_script:
 - git remote -v
+- git checkout master
 - "\"C:\\Program Files (x86)\\Microsoft SDKs\\F#\\3.1\\Framework\\v4.0\\fsi\" GetBooksInfo.fsx"
 - git config --global user.name "Jérémie Bertrand"
 - git config --global user.email "%git_mail%"
