@@ -223,10 +223,29 @@ module Main =
         if not (Directory.Exists folderPath) then
             (Directory.CreateDirectory folderPath) |> ignore
 
+    let private cprintf c fmt = 
+        Printf.kprintf 
+            (fun s -> 
+                let old = System.Console.ForegroundColor 
+                try 
+                  System.Console.ForegroundColor <- c;
+                  System.Console.Write s
+                finally
+                  System.Console.ForegroundColor <- old) 
+            fmt
+    
+    let cprintfn c fmt = 
+        cprintf c fmt
+        printfn ""
+
     let generatePosts configFileName = 
         printfn "start posts generation"
         let books = getBooksConfig configFileName
-        if not (books|> Seq.exists (fun book -> not book.Generated)) then failwith "no posts to generate"
+
+        if not (books|> Seq.exists (fun book -> not book.Generated)) then 
+            cprintfn ConsoleColor.Green "no posts to generate"
+            exit 0
+
         createFolderIfNotExists Constants.PostsFolder
         createFolderIfNotExists Constants.ImagesFolder
         let newBooksConfig = books |> Seq.map generatePost
