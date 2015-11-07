@@ -244,7 +244,7 @@ module Main =
 
         if not (books|> Seq.exists (fun book -> not book.Generated)) then 
             cprintfn ConsoleColor.Green "no posts to generate"
-            exit 0
+            exit 42
 
         createFolderIfNotExists Constants.PostsFolder
         createFolderIfNotExists Constants.ImagesFolder
