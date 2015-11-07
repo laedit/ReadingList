@@ -54,7 +54,7 @@ module Data =
              descendant.Name() = "li" && (descendant.Elements().Head.Elements().Head.InnerText() = infoName)))
         |> Seq.head
         |> (fun li -> li.Elements())
-        |> Seq.nth 1
+        |> Seq.item 1
         |> (fun span -> span.InnerText())
     
     let private getInfosFromHtml (book : BookInfo) = 
