@@ -14,7 +14,6 @@ environment:
 
 install:
   - choco install pretzel -y
-  - choco install pretzel.scriptcs -y
 
 cache:
   - C:\tools\pretzel -> appveyor.yml
