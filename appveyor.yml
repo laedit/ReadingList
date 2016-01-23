@@ -12,6 +12,13 @@ environment:
   git_mail:
     secure: bVPyDjOtyByKm9rSo/rjN79B6Z6/pI1hhbhYZHiAJ/E=
 
+install:
+  - choco install pretzel -y
+  - choco install pretzel.scriptcs -y
+
+cache:
+  - C:\tools\pretzel -> appveyor.yml
+
 build_script:
 - git checkout master
 - "\"C:\\Program Files (x86)\\Microsoft SDKs\\F#\\4.0\\Framework\\v4.0\\fsi\" GetBooksInfo.fsx"
@@ -23,7 +30,7 @@ build_script:
 - git commit -m "Add new posts [skip ci]"
 - git push origin master
 - ps: Set-Culture fr-FR
-- libs\Pretzel bake site
+- Pretzel bake site
 
 test: off
 
