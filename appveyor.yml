@@ -16,7 +16,7 @@ install:
   - choco install pretzel -y
 
 cache:
-  - C:\tools\pretzel -> appveyor.yml
+  - C:\tools\Pretzel -> appveyor.yml
 
 build_script:
 - git checkout master
@@ -29,7 +29,7 @@ build_script:
 - git commit -m "Add new posts [skip ci]"
 - git push origin master
 - ps: Set-Culture fr-FR
-- Pretzel bake site
+- C:\tools\Pretzel\Pretzel bake site
 
 test: off
 
