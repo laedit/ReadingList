@@ -245,8 +245,8 @@ module Main =
         let forcedBuild = Environment.GetEnvironmentVariable("APPVEYOR_FORCED_BUILD")
         
         if not (books <> null && books |> Seq.exists (fun book -> not book.Generated)) && 
-            not (commitMessage.ToLowerInvariant().Contains("[force]") 
-                || (forcedBuild <> null && forcedBuild.ToLowerInvariant() = "true")
+                not (commitMessage.ToLowerInvariant().Contains("[force]") 
+                || (forcedBuild <> null && forcedBuild.ToLowerInvariant() = "true"))
         then 
             cprintfn ConsoleColor.Green "no posts to generate"
             exit 42
