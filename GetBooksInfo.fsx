@@ -242,7 +242,7 @@ module Main =
         printfn "start posts generation"
         let books = getBooksConfig configFileName
 
-        if not (books|> Seq.exists (fun book -> not book.Generated)) && 
+        if not (books <> null && books |> Seq.exists (fun book -> not book.Generated)) && 
             not (Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE").ToLowerInvariant().Contains("[force]") 
                 || Environment.GetEnvironmentVariable("APPVEYOR_FORCED_BUILD").ToLowerInvariant() = "true")
         then 
