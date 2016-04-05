@@ -241,10 +241,12 @@ module Main =
     let generatePosts configFileName = 
         printfn "start posts generation"
         let books = getBooksConfig configFileName
-
+        let commitMessage = Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE")
+        let forcedBuild = Environment.GetEnvironmentVariable("APPVEYOR_FORCED_BUILD")
+        
         if not (books <> null && books |> Seq.exists (fun book -> not book.Generated)) && 
-            not (Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE").ToLowerInvariant().Contains("[force]") 
-                || Environment.GetEnvironmentVariable("APPVEYOR_FORCED_BUILD").ToLowerInvariant() = "true")
+            not (commitMessage.ToLowerInvariant().Contains("[force]") 
+                || (forcedBuild <> null && forcedBuild.ToLowerInvariant() = "true")
         then 
             cprintfn ConsoleColor.Green "no posts to generate"
             exit 42
