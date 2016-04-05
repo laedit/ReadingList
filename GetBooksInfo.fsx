@@ -147,7 +147,7 @@ module Utils =
     open System.Globalization
     
     // white space, em-dash, en-dash, underscore
-    let private wordDelimiters = new Regex(@"[\s—–_]", RegexOptions.Compiled)
+    let private wordDelimiters = new Regex(@"[\sâ€”â€“_]", RegexOptions.Compiled)
     // characters that are not valid
     let private invalidChars = new Regex(@"[^a-z0-9\-]", RegexOptions.Compiled)
     // multiple hyphens
@@ -242,7 +242,10 @@ module Main =
         printfn "start posts generation"
         let books = getBooksConfig configFileName
 
-        if not (books|> Seq.exists (fun book -> not book.Generated)) then 
+        if not (books|> Seq.exists (fun book -> not book.Generated)) && 
+            not (Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE").ToLowerInvariant().Contains("[force]") 
+                || Environment.GetEnvironmentVariable("APPVEYOR_FORCED_BUILD").ToLowerInvariant() == "true")
+        then 
             cprintfn ConsoleColor.Green "no posts to generate"
             exit 42
 
