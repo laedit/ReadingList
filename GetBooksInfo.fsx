@@ -246,7 +246,7 @@ module Main =
         proc.StartInfo.Arguments <- arguments
         proc.Start() |> ignore
         proc.WaitForExit()
-        proc.ExitCode
+        if proc.ExitCode > 0 then failwith "'" + processName + " " + arguments + "' failed"
 
     let isBuildForced _ =
         let commitMessage = Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE")
