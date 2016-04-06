@@ -244,9 +244,17 @@ module Main =
         proc.StartInfo.UseShellExecute <- false
         proc.StartInfo.FileName <- processName
         proc.StartInfo.Arguments <- arguments
+        proc.StartInfo.RedirectStandardOutput <- true
+        proc.StartInfo.RedirectStandardError <- true
+        proc.ErrorDataReceived.Add(fun d -> 
+            if d.Data <> null then errorF d.Data)
+        proc.OutputDataReceived.Add(fun d -> 
+            if d.Data <> null then messageF d.Data)
         proc.Start() |> ignore
+        proc.BeginErrorReadLine()
+        proc.BeginOutputReadLine()
         proc.WaitForExit()
-        if proc.ExitCode > 0 then failwith "'" + processName + " " + arguments + "' failed"
+        if proc.ExitCode > 0 then failwith ("'" + processName + " " + arguments + "' failed")
 
     let isBuildForced _ =
         let commitMessage = Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE")
