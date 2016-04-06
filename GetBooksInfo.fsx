@@ -240,6 +240,8 @@ module Main =
         printfn ""
 
     let execProcess processName arguments =
+        printfn "execute: %s %s" processName arguments
+        
         use proc = new Process()
         proc.StartInfo.UseShellExecute <- false
         proc.StartInfo.FileName <- processName
@@ -265,19 +267,20 @@ module Main =
     let generatePosts configFileName isForced = 
         printfn "start posts generation"
         let books = getBooksConfig configFileName
-        let noPostsToGenerate = not (books <> null && books |> Seq.exists (fun book -> not book.Generated))
+        let postsToGenerate = books |> Seq.exists (fun book -> not book.Generated)
         
-        if noPostsToGenerate && not isForced
+        if not postsToGenerate
         then 
             cprintfn ConsoleColor.Green "no posts to generate"
-            exit 42
+            if not isForced
+            then exit 42
 
         createFolderIfNotExists Constants.PostsFolder
         createFolderIfNotExists Constants.ImagesFolder
         let newBooksConfig = books |> Seq.map generatePost
         writeConfig configFileName (new List<BookConfig>(Seq.toArray newBooksConfig))
         printfn "end posts generation"
-        noPostsToGenerate
+        postsToGenerate
 
     let commitGeneratedPosts =
         execProcess "git" "config --global user.name \"Jérémie Bertrand\""
@@ -300,9 +303,9 @@ module Main =
         
         let isForced = isBuildForced()
         
-        let noPostsGenerated = generatePosts "books.yml" isForced
+        let postsGenerated = generatePosts "books.yml" isForced
         
-        if not noPostsGenerated
+        if postsGenerated
         then
             commitGeneratedPosts
         
