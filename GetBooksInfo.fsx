@@ -4,6 +4,7 @@
 open System
 open System.IO
 open System.Collections.Generic
+open System.Diagnostics
 open FSharp.Data
 open FSharp.Data.HtmlExtensions
 open FSharp.Data.JsonExtensions
@@ -238,15 +239,27 @@ module Main =
         cprintf c fmt
         printfn ""
 
-    let generatePosts configFileName = 
-        printfn "start posts generation"
-        let books = getBooksConfig configFileName
+    let execProcess processName arguments =
+        use proc = new Process()
+        proc.StartInfo.UseShellExecute <- false
+        proc.StartInfo.FileName <- processName
+        proc.StartInfo.Arguments <- arguments
+        proc.Start() |> ignore
+        proc.WaitForExit()
+        proc.ExitCode
+
+    let isBuildForced _ =
         let commitMessage = Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE")
         let forcedBuild = Environment.GetEnvironmentVariable("APPVEYOR_FORCED_BUILD")
+        commitMessage.ToLowerInvariant().Contains("[force]") 
+                || (forcedBuild <> null && forcedBuild.ToLowerInvariant() = "true")
+
+    let generatePosts configFileName isForced = 
+        printfn "start posts generation"
+        let books = getBooksConfig configFileName
+        let noPostsToGenerate = not (books <> null && books |> Seq.exists (fun book -> not book.Generated))
         
-        if not (books <> null && books |> Seq.exists (fun book -> not book.Generated)) && 
-                not (commitMessage.ToLowerInvariant().Contains("[force]") 
-                || (forcedBuild <> null && forcedBuild.ToLowerInvariant() = "true"))
+        if noPostsToGenerate && not isForced
         then 
             cprintfn ConsoleColor.Green "no posts to generate"
             exit 42
@@ -256,5 +269,35 @@ module Main =
         let newBooksConfig = books |> Seq.map generatePost
         writeConfig configFileName (new List<BookConfig>(Seq.toArray newBooksConfig))
         printfn "end posts generation"
+        noPostsToGenerate
 
-Main.generatePosts "books.yml"
+    let commitGeneratedPosts =
+        execProcess "git" "config --global user.name \"Jérémie Bertrand\""
+        execProcess "git" "config --global user.email \"" + Environment.GetEnvironmentVariable("git_mail") + "\""
+        execProcess "git" "config --global credential.helper store"
+        
+        use sw = File.AppendText(Environment.GetEnvironmentVariable("USERPROFILE") + ".git-credentials")
+        sw.WriteLine("https://" + Environment.GetEnvironmentVariable("access_token") + ":x-oauth-basic@github.com`n"); // maybe something to add to emulate the "$($env:access_token)"?
+        
+        execProcess "git" " add ."
+        execProcess "git" "commit -m \"Add new posts [skip ci]\""
+        execProcess "git" "push origin master"
+
+    let bakeSite =
+        System.Threading.Thread.CurrentThread.CurrentCulture <- System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR")
+        execProcess @"C:\tools\Pretzel\Pretzel" "bake site" 
+
+    let Build =
+        execProcess "git" "checkout master"
+        
+        let isForced = isBuildForced()
+        
+        let noPostsGenerated = generatePosts "books.yml" isForced
+        
+        if not noPostsGenerated
+        then
+            commitGeneratedPosts
+        
+        bakeSite
+        
+Main.Build
