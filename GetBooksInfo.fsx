@@ -299,6 +299,7 @@ module Main =
         execProcess @"C:\tools\Pretzel\Pretzel" "bake site" 
 
     let Build =
+        printfn "start build"
         execProcess "git" "checkout master"
         
         let isForced = isBuildForced()
