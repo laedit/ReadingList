@@ -19,17 +19,7 @@ cache:
   - C:\tools\Pretzel -> appveyor.yml
 
 build_script:
-- git checkout master
 - "\"C:\\Program Files (x86)\\Microsoft SDKs\\F#\\4.0\\Framework\\v4.0\\fsi\" GetBooksInfo.fsx"
-- git config --global user.name "Jérémie Bertrand"
-- git config --global user.email "%git_mail%"
-- git config --global credential.helper store
-- ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
-- git add .
-- git commit -m "Add new posts [skip ci]"
-- git push origin master
-- ps: Set-Culture fr-FR
-- C:\tools\Pretzel\Pretzel bake site
 
 test: off
 
