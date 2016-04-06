@@ -247,9 +247,9 @@ module Main =
         proc.StartInfo.RedirectStandardOutput <- true
         proc.StartInfo.RedirectStandardError <- true
         proc.ErrorDataReceived.Add(fun d -> 
-            if d.Data <> null then eprintfn d.Data)
+            if d.Data <> null then eprintfn "%s" d.Data)
         proc.OutputDataReceived.Add(fun d -> 
-            if d.Data <> null then printfn d.Data)
+            if d.Data <> null then printfn "%s" d.Data)
         proc.Start() |> ignore
         proc.BeginErrorReadLine()
         proc.BeginOutputReadLine()
