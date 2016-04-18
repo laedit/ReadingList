@@ -249,9 +249,9 @@ module Main =
         proc.StartInfo.RedirectStandardOutput <- true
         proc.StartInfo.RedirectStandardError <- true
         proc.ErrorDataReceived.Add(fun d -> 
-            if d.Data <> null then eprintfn "%s" d.Data)
+            if not (isNull d.Data) then eprintfn "%s" d.Data)
         proc.OutputDataReceived.Add(fun d -> 
-            if d.Data <> null then printfn "%s" d.Data)
+            if not (isNull d.Data) then printfn "%s" d.Data)
         proc.Start() |> ignore
         proc.BeginErrorReadLine()
         proc.BeginOutputReadLine()
@@ -261,8 +261,8 @@ module Main =
     let isBuildForced _ =
         let commitMessage = Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE")
         let forcedBuild = Environment.GetEnvironmentVariable("APPVEYOR_FORCED_BUILD")
-        commitMessage.ToLowerInvariant().Contains("[force]") 
-                || (forcedBuild <> null && forcedBuild.ToLowerInvariant() = "true")
+        (not (isNull commitMessage) && commitMessage.ToLowerInvariant().Contains("[force]") )
+                || (not (isNull forcedBuild) && forcedBuild.ToLowerInvariant() = "true")
 
     let generatePosts configFileName isForced = 
         printfn "start posts generation"
@@ -282,7 +282,7 @@ module Main =
         printfn "end posts generation"
         postsToGenerate
 
-    let commitGeneratedPosts =
+    let commitGeneratedPosts () =
         execProcess "git" "config --global user.name \"Jérémie Bertrand\""
         execProcess "git" ("config --global user.email \"" + Environment.GetEnvironmentVariable("git_mail") + "\"")
         execProcess "git" "config --global credential.helper store"
@@ -294,7 +294,7 @@ module Main =
         execProcess "git" "commit -m \"Add new posts [skip ci]\""
         execProcess "git" "push origin master"
 
-    let bakeSite =
+    let bakeSite () =
         System.Threading.Thread.CurrentThread.CurrentCulture <- System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR")
         execProcess @"C:\tools\Pretzel\Pretzel" "bake site" 
 
@@ -308,8 +308,8 @@ module Main =
         
         if postsGenerated
         then
-            commitGeneratedPosts
+            commitGeneratedPosts()
         
-        bakeSite
+        bakeSite()
         
 Main.Build
