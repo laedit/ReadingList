@@ -4,7 +4,9 @@ layout : layout
 
 <section>
 	<!--<ul class="posts">-->
+
 		{% for post in site.posts  limit:5 %}
+
 			<!--<li>-->
 				<article>
 					{% if forloop.first and post.layout == "post" %}
