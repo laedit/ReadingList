@@ -2,4 +2,4 @@
 
 
 
-[Book](https://thenounproject.com/term/book/9405/) icon by [James Keuning](https://thenounproject.com/jmkeuning/) from [The Noun Project](https://thenounproject.com).
+[Book](https://thenounproject.com/term/book/9405/) icon by [James Keuning](https://thenounproject.com/jmkeuning/) from [The Noun Project](https://thenounproject.com). 
