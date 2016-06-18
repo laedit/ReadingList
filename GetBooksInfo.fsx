@@ -283,7 +283,7 @@ module Main =
         postsToGenerate
 
     let commitGeneratedPosts () =
-        execProcess "git" "config --global user.name \"Jérémie Bertrand\""
+        execProcess "git" "config --global user.name \"Jeremie Bertrand\""
         execProcess "git" ("config --global user.email \"" + Environment.GetEnvironmentVariable("git_mail") + "\"")
         execProcess "git" "config --global credential.helper store"
         
