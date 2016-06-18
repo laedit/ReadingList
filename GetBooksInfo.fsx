@@ -283,12 +283,13 @@ module Main =
         postsToGenerate
 
     let commitGeneratedPosts () =
-        execProcess "git" "config --global user.name \"Jeremie Bertrand\""
-        execProcess "git" ("config --global user.email \"" + Environment.GetEnvironmentVariable("git_mail") + "\"")
         execProcess "git" "config --global credential.helper store"
-        
         use sw = File.AppendText(Environment.GetEnvironmentVariable("USERPROFILE") + ".git-credentials")
-        sw.WriteLine("https://" + Environment.GetEnvironmentVariable("access_token") + ":x-oauth-basic@github.com`n"); // maybe something to add to emulate the "$($env:access_token)"?
+        sw.Write("https://" + Environment.GetEnvironmentVariable("access_token") + ":x-oauth-basic@github.com");
+        sw.Write("\n");
+        execProcess "git" "config --global user.name \"Jérémie Bertrand\""
+        execProcess "git" ("config --global user.email \"" + Environment.GetEnvironmentVariable("git_mail") + "\"")
+        
         
         execProcess "git" " add ."
         execProcess "git" "commit -m \"Add new posts [skip ci]\""
