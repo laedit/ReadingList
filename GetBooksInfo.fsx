@@ -293,7 +293,7 @@ module Main =
         
         execProcess "git" " add ."
         execProcess "git" "commit -m \"Add new posts [skip ci]\""
-        execProcess "git" "push origin master"
+        execProcess "git" "push sshorigin master"
 
     let bakeSite () =
         System.Threading.Thread.CurrentThread.CurrentCulture <- System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR")
