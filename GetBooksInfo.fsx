@@ -283,7 +283,7 @@ module Main =
         postsToGenerate
 
     let commitGeneratedPosts () =
-        execProcess "git" "remote add sshorigin git@github.com:laedit/ReadingList.git"
+        execProcess "git" "remote add sshorigin https://" + Environment.GetEnvironmentVariable("access_token") + ":x-oauth-basic@github.com/laedit/ReadingList.git"
         execProcess "git" "config --global credential.helper store"
         use sw = File.AppendText(Environment.GetEnvironmentVariable("USERPROFILE") + ".git-credentials")
         sw.Write("https://" + Environment.GetEnvironmentVariable("access_token") + ":x-oauth-basic@github.com");
