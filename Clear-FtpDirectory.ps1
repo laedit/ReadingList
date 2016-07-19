@@ -1,7 +1,7 @@
 $server = "ftp://laedit.net/"
 $user = "zlaeditn12713ne"
 $pass = $env:ftp_password
-$rootDirectory = "httpdocs/readinglist/"
+$rootDirectory = "httpdocs/addbook/"
 
 function Get-FtpResponse($ftpUrl, $ftpMethod)
 {

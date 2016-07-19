@@ -5,37 +5,9 @@ environment:
     secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
   access_token:
     secure: CF5fbrJvzIdoFSlDdW4c5NQUzca/B75Bxqp9kwCvp5yksTLiUxaDzhh0WsmLXp4P
-  publisher_id:
-    secure: cGDidYlVbJZkd9Fy7m1nRw==
-  publisher_password:
-    secure: bh3TjAp9X66mDDJ46/g8wghjC5nce34YA3Y9EGXz+qY=
-  git_mail:
-    secure: bVPyDjOtyByKm9rSo/rjN79B6Z6/pI1hhbhYZHiAJ/E=
-
-install:
-  - choco install pretzel -y
-
-cache:
-  - C:\tools\Pretzel -> appveyor.yml
-
-build_script:
-- "\"C:\\Program Files (x86)\\Microsoft SDKs\\F#\\4.0\\Framework\\v4.0\\fsi\" GetBooksInfo.fsx"
 
 test: off
 
 artifacts:
-- path: site/_site
+- path: src/Publish
   name: compiled_site
-
-before_deploy:
-- ps: .\Clear-FtpDirectory.ps1
-
-deploy:
-- provider: FTP
-  host: laedit.net
-  protocol: ftp
-  username: zlaeditn12713ne
-  password:
-    secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
-  folder: /httpdocs/readinglist
-  application: site\compiled_site.zip
