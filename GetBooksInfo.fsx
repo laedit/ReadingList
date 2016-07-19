@@ -272,8 +272,9 @@ module Main =
         if not postsToGenerate
         then 
             cprintfn ConsoleColor.Green "no posts to generate"
-            if not isForced
-            then exit 42
+            if isForced
+            then printfn "but since the build is forced, posts are generated anyway"
+            else exit 42
 
         createFolderIfNotExists Constants.PostsFolder
         createFolderIfNotExists Constants.ImagesFolder
@@ -302,10 +303,15 @@ module Main =
 
     let Build =
         printfn "start build"
+
+        printfn "%s" (Environment.GetEnvironmentVariable("isbn"))
+        printfn "%s" (Environment.GetEnvironmentVariable("startDate"))
+
         execProcess "git" "checkout master"
         
         let isForced = isBuildForced()
-        
+        if isForced then printfn "!! Build forced !!"
+
         let postsGenerated = generatePosts "books.yml" isForced
         
         if postsGenerated
