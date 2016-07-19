@@ -3,8 +3,12 @@ version: 1.0.{build}
 environment:
   ftp_password:
     secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
-  access_token:
-    secure: CF5fbrJvzIdoFSlDdW4c5NQUzca/B75Bxqp9kwCvp5yksTLiUxaDzhh0WsmLXp4P
+
+before_build:
+  - nuget restore
+
+build:
+  - msbuild "src\AddBook.sln" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:PublishProfile=appveyor /p:Password=%ftp_password%
 
 test: off
 
