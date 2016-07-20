@@ -5,9 +5,9 @@ environment:
     secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
 
 before_build:
-  - nuget restore
+  - nuget restore src
 
-build:
+build_script:
   - msbuild "src\AddBook.sln" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:PublishProfile=appveyor /p:Password=%ftp_password%
 
 test: off
