@@ -22,6 +22,7 @@ namespace AddBook
 
             ConfigLoader.Load(configPath);
         }
+
         protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
         {
             base.ConfigureRequestContainer(container, context);
