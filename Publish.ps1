@@ -1,36 +1,23 @@
 $server = "laedit.net"
 $user = "zlaeditn12713ne"
 $pass = $env:ftp_password
-$rootDirectory = "/httpdocs/addbook"
+$rootDirectory = "httpdocs/addbook"
 
 Copy-Item "Publish" "Packaged"
 New-Item "Packaged/bin" -type directory
 New-Item "Packaged/bin/app.config" -type file -value "AppVeyorApiKey:$env:config1\r\nSoleUser:$env:config2"
 
-## Get files
-$dirSource = "C:\projects\readinglist\Packaged"
-$files = Get-ChildItem -recurse $dirSource
+$source = "C:\projects\readinglist\Packaged"
+$destination = "ftp://${user}:$pass@$server/$rootDirectory"
 
-## Get ftp object
-$ftp_client = New-Object System.Net.WebClient
-$ftp_address = "ftp://${user}:$pass@${server}:$rootdirectory"
+$webclient = New-Object -TypeName System.Net.WebClient
 
-## Make uploads
-foreach($file in $files)
+$files = Get-ChildItem -recurse $source
+
+foreach ($file in $files)
 {
-    Write-Host $file
+    Write-Host "Uploading $file"
+    $webclient.UploadFile("$destination/$file", $file.FullName)
+} 
 
-    $directory = "";
-    $source = $file.DirectoryName + "\" + $file;
-    if ($file.DirectoryName.Length -gt 0)
-    {
-        $directory = $file.DirectoryName.Replace($dirSource,"")
-    }
-    $directory += "/";
-    
-    $ftp_command = $ftp_address + $directory + $file
-    Write-Host $ftp_command
-    
-    $uri = New-Object System.Uri($ftp_command)
-    $ftp_client.UploadFile($uri, $source)
-}
+$webclient.Dispose()
