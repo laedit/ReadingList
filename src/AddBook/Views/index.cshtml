@@ -11,9 +11,11 @@
 <form method="post" action="/">
     <label for="ISBN">ISBN</label>
     <div>
+        <input name="ISBN" id="ISBN" placeholder="ISBN" />
     </div>
     <label for="StartDate">Reading start date</label>
     <div>
+        <input type="text" name="StartDate" id="StartDate" placeholder="start date" value="@Model.StartDate.ToShortDateString()" />
     </div>
     <input type="submit" name="submitBook" value="Submit book" />
 </form>
