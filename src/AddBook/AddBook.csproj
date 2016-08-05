@@ -100,7 +100,6 @@
     <Content Include="packages.config" />
     <Content Include="Views\index.cshtml" />
     <Content Include="Content\style.css" />
-    <None Include="Properties\PublishProfiles\appveyor.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <Content Include="Views\layout.cshtml" />
     <Content Include="Views\login.cshtml" />
