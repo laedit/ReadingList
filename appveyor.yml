@@ -3,17 +3,37 @@ version: 1.0.{build}
 environment:
   ftp_password:
     secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
+  config1:
+    secure: ogDKopwS7JRJK1qlJErY72zOiNyHhSjhsahQyu33yXg=
+  config2:
+    secure: lBUg3wgeQWhthz06T/iCabNhj5G0mXWYF5udbfdZ92E=
 
 before_build:
   - nuget restore src
 
 build_script:
-  - msbuild "src\AddBook.sln" /p:Configuration=Release /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:PublishProfile=appveyor /p:Password=%ftp_password%
+  - msbuild "src\AddBook.sln" /p:Configuration=Release /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:PublishProfile=Local /p:DeployOnBuild=True
 
-# create app.config
+after_build:
+  - ps: Copy-Item Publish Packaged
+  - ps: New-Item Packaged/bin/app.config -type file -value "AppVeyorApiKey:$(config1)\r\nSoleUser:$(config2)"
+  - ps: Add-Type -Assembly System.IO.Compression.FileSystem
+  - ps: [System.IO.Compression.ZipFile]::CreateFromDirectory("Packaged", "packaged_site.zip")
 
 test: off
 
 artifacts:
-- path: src/Publish
-  name: compiled_site
+- path: Publish
+
+before_deploy:
+- ps: .\Clear-FtpDirectory.ps1
+
+deploy:
+- provider: FTP
+  host: laedit.net
+  protocol: ftp
+  username: zlaeditn12713ne
+  password:
+    secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
+  folder: /httpdocs/addbook
+application: packaged_site.zip
