@@ -36,4 +36,4 @@ deploy:
   password:
     secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
   folder: /httpdocs/addbook
-application: packaged_site.zip
+  application: packaged_site.zip
