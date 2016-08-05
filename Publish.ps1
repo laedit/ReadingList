@@ -1,7 +1,7 @@
 $server = "laedit.net"
 $user = "zlaeditn12713ne"
 $pass = $env:ftp_password
-$rootDirectory = "httpdocs/addbook/"
+$rootDirectory = "/httpdocs/addbook"
 
 Copy-Item "Publish" "Packaged"
 New-Item "Packaged/bin" -type directory
