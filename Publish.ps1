@@ -5,16 +5,17 @@ $rootDirectory = "/httpdocs/addbook/"
 
 function CreateFtpFolder ($folderToCreate)
 {
-	# Create the direct path to the folder you want to create
-	$ftpPath = "$Server/$folderToCreate"
+    # Create the direct path to the folder you want to create
+    $ftpPath = "$Server$rootDirectory/$folderToCreate"
+    Write-Host "Create folder: $ftpPath"
     # create the FtpWebRequest and configure it
-	$ftp = [System.Net.FtpWebRequest]::Create($ftpPath)
-	$ftp.Method = [System.Net.WebRequestMethods+Ftp]::MakeDirectory
-	$ftp.Credentials = New-Object System.Net.NetworkCredential($user, $pass)
-	$ftp.UsePassive = $true
+    $ftp = [System.Net.FtpWebRequest]::Create($ftpPath)
+    $ftp.Method = [System.Net.WebRequestMethods+Ftp]::MakeDirectory
+    $ftp.Credentials = New-Object System.Net.NetworkCredential($user, $pass)
+    $ftp.UsePassive = $true
 
-	$response = [System.Net.FtpWebResponse]$ftp.GetResponse()
-	$response.Close()
+    $response = [System.Net.FtpWebResponse]$ftp.GetResponse()
+    $response.Close()
 }
 
 function UploadFtpFile ($fileToUpload)
@@ -29,7 +30,7 @@ function UploadFtpFile ($fileToUpload)
 }
 
 Copy-Item "Publish" "Packaged" -Recurse
-New-Item "Packaged/bin/app.config" -type file -value "AppVeyorApiKey:$env:config1\r\nSoleUser:$env:config2"
+New-Item "Packaged/bin/app.config" -type file -value "AppVeyorApiKey:$env:config1`r`nSoleUser:$env:config2"
 
 $source = "C:\projects\readinglist\Packaged"
 $files = Get-ChildItem $source -Recurse
