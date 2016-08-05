@@ -24,7 +24,7 @@ function UploadFtpFile ($fileToUpload)
     $webclient = New-Object -TypeName System.Net.WebClient
     $webclient.Credentials = New-Object System.Net.NetworkCredential($user, $pass)
     Write-Host "Uploading $file"
-    $destination = New-Object System.Uri($server + $rootDirectory + ($file.FullName -replace $source, ""))
+    $destination = New-Object System.Uri($server + $rootDirectory + $file.FullName.replace($source, ""))
     Write-Host "Destination: $destination"
     $webclient.UploadFile($destination, $file.FullName)
     $webclient.Dispose()
