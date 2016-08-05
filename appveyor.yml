@@ -19,7 +19,7 @@ after_build:
   - ps: New-Item Packaged/bin -type directory
   - ps: New-Item Packaged/bin/app.config -type file -value "AppVeyorApiKey:$env:config1\r\nSoleUser:$env:config2"
   - ps: Add-Type -Assembly System.IO.Compression.FileSystem
-  - ps: '[System.IO.Compression.ZipFile]::CreateFromDirectory("Packaged", "packaged_site.zip")'
+  - ps: '[System.IO.Compression.ZipFile]::CreateFromDirectory("c:/projects/readinglist/Packaged", "c:/projects/readinglist/packaged_site.zip")'
 
 test: off
 
