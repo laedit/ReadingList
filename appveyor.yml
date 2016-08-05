@@ -10,7 +10,7 @@ before_build:
 build_script:
   - msbuild "src\AddBook.sln" /p:Configuration=Release /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:PublishProfile=appveyor /p:Password=%ftp_password%
 
-// create app.config
+# create app.config
 
 test: off
 
