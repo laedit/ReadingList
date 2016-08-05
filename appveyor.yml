@@ -8,7 +8,9 @@ before_build:
   - nuget restore src
 
 build_script:
-  - msbuild "src\AddBook.sln" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:PublishProfile=appveyor /p:Password=%ftp_password%
+  - msbuild "src\AddBook.sln" /p:Configuration=Release /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:PublishProfile=appveyor /p:Password=%ftp_password%
+
+// create app.config
 
 test: off
 
