@@ -25,7 +25,7 @@ foreach($file in $files)
     }
     $directory += "/";
     $ftp_command = $ftp_address + $directory + $file
-    Write-Debug $ftp_command
+    Write-Host $ftp_command
     $uri = New-Object System.Uri($ftp_command)
     $ftp_client.UploadFile($uri, $source)
 }
