@@ -19,13 +19,13 @@ foreach($file in $files)
 {
     $directory = "";
     $source = $file.DirectoryName + "\" + $file;
-    if ($File.DirectoryName.Length -gt 0)
+    if ($file.DirectoryName.Length -gt 0)
     {
-        $directory = $file.DirectoryName.Replace($Location,"")
+        $directory = $file.DirectoryName.Replace("Packaged","")
     }
     $directory += "/";
     $ftp_command = $ftp_address + $directory + $file
-   
+    Write-Debug $ftp_command
     $uri = New-Object System.Uri($ftp_command)
     $ftp_client.UploadFile($uri, $source)
 }
