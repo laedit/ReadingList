@@ -14,13 +14,6 @@ before_build:
 build_script:
   - msbuild "src\AddBook.sln" /p:Configuration=Release /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:PublishProfile=Local /p:DeployOnBuild=True
 
-after_build:
-  - ps: Copy-Item Publish Packaged
-  - ps: New-Item Packaged/bin -type directory
-  - ps: New-Item Packaged/bin/app.config -type file -value "AppVeyorApiKey:$env:config1\r\nSoleUser:$env:config2"
-  - ps: Add-Type -Assembly System.IO.Compression.FileSystem
-  - ps: '[System.IO.Compression.ZipFile]::CreateFromDirectory("c:/projects/readinglist/Packaged", "c:/projects/readinglist/packaged_site.zip")'
-
 test: off
 
 artifacts:
@@ -29,12 +22,5 @@ artifacts:
 before_deploy:
 - ps: .\Clear-FtpDirectory.ps1
 
-deploy:
-- provider: FTP
-  host: laedit.net
-  protocol: ftp
-  username: zlaeditn12713ne
-  password:
-    secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
-  folder: /httpdocs/addbook
-  application: packaged_site.zip
+deploy_script:
+- ps: .\Publish.ps1
