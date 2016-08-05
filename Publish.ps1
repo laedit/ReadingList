@@ -1,4 +1,4 @@
-$server = "ftp://laedit.net/"
+$server = "laedit.net"
 $user = "zlaeditn12713ne"
 $pass = $env:ftp_password
 $rootDirectory = "httpdocs/addbook/"
