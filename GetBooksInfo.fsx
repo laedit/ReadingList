@@ -92,14 +92,11 @@ module Data =
         
         let summary = 
             sections
-            |> Seq.find (fun sec -> sec.AttributeValue("id") = "ficheResume")
-            |> (fun fiche ->
-                                let elements = fiche.Elements()
-                                if elements.Length > 0 then
-                                    elements.Item(1).InnerText().Trim()
-                                else
-                                    String.Empty
-                            )
+            |> Seq.tryFind (fun sec -> sec.AttributeValue("id") = "ficheResume")
+            |> (fun fiche -> match fiche with
+                                | None -> String.Empty
+                                | Some node -> node.Elements().Item(1).InnerText().Trim()
+               )
         
         { book with Title = title
                     Author = author
