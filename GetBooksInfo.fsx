@@ -44,7 +44,7 @@ module Constants =
     let ProductWebsPassword = Environment.GetEnvironmentVariable "publisher_password"
     let SearchProductsEndpoint = "https://product-api.affili.net/V3/productservice.svc/JSON/SearchProducts"
     let FnacLivreShopId = "5262"
-    let FnacSearchUrl = "http://recherche.fnac.com/SearchResult/ResultList.aspx?SCat=2!1&Search="
+    let FnacSearchUrl = "http://recherche.fnac.com/SearchResult/ResultList.aspx?SCat=2!1&sft=1&Search="
     let PostsFolder = "site/_posts/"
     let ImagesFolder = "site/img/"
 
