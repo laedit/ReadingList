@@ -181,7 +181,6 @@ module Utils =
         raiseIfEmpty book.Editor "Editor"
         raiseIfEmpty book.Title "Title"
         raiseIfEmpty book.ImageUrl "ImageUrl"
-        raiseIfEmpty book.Summary "Summary"
     
     let downloadImageToSite imageUrl isbn = 
         let imageName = sprintf "%s%s" isbn (Path.GetExtension(imageUrl))
