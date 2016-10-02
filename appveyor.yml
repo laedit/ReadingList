@@ -19,7 +19,7 @@ cache:
   - C:\tools\Pretzel -> appveyor.yml
 
 build_script:
-- "\"C:\\Program Files (x86)\\Microsoft SDKs\\F#\\4.0\\Framework\\v4.0\\fsi\" GetBooksInfo.fsx"
+- "\"C:\\Program Files (x86)\\Microsoft SDKs\\F#\\4.0\\Framework\\v4.0\\fsi\" ./scripts/Build.fsx"
 
 test: off
 
@@ -28,7 +28,7 @@ artifacts:
   name: compiled_site
 
 before_deploy:
-- ps: .\Clear-FtpDirectory.ps1
+- ps: .\scripts\Clear-FtpDirectory.ps1
 
 deploy:
 - provider: FTP
