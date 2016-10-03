@@ -58,6 +58,7 @@ module Main =
         execProcessWithFail "git" "commit -m \"Add new posts [skip ci]\""
         execProcessWithFail "git" "push sshorigin master"
 
+    // Add book to list (if book info)
     let addBook(books:List<BookConfig>) =
         let isbn = Environment.GetEnvironmentVariable("isbn")
         let startDate = Environment.GetEnvironmentVariable("startDate")
@@ -103,19 +104,15 @@ module Main =
         printfn "start build"
         let isDeployForced = isDeployForced()
 
-        // 1) Add book to list (if book info)
-        printfn "%s" (Environment.GetEnvironmentVariable("isbn"))
-        printfn "%s" (Environment.GetEnvironmentVariable("startDate"))
-
-        // 2) Generate page for book (if needed)
+        //  Generate page for book
         let generatePostsResult = generatePosts "books.yml"
 
         checkTaskResult generatePostsResult isDeployForced
 
-        // 3) Build website (if needed)
+        // Build website
         let bakeSiteResult = bakeSite()
         checkTaskResult generatePostsResult isDeployForced
 
-        // 4) Deploy (if needed)
+        // Deploy
 
 Main.Build
