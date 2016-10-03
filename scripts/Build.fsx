@@ -98,11 +98,12 @@ module Main =
         | Ok -> ()
         | Stop message -> match isDeployForced with
                             | false -> cprintfn ConsoleColor.Yellow message; Environment.Exit 1
-                            | true -> cprintfn ConsoleColor.Yellow "!! Deploy forced !!"
+                            | true -> ()
 
     let Build =
         printfn "start build"
         let isDeployForced = isDeployForced()
+        if isDeployForced then cprintfn ConsoleColor.Yellow "!! Deploy forced !!"
 
         //  Generate page for book
         let generatePostsResult = generatePosts "books.yml"
