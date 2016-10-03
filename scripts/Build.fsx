@@ -1,6 +1,5 @@
 #load "Utils.fsx"
 #load "BookInfos.fsx"
-#load "BookConfig.fsx"
 
 open System
 open System.IO
@@ -26,10 +25,9 @@ module Main =
 
     let private generatePost (bookConfig : BookConfig) = 
         if bookConfig.Generated then 
-            printfn "book '%s' already generated" bookConfig.Isbn
             bookConfig
         else
-            let book = BookInfos.GetBookInfo(bookConfig)
+            let book = BookInfos.GetBookInfo bookConfig
             BookInfos.Check book
             printfn "\tdata found"
             File.WriteAllText
@@ -38,66 +36,86 @@ module Main =
                      (Utils.downloadImageToSite book.ImageUrl book.Isbn ImagesFolder) book.Summary)
             new BookConfig(bookConfig.Isbn, bookConfig.Date, true)
 
-    let isBuildForced _ =
+    // forced: deploy will be executed even if there is no book page to generate
+    let isDeployForced _ =
         let commitMessage = Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE")
         let forcedBuild = Environment.GetEnvironmentVariable("APPVEYOR_FORCED_BUILD")
         (not (isNull commitMessage) && commitMessage.ToLowerInvariant().Contains("[force]") )
                 || (not (isNull forcedBuild) && forcedBuild.ToLowerInvariant() = "true")
 
-    let generatePosts configFileName isForced = 
-        printfn "start posts generation"
-        let books = BookConfig.Load configFileName
-        let postsToGenerate = books |> Seq.exists (fun book -> not book.Generated)
+    let commitGeneratedPosts () =
+        execProcessWithFail "git" "checkout master"
+        execProcessWithFail "git" ("remote add sshorigin https://" + Environment.GetEnvironmentVariable("access_token") + ":x-oauth-basic@github.com/laedit/ReadingList.git")
+        execProcessWithFail "git" "config --global credential.helper store"
+        use sw = File.AppendText(Environment.GetEnvironmentVariable("USERPROFILE") + ".git-credentials")
+        sw.Write("https://" + Environment.GetEnvironmentVariable("access_token") + ":x-oauth-basic@github.com");
+        sw.Write("\n");
+        execProcessWithFail "git" "config --global user.name \"Jérémie Bertrand\""
+        execProcessWithFail "git" ("config --global user.email \"" + Environment.GetEnvironmentVariable("git_mail") + "\"")
         
-        if not postsToGenerate
-        then 
-            cprintfn ConsoleColor.Green "no posts to generate"
-            if isForced
-            then printfn "but since the build is forced, posts are generated anyway"
-            else exit 42
+        
+        execProcessWithFail "git" " add ."
+        execProcessWithFail "git" "commit -m \"Add new posts [skip ci]\""
+        execProcessWithFail "git" "push sshorigin master"
+
+    let addBook(books:List<BookConfig>) =
+        let isbn = Environment.GetEnvironmentVariable("isbn")
+        let startDate = Environment.GetEnvironmentVariable("startDate")
+        if not (isNull isbn || isNull startDate) then
+            printfn "Add book '%s'" isbn
+            books.Add(new BookConfig(isbn, startDate, false))
+        books
+
+    let generatePosts configFileName =
+        let books = configFileName |> BookConfig.Load |> addBook
+
+        printfn "start posts generation"
+        let postsToGenerate = books |> Seq.exists (fun book -> not book.Generated)
 
         createFolderIfNotExists PostsFolder
         createFolderIfNotExists ImagesFolder
         let newBooksConfig = books |> Seq.map generatePost
         BookConfig.Write configFileName (new List<BookConfig>(Seq.toArray newBooksConfig))
         printfn "end posts generation"
-        postsToGenerate
 
-    let commitGeneratedPosts () =
-        execProcess "git" ("remote add sshorigin https://" + Environment.GetEnvironmentVariable("access_token") + ":x-oauth-basic@github.com/laedit/ReadingList.git")
-        execProcess "git" "config --global credential.helper store"
-        use sw = File.AppendText(Environment.GetEnvironmentVariable("USERPROFILE") + ".git-credentials")
-        sw.Write("https://" + Environment.GetEnvironmentVariable("access_token") + ":x-oauth-basic@github.com");
-        sw.Write("\n");
-        execProcess "git" "config --global user.name \"Jérémie Bertrand\""
-        execProcess "git" ("config --global user.email \"" + Environment.GetEnvironmentVariable("git_mail") + "\"")
-        
-        
-        execProcess "git" " add ."
-        execProcess "git" "commit -m \"Add new posts [skip ci]\""
-        execProcess "git" "push sshorigin master"
+        if postsToGenerate then
+            commitGeneratedPosts()
+
+        match postsToGenerate with
+        | true -> Ok
+        | false -> Stop "No posts to generate"
 
     let bakeSite () =
         System.Threading.Thread.CurrentThread.CurrentCulture <- System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR")
-        execProcess @"C:\tools\Pretzel\Pretzel" "bake site" 
+        if execProcess @"C:\tools\Pretzel\Pretzel" "bake site" > 0 then
+            Stop "Pretzel have failed to build the site"
+        else
+            Ok
+
+    let private checkTaskResult taskResult isDeployForced =
+        match taskResult with
+        | Ok -> ()
+        | Stop message -> match isDeployForced with
+                            | false -> cprintfn ConsoleColor.Yellow message; Environment.Exit 1
+                            | true -> cprintfn ConsoleColor.Yellow "!! Deploy forced !!"
 
     let Build =
         printfn "start build"
+        let isDeployForced = isDeployForced()
 
+        // 1) Add book to list (if book info)
         printfn "%s" (Environment.GetEnvironmentVariable("isbn"))
         printfn "%s" (Environment.GetEnvironmentVariable("startDate"))
 
-        execProcess "git" "checkout master"
-        
-        let isForced = isBuildForced()
-        if isForced then printfn "!! Build forced !!"
+        // 2) Generate page for book (if needed)
+        let generatePostsResult = generatePosts "books.yml"
 
-        let postsGenerated = generatePosts "books.yml" isForced
-        
-        if postsGenerated
-        then
-            commitGeneratedPosts()
-        
-        bakeSite()
-        
+        checkTaskResult generatePostsResult isDeployForced
+
+        // 3) Build website (if needed)
+        let bakeSiteResult = bakeSite()
+        checkTaskResult generatePostsResult isDeployForced
+
+        // 4) Deploy (if needed)
+
 Main.Build

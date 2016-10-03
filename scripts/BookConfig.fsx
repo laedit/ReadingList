@@ -1,6 +1,7 @@
 #r "../libs/SharpYaml.dll"
 
 open System.IO
+open System.Collections.Generic
 open SharpYaml.Serialization
 
 type BookConfig = 
