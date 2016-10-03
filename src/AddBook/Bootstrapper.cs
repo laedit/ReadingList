@@ -21,8 +21,6 @@ namespace AddBook
             var configPath = Path.Combine(binDirectory ?? @".\", "app.config");
 
             ConfigLoader.Load(configPath);
-
-            StaticConfiguration.DisableErrorTraces = false;
         }
 
         protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
