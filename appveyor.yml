@@ -18,7 +18,7 @@ install:
 
 cache:
   - C:\tools\Pretzel -> appveyor.yml
-  - '%LOCALAPPDATA%\pip\Cache' -> appveyor.yml
+  - '%LOCALAPPDATA%\pip\Cache -> appveyor.yml'
 
 build_script:
 - "\"C:\\Program Files (x86)\\Microsoft SDKs\\F#\\4.0\\Framework\\v4.0\\fsi\" ./scripts/Build.fsx"
