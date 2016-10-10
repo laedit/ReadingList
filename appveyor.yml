@@ -14,8 +14,6 @@ environment:
 
 install:
   - choco install pretzel -y
-  - set PATH=%PATH%;C:\\Python35;C:\\Python35\\Scripts;
-  - pip install creep
 
 cache:
   - C:\tools\Pretzel -> appveyor.yml
