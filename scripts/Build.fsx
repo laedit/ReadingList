@@ -97,7 +97,7 @@ module Main =
         match taskResult with
         | Ok -> ()
         | Stop message -> match isDeployForced with
-                            | false -> cprintfn ConsoleColor.Yellow message; Environment.Exit 1
+                            | false -> cprintfn ConsoleColor.Yellow message; Environment.Exit 0
                             | true -> ()
 
     let Build =
@@ -115,5 +115,6 @@ module Main =
         checkTaskResult generatePostsResult isDeployForced
 
         // Deploy
+        execProcessWithFail "creep" @"-e ""{""""default"""": {""""connection"""": """"ftp://zlaeditn12713ne:gl%25%24%2491PN..-mj%24%23%2542@laedit.net/httpdocs/readinglist""""}}"""" -d ""{""""source"""": """"hash""""}"" -b site/_site -y"
 
 Main.Build

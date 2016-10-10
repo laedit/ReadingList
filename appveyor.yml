@@ -14,28 +14,13 @@ environment:
 
 install:
   - choco install pretzel -y
+  - pip install creep
 
 cache:
   - C:\tools\Pretzel -> appveyor.yml
+  - '%LOCALAPPDATA%\pip\Cache' -> appveyor.yml
 
 build_script:
 - "\"C:\\Program Files (x86)\\Microsoft SDKs\\F#\\4.0\\Framework\\v4.0\\fsi\" ./scripts/Build.fsx"
 
 test: off
-
-artifacts:
-- path: site/_site
-  name: compiled_site
-
-before_deploy:
-- ps: .\scripts\Clear-FtpDirectory.ps1
-
-deploy:
-- provider: FTP
-  host: laedit.net
-  protocol: ftp
-  username: zlaeditn12713ne
-  password:
-    secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
-  folder: /httpdocs/readinglist
-  application: site\compiled_site.zip
