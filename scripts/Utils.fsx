@@ -55,7 +55,7 @@ let cprintfn c message =
     printfn ""
 
 let execProcess processName arguments =
-    printfn "execute: %s %s" processName arguments
+    printfn "execute: %s" processName
 
     use proc = new Process()
     proc.StartInfo.UseShellExecute <- false
@@ -75,7 +75,7 @@ let execProcess processName arguments =
 
 let execProcessWithFail processName arguments =
     if execProcess processName arguments > 0 then
-        failwith ("'" + processName + " " + arguments + "' failed")
+        failwith ("'" + processName + " ' failed")
 
 type TaskResult =
     | Ok
