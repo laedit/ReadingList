@@ -1,8 +1,10 @@
 version: 1.0.{build}
 
 environment:
+  ftp_user:
+    secure: qFoKIg/opgBgjdrHAZlFOA==
   ftp_password:
-    secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
+    secure: 6wrMkWW2J1r3Yhg4o1bfxkuIKwNG05EW0ZkpryokBzI=
   access_token:
     secure: CF5fbrJvzIdoFSlDdW4c5NQUzca/B75Bxqp9kwCvp5yksTLiUxaDzhh0WsmLXp4P
   publisher_id:

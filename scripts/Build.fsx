@@ -118,6 +118,6 @@ module Main =
         // Deploy
         System.Environment.SetEnvironmentVariable("PATH", ("C:\\Python35;C:\\Python35\\Scripts;" + Environment.GetEnvironmentVariable "PATH"))
         execProcessWithFail "pip" "install creep"
-        execProcessWithFail "creep" @"-e ""{""""default"""": {""""connection"""": """"ftp://zlaeditn12713ne:gl%25%24%2491PN..-mj%24%23%2542@laedit.net/httpdocs/readinglist""""}}"""" -d ""{""""source"""": """"hash""""}"" -b site/_site -y"
+        execProcessWithFail "creep" ([@"-e ""{""""default"""": {""""connection"""": """"ftp://"; Environment.GetEnvironmentVariable("ftp_user"); ":"; Environment.GetEnvironmentVariable("ftp_password"); @"@laedit.net""""}}"" -d ""{""""source"""": """"hash""""}"" -b site/_site -y"] |> Seq.fold (+) "")
 
 Main.Build
