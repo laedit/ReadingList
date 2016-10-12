@@ -111,6 +111,7 @@ module Main =
         checkTaskResult generatePostsResult isDeployForced
 
         // Build website
+        execProcessWithFail "choco" "install pretzel -y"
         let bakeSiteResult = bakeSite()
         checkTaskResult generatePostsResult isDeployForced
 

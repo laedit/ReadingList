@@ -12,9 +12,6 @@ environment:
   git_mail:
     secure: bVPyDjOtyByKm9rSo/rjN79B6Z6/pI1hhbhYZHiAJ/E=
 
-install:
-  - choco install pretzel -y
-
 cache:
   - C:\tools\Pretzel -> appveyor.yml
   - '%LOCALAPPDATA%\pip\Cache -> appveyor.yml'
