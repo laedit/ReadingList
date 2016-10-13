@@ -8,20 +8,41 @@ open Utils
 open BookInfos
 open BookConfig
 
-let (template : Printf.StringFormat<_>) = "---
-layout: post
-title: \"%s\"
-author: \"%s\"
-isbn: %s
-editor: %s
----
-
-![Couverture](/img/%s)%s"
-
 module Main = 
+
+    type BuildConfiguration = 
+        {
+            IsDeployForced : bool;
+            BooksFilePath : string;
+            FtpUser : string;
+            FtpPassword : string;
+            IsTraceDebug : bool
+        }
+
+    let (template : Printf.StringFormat<_>) = "---
+    layout: post
+    title: \"%s\"
+    author: \"%s\"
+    isbn: %s
+    editor: %s
+    ---
+
+    ![Couverture](/img/%s)%s"
 
     let PostsFolder = "site/_posts/"
     let ImagesFolder = "site/img/"
+
+    type TaskResult = 
+        | Success of BuildConfiguration
+        | Failure of BuildConfiguration * string
+
+    let bind switchFunction = 
+        fun taskResult ->
+            match taskResult with
+            | Success s -> switchFunction s
+            | Failure (conf, mess) -> match conf.IsDeployForced with
+                                        | true -> switchFunction conf
+                                        | false -> Failure (conf, mess)
 
     let private generatePost (bookConfig : BookConfig) = 
         if bookConfig.Generated then 
@@ -67,8 +88,8 @@ module Main =
             books.Add(new BookConfig(isbn, startDate, false))
         books
 
-    let generatePosts configFileName =
-        let books = configFileName |> BookConfig.Load |> addBook
+    let generatePosts configuration =
+        let books = configuration.BooksFilePath |> BookConfig.Load |> addBook
 
         printfn "start posts generation"
         let postsToGenerate = books |> Seq.exists (fun book -> not book.Generated)
@@ -76,48 +97,66 @@ module Main =
         createFolderIfNotExists PostsFolder
         createFolderIfNotExists ImagesFolder
         let newBooksConfig = books |> Seq.map generatePost
-        BookConfig.Write configFileName (new List<BookConfig>(Seq.toArray newBooksConfig))
+        BookConfig.Write configuration.BooksFilePath (new List<BookConfig>(Seq.toArray newBooksConfig))
         printfn "end posts generation"
 
         if postsToGenerate then
             commitGeneratedPosts()
 
         match postsToGenerate with
-        | true -> Ok
-        | false -> Stop "No posts to generate"
+        | true -> Success configuration
+        | false -> Failure (configuration, "No posts to generate")
 
-    let bakeSite () =
+    let bakeSite configuration =
+        // prerequisite
+        execProcessWithFail "choco" "install pretzel -y"
+
         System.Threading.Thread.CurrentThread.CurrentCulture <- System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR")
         if execProcess @"C:\tools\Pretzel\Pretzel" "bake site" > 0 then
-            Stop "Pretzel have failed to build the site"
+            Failure (configuration, "Pretzel have failed to build the site")
         else
-            Ok
+            Success configuration
 
-    let private checkTaskResult taskResult isDeployForced =
-        match taskResult with
-        | Ok -> ()
-        | Stop message -> match isDeployForced with
-                            | false -> cprintfn ConsoleColor.Yellow message; Environment.Exit 0
-                            | true -> ()
+    let deploySite configuration =
+        // prerequisite
+        System.Environment.SetEnvironmentVariable("PATH", ("C:\\Python35;C:\\Python35\\Scripts;" + Environment.GetEnvironmentVariable "PATH"))
+        execProcessWithFail "pip" "install creep"
+
+        execProcessWithFail "creep" ([@"-e ""{""""default"""": {""""connection"""": """"ftp://"; configuration.FtpUser; ":"; configuration.FtpPassword; @"@laedit.net""""}}"" -d ""{""""source"""": """"hash""""}"" -b site/_site -y"] |> Seq.fold (+) "")
+        Success configuration
+
+    let log result = 
+        match result with
+        | Success s -> ()
+        | Failure (c, f) -> Warning f
+
+    let warnDeployForced configuration =
+        match configuration.IsDeployForced with
+            | true -> Warning "!! Deploy forced !!"
+            | false -> ()
+        Success configuration
+
+    let RunBuild =
+        warnDeployForced
+        >> bind generatePosts
+        >> bind bakeSite
+        >> bind deploySite
+        >> log
 
     let Build =
         printfn "start build"
-        let isDeployForced = isDeployForced()
-        if isDeployForced then cprintfn ConsoleColor.Yellow "!! Deploy forced !!"
 
-        //  Generate page for book
-        let generatePostsResult = generatePosts "books.yml"
+        let configuration = 
+            {
+                IsDeployForced = isDeployForced();
+                BooksFilePath = "books.yml";
+                FtpUser = Environment.GetEnvironmentVariable("ftp_user");
+                FtpPassword = Environment.GetEnvironmentVariable("ftp_password");
+                IsTraceDebug = false
+            }
 
-        checkTaskResult generatePostsResult isDeployForced
-
-        // Build website
-        execProcessWithFail "choco" "install pretzel -y"
-        let bakeSiteResult = bakeSite()
-        checkTaskResult generatePostsResult isDeployForced
-
-        // Deploy
-        System.Environment.SetEnvironmentVariable("PATH", ("C:\\Python35;C:\\Python35\\Scripts;" + Environment.GetEnvironmentVariable "PATH"))
-        execProcessWithFail "pip" "install creep"
-        execProcessWithFail "creep" ([@"-e ""{""""default"""": {""""connection"""": """"ftp://"; Environment.GetEnvironmentVariable("ftp_user"); ":"; Environment.GetEnvironmentVariable("ftp_password"); @"@laedit.net""""}}"" -d ""{""""source"""": """"hash""""}"" -b site/_site -y"] |> Seq.fold (+) "")
+        configuration
+        |> RunBuild
+        |> ignore
 
 Main.Build

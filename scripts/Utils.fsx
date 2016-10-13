@@ -39,19 +39,16 @@ let createFolderIfNotExists folderPath =
     if not (Directory.Exists folderPath) then
         (Directory.CreateDirectory folderPath) |> ignore
 
-let private cprintf c message = 
+let Warning message = 
     Printf.kprintf 
         (fun s -> 
             let old = System.Console.ForegroundColor 
             try 
-                System.Console.ForegroundColor <- c;
+                System.Console.ForegroundColor <- ConsoleColor.Yellow;
                 System.Console.Write s
             finally
                 System.Console.ForegroundColor <- old) 
         "%s" message
-
-let cprintfn c message = 
-    cprintf c message
     printfn ""
 
 let execProcess processName arguments =
@@ -76,7 +73,3 @@ let execProcess processName arguments =
 let execProcessWithFail processName arguments =
     if execProcess processName arguments > 0 then
         failwith ("'" + processName + " ' failed")
-
-type TaskResult =
-    | Ok
-    | Stop of string
