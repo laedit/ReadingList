@@ -134,11 +134,11 @@ module Main =
         match configuration.IsDeployForced with
             | true -> Warning "!! Deploy forced !!"
             | false -> ()
-        Success configuration
+        configuration
 
     let RunBuild =
         warnDeployForced
-        >> bind generatePosts
+        >> generatePosts
         >> bind bakeSite
         >> bind deploySite
         >> log
