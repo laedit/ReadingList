@@ -13,14 +13,12 @@ let generatePosts = BuildTask
                         (fun configuration ->
                             let books = configuration.BooksFilePath |> BookConfig.Load |> addBook
 
-                            printfn "start posts generation"
                             let postsToGenerate = books |> Seq.exists (fun book -> not book.Generated)
 
                             CreateFolderIfNotExists PostsFolder
                             CreateFolderIfNotExists ImagesFolder
                             let newBooksConfig = books |> Seq.map generatePost
                             BookConfig.Write configuration.BooksFilePath (new List<BookConfig>(Seq.toArray newBooksConfig))
-                            printfn "end posts generation"
 
                             if postsToGenerate then
                                 commitGeneratedPosts()
