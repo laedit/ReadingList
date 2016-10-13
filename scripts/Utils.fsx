@@ -21,7 +21,7 @@ let private removeDiacritics (stIn : string) =
                     if uc <> UnicodeCategory.NonSpacingMark then sb.Append(c) |> ignore)
     sb.ToString().Normalize(NormalizationForm.FormC)
 
-let slugify (value : string) = 
+let Slugify (value : string) = 
     value.ToLowerInvariant() // convert to lower case
     |> removeDiacritics // remove diacritics (accents)
     |> fun s -> wordDelimiters.Replace(s, "-") // ensure all word delimiters are hyphens
@@ -29,13 +29,13 @@ let slugify (value : string) =
     |> fun s -> multipleHyphens.Replace(s, "-") // replace multiple hyphens (-) with a single hyphen
     |> fun s -> s.Trim('-') // trim hyphens (-) from ends
 
-let downloadImageToSite imageUrl isbn  imagesFolder = 
+let DownloadImageToSite imageUrl isbn  imagesFolder = 
     let imageName = sprintf "%s%s" isbn (Path.GetExtension(imageUrl))
     let imagePath = sprintf "%s%s" imagesFolder imageName
     File.WriteAllBytes(imagePath, (new System.Net.WebClient()).DownloadData(imageUrl))
     imageName
 
-let createFolderIfNotExists folderPath =
+let CreateFolderIfNotExists folderPath =
     if not (Directory.Exists folderPath) then
         (Directory.CreateDirectory folderPath) |> ignore
 
@@ -51,7 +51,7 @@ let Warning message =
         "%s" message
     printfn ""
 
-let execProcess processName arguments =
+let ExecProcess processName arguments =
     printfn "execute: %s" processName
 
     use proc = new Process()
@@ -70,6 +70,49 @@ let execProcess processName arguments =
     proc.WaitForExit()
     proc.ExitCode
 
-let execProcessWithFail processName arguments =
-    if execProcess processName arguments > 0 then
+let ExecProcessWithFail processName arguments =
+    if ExecProcess processName arguments > 0 then
         failwith ("'" + processName + " ' failed")
+
+type BuildConfiguration = 
+    {
+        IsDeployForced : bool;
+        BooksFilePath : string;
+        FtpUser : string;
+        FtpPassword : string;
+        IsTraceDebug : bool
+    }
+
+type TaskResult = 
+    | Success of BuildConfiguration
+    | Failure of BuildConfiguration * string
+
+// forced: deploy will be executed even if there is no book page to generate
+let IsDeployForced _ =
+    let commitMessage = Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE")
+    let forcedBuild = Environment.GetEnvironmentVariable("APPVEYOR_FORCED_BUILD")
+    (not (isNull commitMessage) && commitMessage.ToLowerInvariant().Contains("[force]") )
+            || (not (isNull forcedBuild) && forcedBuild.ToLowerInvariant() = "true")
+
+type BuildTask =
+  { Name : string;
+     Prerequisite : unit -> unit;
+     Action : BuildConfiguration -> TaskResult
+  }
+
+let BuildTask name prerequisite action =
+    { Name = name;
+       Prerequisite = prerequisite;
+       Action = action }
+       
+let private executeTaskInternal buildTask configuration =
+    printfn "Execute task %s" buildTask.Name
+    buildTask.Prerequisite()
+    buildTask.Action configuration
+
+let executeTask buildTask taskResult =
+    match taskResult with
+    | Success s -> executeTaskInternal buildTask s
+    | Failure (conf, mess) -> match conf.IsDeployForced with
+                                | true -> executeTaskInternal buildTask conf
+                                | false -> Failure (conf, mess)
