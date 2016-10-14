@@ -36,10 +36,11 @@ let bakeSite = BuildTask
                 )
                 (fun configuration ->
                     System.Threading.Thread.CurrentThread.CurrentCulture <- System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR")
-                    if ExecProcess @"C:\tools\Pretzel\Pretzel" "bake site" > 0 then
-                        Failure (configuration, "Pretzel have failed to build the site")
-                    else
-                        Success configuration
+                    ExecProcessWithTaskResult 
+                            @"C:\tools\Pretzel\Pretzel" 
+                            "bake site" 
+                            configuration 
+                            "Pretzel have failed to build the site"
                 )
 
 let deploySite = BuildTask
@@ -49,9 +50,12 @@ let deploySite = BuildTask
                         System.Environment.SetEnvironmentVariable("PATH", ("C:\\Python35;C:\\Python35\\Scripts;" + Environment.GetEnvironmentVariable "PATH"))
                         ExecProcessWithFail "pip" "install creep"
                     ) 
-                    (fun configuration -> 
-                        ExecProcessWithFail "creep" ([@"-e ""{""""default"""": {""""connection"""": """"ftp://"; configuration.FtpUser; ":"; configuration.FtpPassword; @"@laedit.net""""}}"" -d ""{""""source"""": """"hash""""}"" -b site/_site -y"] |> Seq.fold (+) "")
-                        Success configuration
+                    (fun configuration ->
+                        ExecProcessWithTaskResult 
+                            "creep" 
+                            (["""-e "{""default"": {""connection"": ""ftp://"""; configuration.FtpUser; ":"; configuration.FtpPassword; """@laedit.net""}}" -d "{""source"": ""hash""}" -b site/_site -y"""] |> Seq.fold (+) "") 
+                            configuration 
+                            "Creep have failed to deploy the site"
                     )
 
 let warnDeployForced configuration =
@@ -72,14 +76,11 @@ let Build =
     >> executeTask deploySite
     >> log
 
-let configuration = 
-    {
-        IsDeployForced = IsDeployForced();
-        BooksFilePath = "books.yml";
-        FtpUser = Environment.GetEnvironmentVariable("ftp_user");
-        FtpPassword = Environment.GetEnvironmentVariable("ftp_password");
-        IsTraceDebug = false
-    }
-
-configuration
+{
+    IsDeployForced = IsDeployForced();
+    BooksFilePath = "books.yml";
+    FtpUser = Environment.GetEnvironmentVariable("ftp_user");
+    FtpPassword = Environment.GetEnvironmentVariable("ftp_password");
+    IsTraceDebug = false
+}
 |> Build

@@ -13,6 +13,19 @@ let private invalidChars = new Regex(@"[^a-z0-9\-]", RegexOptions.Compiled)
 // multiple hyphens
 let private multipleHyphens = new Regex(@"-{2,}", RegexOptions.Compiled)
 
+type BuildConfiguration = 
+    {
+        IsDeployForced : bool;
+        BooksFilePath : string;
+        FtpUser : string;
+        FtpPassword : string;
+        IsTraceDebug : bool
+    }
+
+type TaskResult = 
+    | Success of BuildConfiguration
+    | Failure of BuildConfiguration * string
+
 let private removeDiacritics (stIn : string) = 
     let stFormD = stIn.Normalize(NormalizationForm.FormD)
     let sb = new StringBuilder()
@@ -51,7 +64,7 @@ let Warning message =
         "%s" message
     printfn ""
 
-let ExecProcess processName arguments =
+let private execProcess processName arguments =
     printfn "execute: %s" processName
 
     use proc = new Process()
@@ -71,28 +84,23 @@ let ExecProcess processName arguments =
     proc.ExitCode
 
 let ExecProcessWithFail processName arguments =
-    if ExecProcess processName arguments > 0 then
+    if execProcess processName arguments > 0 then
         failwith ("'" + processName + " ' failed")
 
-type BuildConfiguration = 
-    {
-        IsDeployForced : bool;
-        BooksFilePath : string;
-        FtpUser : string;
-        FtpPassword : string;
-        IsTraceDebug : bool
-    }
-
-type TaskResult = 
-    | Success of BuildConfiguration
-    | Failure of BuildConfiguration * string
+let ExecProcessWithTaskResult processName arguments configuration failMessage =
+    if execProcess processName arguments > 0 then
+        Failure (configuration, failMessage)
+    else
+        Success configuration
 
 // forced: deploy will be executed even if there is no book page to generate
 let IsDeployForced _ =
-    let commitMessage = Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE")
-    let forcedBuild = Environment.GetEnvironmentVariable("APPVEYOR_FORCED_BUILD")
-    (not (isNull commitMessage) && commitMessage.ToLowerInvariant().Contains("[force]") )
-            || (not (isNull forcedBuild) && forcedBuild.ToLowerInvariant() = "true")
+    let containsLower (value:string, checkAgainst) =
+        not (isNull value) && value.ToLowerInvariant().Contains(checkAgainst)
+
+    containsLower(Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE"), "[force]")
+    ||
+    containsLower(Environment.GetEnvironmentVariable("APPVEYOR_FORCED_BUILD"), "true")
 
 type BuildTask =
   { Name : string;
@@ -104,7 +112,7 @@ let BuildTask name prerequisite action =
     { Name = name;
        Prerequisite = prerequisite;
        Action = action }
-       
+
 let private executeTaskInternal buildTask configuration =
     printfn "Execute task %s" buildTask.Name
     buildTask.Prerequisite()
