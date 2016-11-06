@@ -15,7 +15,6 @@ let private multipleHyphens = new Regex(@"-{2,}", RegexOptions.Compiled)
 
 type BuildConfiguration = 
     {
-        IsDeployForced : bool;
         BooksFilePath : string;
         FtpUser : string;
         FtpPassword : string;
@@ -42,11 +41,8 @@ let Slugify (value : string) =
     |> fun s -> multipleHyphens.Replace(s, "-") // replace multiple hyphens (-) with a single hyphen
     |> fun s -> s.Trim('-') // trim hyphens (-) from ends
 
-let DownloadImageToSite imageUrl isbn  imagesFolder = 
-    let imageName = sprintf "%s%s" isbn (Path.GetExtension(imageUrl))
-    let imagePath = sprintf "%s%s" imagesFolder imageName
-    File.WriteAllBytes(imagePath, (new System.Net.WebClient()).DownloadData(imageUrl))
-    imageName
+let DownloadImage(imageUrl : string) = 
+    (new System.Net.WebClient()).DownloadData(imageUrl)
 
 let CreateFolderIfNotExists folderPath =
     if not (Directory.Exists folderPath) then
@@ -93,15 +89,6 @@ let ExecProcessWithTaskResult processName arguments configuration failMessage =
     else
         Success configuration
 
-// forced: deploy will be executed even if there is no book page to generate
-let IsDeployForced _ =
-    let containsLower (value:string, checkAgainst) =
-        not (isNull value) && value.ToLowerInvariant().Contains(checkAgainst)
-
-    containsLower(Environment.GetEnvironmentVariable("APPVEYOR_REPO_COMMIT_MESSAGE"), "[force]")
-    ||
-    containsLower(Environment.GetEnvironmentVariable("APPVEYOR_FORCED_BUILD"), "true")
-
 type BuildTask =
   { Name : string;
      Prerequisite : unit -> unit;
@@ -118,9 +105,10 @@ let private executeTaskInternal buildTask configuration =
     buildTask.Prerequisite()
     buildTask.Action configuration
 
+let startBuild buildTask configuration =
+    executeTaskInternal buildTask configuration
+
 let executeTask buildTask taskResult =
     match taskResult with
     | Success s -> executeTaskInternal buildTask s
-    | Failure (conf, mess) -> match conf.IsDeployForced with
-                                | true -> executeTaskInternal buildTask conf
-                                | false -> Failure (conf, mess)
+    | Failure (conf, mess) -> Failure (conf, mess)

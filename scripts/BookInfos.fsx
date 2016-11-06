@@ -112,11 +112,11 @@ let private getInfosFromHtmlIfNecessary (book : BookInfo) =
     | "" -> getInfosFromHtml book
     | _ -> book
 
-let GetBookInfo (book : BookConfig) = 
-    let isbn = book.Isbn
+let GetBookInfo isbn startDate = 
+    let isbn = isbn
     printfn "search for isbn '%s'" isbn
     let bookInfos = 
-        { ReadingDate = book.Date;
+        { ReadingDate = startDate;
             Isbn = isbn;
             Title = "";
             Author = "";

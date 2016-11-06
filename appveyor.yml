@@ -6,7 +6,7 @@ environment:
   ftp_password:
     secure: 6wrMkWW2J1r3Yhg4o1bfxkuIKwNG05EW0ZkpryokBzI=
   access_token:
-    secure: CF5fbrJvzIdoFSlDdW4c5NQUzca/B75Bxqp9kwCvp5yksTLiUxaDzhh0WsmLXp4P
+    secure: WU0gFasfdrLM/783H66lbD07Sre+fVFOMf9PurC+tyjt1vKDPnWVOLz3sfUG0tcE
   publisher_id:
     secure: cGDidYlVbJZkd9Fy7m1nRw==
   publisher_password:

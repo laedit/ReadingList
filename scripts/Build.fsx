@@ -9,23 +9,22 @@ open PostGeneration
 
 let generatePosts = BuildTask
                         "generate posts"
-                        id
-                        (fun configuration ->
-                            let books = configuration.BooksFilePath |> BookConfig.Load |> addBook
-
-                            let postsToGenerate = books |> Seq.exists (fun book -> not book.Generated)
-
+                        (fun _ ->
+                            // prerequisite
                             CreateFolderIfNotExists PostsFolder
                             CreateFolderIfNotExists ImagesFolder
-                            let newBooksConfig = books |> Seq.map generatePost
-                            BookConfig.Write configuration.BooksFilePath (new List<BookConfig>(Seq.toArray newBooksConfig))
-
-                            if postsToGenerate then
-                                commitGeneratedPosts()
-
-                            match postsToGenerate with
-                            | true -> Success configuration
-                            | false -> Failure (configuration, "No posts to generate")
+                        )
+                        (fun configuration ->
+                            let bookInfoOption = GetBookInfoFromEnv()
+                            match bookInfoOption with
+                            | None -> Success configuration
+                            | Some (isbn, startDate) ->
+                                let booksList = configuration.BooksFilePath |> BookConfig.Load
+                                booksList.Add(new BookConfig(isbn, startDate, true))
+                                let imagePath, imageContent, postPath, postContent, bookTitle = GeneratePost isbn startDate
+                                CommitNewPost bookTitle postPath postContent imagePath imageContent configuration.BooksFilePath (booksList |> BookConfig.ToYaml)
+                                WriteNewPost postPath postContent imagePath imageContent
+                                Success configuration
                         )
 
 let bakeSite = BuildTask
@@ -44,8 +43,8 @@ let bakeSite = BuildTask
                 )
 
 let deploySite = BuildTask
-                    "deploy" 
-                    (fun _ -> 
+                    "deploy"
+                    (fun _ ->
                         // prerequisite
                         System.Environment.SetEnvironmentVariable("PATH", ("C:\\Python35;C:\\Python35\\Scripts;" + Environment.GetEnvironmentVariable "PATH"))
                         ExecProcessWithFail "pip" "install creep"
@@ -58,26 +57,18 @@ let deploySite = BuildTask
                             "Creep have failed to deploy the site"
                     )
 
-let warnDeployForced configuration =
-    match configuration.IsDeployForced with
-        | true -> Warning "!! Deploy forced !!"
-        | false -> ()
-    Success configuration
-
 let log result = 
     match result with
     | Success s -> ()
     | Failure (c, f) -> Warning f
 
 let Build =
-    warnDeployForced
-    >> executeTask generatePosts
+    startBuild generatePosts
     >> executeTask bakeSite
     >> executeTask deploySite
     >> log
 
 {
-    IsDeployForced = IsDeployForced();
     BooksFilePath = "books.yml";
     FtpUser = Environment.GetEnvironmentVariable("ftp_user");
     FtpPassword = Environment.GetEnvironmentVariable("ftp_password");

@@ -27,7 +27,8 @@ let Load configFileName =
     let books = serializer.Deserialize<List<BookConfig>>(configFile)
     books
 
-let Write configFileName booksConfig = 
+let ToYaml booksConfig =
     let serializer = getYamlSerializer
-    use configFile = new FileStream(configFileName, FileMode.Create)
-    serializer.Serialize(configFile, booksConfig)
+    use stringWriter = new StringWriter()
+    serializer.Serialize(stringWriter, (new List<BookConfig>(Seq.toArray booksConfig)))
+    stringWriter.ToString()
