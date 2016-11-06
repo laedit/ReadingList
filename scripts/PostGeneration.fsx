@@ -43,7 +43,7 @@ let WriteNewPost postPath postContent imagePath imageContent =
 
 let CommitNewPost bookTitle postPath postContent imagePath imageContent booksConfigPath booksConfigContent =
     let owner = "laedit"
-    let repo = "CommitTest"
+    let repo = "readinglist"
     let branch = "master"
     let headMasterRef = "heads/master"
 
