@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Les mille et une vies de Billy Milligan"
+author: "Daniel Keyes"
+isbn: 9782702138014
+editor: Calmann-Levy
+---
+
+![Couverture](/img/9782702138014.jpg)Quand la police de l'Ohio arrête l'auteur présumé de trois, voire quatre viols de jeunes femmes, elle croit tenir un cas facile : les victimes reconnaissent formellement le coupable, et celui-ci possède chez lui la totalité de ce qui leur a été volé. Pourtant, ce dernier nie farouchement. Ou bien il reconnaît les vols, mais pas les viols. Son étrange comportement amène ses avocats commis d'office à demander une expertise psychiatrique. Et c'est ainsi que tout commence… On découvre que William Stanley Milligan possède ce que l'on appelle une personnalité multiple, une affection psychologique très rare qui fait de lui un être littéralement « éclaté » en plusieurs personnes différentes qui tour à tour habitent son corps. Il y a là Arthur, un Londonien raffiné, cultivé, plutôt méprisant, et puis Ragen, un Yougoslave brutal d'une force prodigieuse, expert en armes à feu. Et bien d’autres. En tout, vingt-quatre personnalités d'âge, de caractère, et même de sexe différents. L'affaire Billy Milligan a fait la une des journaux américains, fascinés par ce cas et par la lutte qu’ont menée les psychiatres et Billy lui-même pour essayer de « fusionner » en un seul individu ses 24 personnalités. Quant au livre, construit comme un véritable drame shakespearien, il est le résultat de mois et de mois de rencontres et d'entretiens entre Daniel Keyes et… Ragen, Arthur, Allen et les autres. Une lecture absolument fascinante, bientôt adaptée au cinéma par Joel Schumacher (Chute libre, Phone Game.) "... un thriller psychologique absolument fascinant" Publishers Weekly
