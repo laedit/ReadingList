@@ -36,7 +36,7 @@ let bakeSite = BuildTask
                 (fun configuration ->
                     System.Threading.Thread.CurrentThread.CurrentCulture <- System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR")
                     ExecProcessWithTaskResult
-                            @"C:\ProgramData\chocolatey\lib\pretzel\tools\Pretzel"
+                            @"C:\ProgramData\chocolatey\lib\pretzel\tools\Pretzel.exe"
                             "bake site"
                             configuration
                             "Pretzel have failed to build the site"

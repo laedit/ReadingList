@@ -15,7 +15,7 @@ environment:
     secure: bVPyDjOtyByKm9rSo/rjN79B6Z6/pI1hhbhYZHiAJ/E=
 
 cache:
-  - C:\tools\Pretzel -> appveyor.yml
+  - C:\ProgramData\chocolatey\bin -> appveyor.yml
   - C:\ProgramData\chocolatey\lib -> appveyor.yml
   - '%LOCALAPPDATA%\pip\Cache -> appveyor.yml'
 
