@@ -35,10 +35,10 @@ let bakeSite = BuildTask
                 )
                 (fun configuration ->
                     System.Threading.Thread.CurrentThread.CurrentCulture <- System.Globalization.CultureInfo.CreateSpecificCulture("fr-FR")
-                    ExecProcessWithTaskResult 
-                            @"C:\tools\Pretzel\Pretzel" 
-                            "bake site" 
-                            configuration 
+                    ExecProcessWithTaskResult
+                            @"C:\ProgramData\chocolatey\lib\pretzel\tools\Pretzel"
+                            "bake site"
+                            configuration
                             "Pretzel have failed to build the site"
                 )
 
@@ -48,16 +48,16 @@ let deploySite = BuildTask
                         // prerequisite
                         System.Environment.SetEnvironmentVariable("PATH", ("C:\\Python35;C:\\Python35\\Scripts;" + Environment.GetEnvironmentVariable "PATH"))
                         ExecProcessWithFail "pip" "install creep"
-                    ) 
+                    )
                     (fun configuration ->
-                        ExecProcessWithTaskResult 
-                            "creep" 
-                            (["""-e "{""default"": {""connection"": ""ftp://"""; configuration.FtpUser; ":"; configuration.FtpPassword; """@laedit.net""}}" -d "{""source"": ""hash""}" -b site/_site -y"""] |> Seq.fold (+) "") 
-                            configuration 
+                        ExecProcessWithTaskResult
+                            "creep"
+                            (["""-e "{""default"": {""connection"": ""ftp://"""; configuration.FtpUser; ":"; configuration.FtpPassword; """@laedit.net""}}" -d "{""source"": ""hash""}" -b site/_site -y"""] |> Seq.fold (+) "")
+                            configuration
                             "Creep have failed to deploy the site"
                     )
 
-let log result = 
+let log result =
     match result with
     | Success s -> ()
     | Failure (c, f) -> Warning f
