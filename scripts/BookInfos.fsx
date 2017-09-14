@@ -2,6 +2,7 @@
 #load "BookConfig.fsx"
 
 open System
+open System.Net
 open FSharp.Data
 open FSharp.Data.HtmlExtensions
 open FSharp.Data.JsonExtensions
@@ -71,6 +72,7 @@ let private getInfosFromHtml (book : BookInfo) =
                 (fun node -> node.Name() = "h1" && node.AttributeValue("class").Trim() = "f-productHeader-Title"))
         |> Seq.head
         |> (fun h1 -> h1.Elements().Item(0).InnerText().Trim())
+        |> WebUtility.HtmlDecode
 
     let summary =
         sections
