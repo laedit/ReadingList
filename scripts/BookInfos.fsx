@@ -72,7 +72,15 @@ let private getInfosFromHtml (book : BookInfo) =
                 (fun node -> node.Name() = "h1" && node.AttributeValue("class").Trim() = "f-productHeader-Title"))
         |> Seq.head
         |> (fun h1 -> h1.Elements().Item(0).InnerText().Trim())
+        |> (fun text ->
+                printfn "\traw title: %s" text
+                text
+            )
         |> WebUtility.HtmlDecode
+        |> (fun text ->
+                printfn "\tdecoded title: %s" text
+                text
+            )
 
     let summary =
         sections
