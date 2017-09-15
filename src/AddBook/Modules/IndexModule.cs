@@ -40,7 +40,7 @@ namespace AddBook.Modules
                     accountName = "laedit",
                     projectSlug = "readinglist",
                     branch = "master",
-                    environmentVariables = new { isbn = book.ISBN, startDate = book.StartDate.ToString("yyyy-MM-dd") }
+                    environmentVariables = new { isbn = book.ISBN.Trim(), startDate = book.StartDate.ToString("yyyy-MM-dd") }
                 }))
                 {
                     response.EnsureSuccessStatusCode();
