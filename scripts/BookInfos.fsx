@@ -71,7 +71,7 @@ let private getInfosFromHtml (book : BookInfo) =
         (bookPage.Descendants
                 (fun node -> node.Name() = "h1" && node.AttributeValue("class").Trim() = "f-productHeader-Title"))
         |> Seq.head
-        |> (fun h1 -> h1.Elements().Item(0).InnerText().Trim())
+        |> (fun h1 -> h1.Elements() |> Seq.map (fun element -> element.InnerText().Trim()) |> Seq.fold (+) "")
         |> (fun text ->
                 printfn "\traw title: %s" text
                 text
