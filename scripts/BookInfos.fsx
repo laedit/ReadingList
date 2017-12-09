@@ -112,8 +112,8 @@ let private getInfosFromJson (book : BookInfo) =
     | _ ->
         { book with Title = jsonResponse?Products.[0]?ProductName.AsString()
                     Author =
-                        jsonResponse?Products.[0]?Brand.AsString() |> (fun s -> s.Replace("(Auteur)", "").Trim())
-                    Editor = jsonResponse?Products.[0]?Manufacturer.AsString()
+                        jsonResponse?Products.[0]?Manufacturer.AsString() |> (fun s -> s.Replace("(Auteur)", "").Trim())
+                    Editor = jsonResponse?Products.[0]?Brand.AsString()
                     ImageUrl = jsonResponse?Products.[0]?Properties.[1]?PropertyValue.AsString()
                     Summary = jsonResponse?Products.[0]?Description.AsString() }
 
