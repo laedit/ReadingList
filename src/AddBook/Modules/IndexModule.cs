@@ -6,6 +6,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace AddBook.Modules
 {
@@ -36,12 +37,13 @@ namespace AddBook.Modules
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Configuration.AppVeyorApiKey);
 
                 // get the list of roles
-                using (var response = await client.PostAsJsonAsync("https://ci.appveyor.com/api/builds", new {
+                using (var response = await client.PostAsync("https://ci.appveyor.com/api/builds", new StringContent(
+   new JavaScriptSerializer().Serialize(new {
                     accountName = "laedit",
                     projectSlug = "readinglist",
                     branch = "master",
                     environmentVariables = new { isbn = book.ISBN.Trim(), startDate = book.StartDate.ToString("yyyy-MM-dd") }
-                }))
+                }), System.Text.Encoding.UTF8, "application/json")))
                 {
                     response.EnsureSuccessStatusCode();
                     ViewBag["success"] = true;
