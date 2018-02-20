@@ -1,6 +1,7 @@
 ﻿using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Bootstrapper;
+using Nancy.Conventions;
 using Nancy.Extensions;
 using Nancy.TinyIoc;
 using System.IO;
@@ -40,6 +41,12 @@ namespace AddBook
             };
 
             FormsAuthentication.Enable(pipelines, formsAuthConfiguration);
+        }
+
+        protected override void ConfigureConventions(NancyConventions nancyConventions)
+        {
+            nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory(".well-known", @".well-known"));
+            base.ConfigureConventions(nancyConventions);
         }
     }
 }
