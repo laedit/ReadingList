@@ -2,7 +2,7 @@ version: 1.0.{build}
 
 environment:
   ftp_password:
-    secure: eK/zCvZEGU6BcRfo1CoYnlrLD7SoyaUyOb3aIq8CkmQ=
+    secure: 6wrMkWW2J1r3Yhg4o1bfxkuIKwNG05EW0ZkpryokBzI=
   config1:
     secure: ogDKopwS7JRJK1qlJErY72zOiNyHhSjhsahQyu33yXg=
   config2:
