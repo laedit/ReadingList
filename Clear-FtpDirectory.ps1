@@ -82,7 +82,7 @@ Function List-FtpDirectory($Directory) {
 }
 
 
-foreach	($file in List-FtpDirectory $rootDirectory)
+foreach	($file in List-FtpDirectory "")
 {
 	If($file) {
 		If ($file[1]) {
