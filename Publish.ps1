@@ -1,4 +1,4 @@
-$server = "ftp://laedit.net"
+$server = "ftp://laedit.net/"
 $user = $env:ftp_user
 $pass = $env:ftp_password
 
