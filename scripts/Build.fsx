@@ -22,7 +22,12 @@ let generatePosts = BuildTask
                             | Some (isbn, startDate) ->
                                 let booksList = configuration.BooksFilePath |> BookConfig.Load
                                 let existingBookIndex = booksList.FindIndex (fun b -> b.Isbn = isbn)
-                                booksList.Add(new BookConfig(isbn, startDate, true))
+
+                                let mutable bookConfig = new BookConfig(isbn, startDate, false)
+                                booksList.Add(bookConfig)
+                                GitHelper.Commit [{ Path = configuration.BooksFilePath; Content = Text (booksList |> BookConfig.ToYaml) }]
+                                                 (sprintf "Add book '%s' in database [skip ci]" isbn)
+                                bookConfig.Generated <- true
 
                                 match existingBookIndex with
                                 | -1 -> let imagePath, imageContent, postPath, postContent, bookTitle = GeneratePost isbn startDate
