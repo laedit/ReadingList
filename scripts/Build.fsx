@@ -1,11 +1,11 @@
 #load "PostGeneration.fsx"
+#load "GitHelper.fsx"
 
 open System
-open System.Collections.Generic
 open Utils
-open BookInfos
 open BookConfig
 open PostGeneration
+open GitHelper
 
 let generatePosts = BuildTask
                         "generate posts"
@@ -16,14 +16,28 @@ let generatePosts = BuildTask
                         )
                         (fun configuration ->
                             let bookInfoOption = GetBookInfoFromEnv()
+
                             match bookInfoOption with
                             | None -> Success configuration
                             | Some (isbn, startDate) ->
                                 let booksList = configuration.BooksFilePath |> BookConfig.Load
+                                let existingBookIndex = booksList.FindIndex (fun b -> b.Isbn = isbn)
                                 booksList.Add(new BookConfig(isbn, startDate, true))
-                                let imagePath, imageContent, postPath, postContent, bookTitle = GeneratePost isbn startDate
-                                CommitNewPost bookTitle postPath postContent imagePath imageContent configuration.BooksFilePath (booksList |> BookConfig.ToYaml)
-                                WriteNewPost postPath postContent imagePath imageContent
+
+                                match existingBookIndex with
+                                | -1 -> let imagePath, imageContent, postPath, postContent, bookTitle = GeneratePost isbn startDate
+                                        GitHelper.Commit [{ Path = postPath; Content = Text postContent };
+                                                          { Path = imagePath; Content = Image imageContent };
+                                                          { Path = configuration.BooksFilePath; Content = Text (booksList |> BookConfig.ToYaml) }]
+                                                         (sprintf "Add new book '%s' [skip ci]" bookTitle)
+                                        WriteNewPost postPath postContent imagePath imageContent
+                                | index -> let originalDate = booksList.Item(index).Date;
+                                           let postPath, postContent, bookTitle = GetPostInfo isbn originalDate startDate;
+                                           GitHelper.Commit [{ Path = postPath; Content = Text postContent};
+                                                             { Path = configuration.BooksFilePath; Content = Text (booksList |> BookConfig.ToYaml) }]
+                                                             (sprintf "Duplicate book '%s' [skip ci]" bookTitle)
+                                           WriteTextFile postPath postContent
+
                                 Success configuration
                         )
 
@@ -59,8 +73,8 @@ let deploySite = BuildTask
 
 let log result =
     match result with
-    | Success s -> ()
-    | Failure (c, f) -> Warning f
+    | Success _ -> ()
+    | Failure (_, f) -> Warning f
 
 let Build =
     startBuild generatePosts

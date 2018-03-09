@@ -3,12 +3,12 @@
 #r "../libs/Octokit.dll"
 
 open System
+open System.IO
+open System.Linq
 open System.Collections.Generic
 open Utils
 open BookInfos
 open BookConfig
-open System.IO
-open Octokit
 
 let (template : Printf.StringFormat<_>) =
     "---
@@ -24,7 +24,7 @@ editor: %s
 let PostsFolder = "site/_posts/"
 let ImagesFolder = "site/img/"
 
-let GeneratePost isbn startDate = 
+let GeneratePost isbn startDate =
     let book = BookInfos.GetBookInfo isbn startDate
     BookInfos.Check book
     printfn "\tdata found"
@@ -35,58 +35,12 @@ let GeneratePost isbn startDate =
     let postContent = sprintf template book.Title book.Author book.Isbn book.Editor imageFileName book.Summary
     (imagePath, imageContent, postPath, postContent, book.Title)
 
-/// Création du commit via api github
+let WriteTextFile postPath postContent =
+    File.WriteAllText(postPath, postContent)
 
 let WriteNewPost postPath postContent imagePath imageContent =
-    File.WriteAllText(postPath, postContent)
+    WriteTextFile postPath postContent
     File.WriteAllBytes(imagePath, imageContent)
-
-let CommitNewPost bookTitle postPath postContent imagePath imageContent booksConfigPath booksConfigContent =
-    let owner = "laedit"
-    let repo = "readinglist"
-    let branch = "master"
-    let headMasterRef = "heads/master"
-
-    let github = new Octokit.GitHubClient(new ProductHeaderValue("Laedit-ReadingList"))
-    github.Credentials <- new Credentials(Environment.GetEnvironmentVariable("access_token"));
-
-    let master = github.Git.Reference.Get(owner, repo, headMasterRef).Result
-    let baseTree = github.Git.Commit.Get(owner, repo, master.Object.Sha).Result
-
-    let nt = new NewTree()
-    nt.BaseTree <- baseTree.Sha
-
-    let newImageBlob = new Octokit.NewBlob()
-    newImageBlob.Encoding <- EncodingType.Base64
-    newImageBlob.Content <- Convert.ToBase64String(imageContent)
-    let imageBlob = github.Git.Blob.Create(owner, repo, newImageBlob).Result
-
-    let imageTreeItem = new NewTreeItem()
-    imageTreeItem.Path <- imagePath
-    imageTreeItem.Mode <- "100644" // new blob
-    imageTreeItem.Type <- TreeType.Blob
-    imageTreeItem.Sha <- imageBlob.Sha
-    nt.Tree.Add(imageTreeItem)
-
-    let postTreeItem = new NewTreeItem()
-    postTreeItem.Mode <- "100644"
-    postTreeItem.Type <- TreeType.Blob
-    postTreeItem.Content <- postContent
-    postTreeItem.Path <- postPath
-    nt.Tree.Add(postTreeItem)
-
-    let booksConfigTreeItem = new NewTreeItem()
-    booksConfigTreeItem.Mode <- "100644"
-    booksConfigTreeItem.Type <- TreeType.Blob
-    booksConfigTreeItem.Content <- booksConfigContent
-    booksConfigTreeItem.Path <- booksConfigPath
-    nt.Tree.Add(booksConfigTreeItem)
-
-    let newTree = github.Git.Tree.Create(owner, repo, nt).Result
-    let newCommit = new NewCommit(sprintf "Add new book '%s' [skip ci]" bookTitle, newTree.Sha, master.Object.Sha)
-
-    let commit = github.Git.Commit.Create(owner, repo, newCommit).Result
-    github.Git.Reference.Update(owner, repo, headMasterRef, new ReferenceUpdate(commit.Sha)).Result |> ignore
 
 let GetBookInfoFromEnv() =
     let isbn = Environment.GetEnvironmentVariable("isbn")
@@ -97,3 +51,26 @@ let GetBookInfoFromEnv() =
     else
         Warning "isbn and/or start date was missing to generate a new book post"
         None
+
+let GetPostInfo isbn originalDate startDate =
+
+    let selectPost isbn posts =
+        posts
+        |> Array.find (fun path -> System.IO.File.ReadLines(path).Skip(4).Take(1).First().Substring(6) = isbn)
+
+    let reduce isbn (posts: string[]) =
+        match posts.Length with
+        | 0 -> failwith "not posts found"
+        | 1 -> posts.[0]
+        | _ -> posts |> selectPost isbn
+
+    let replace (orig:string) (replace:string) (str:string) = str.Replace(orig, replace)
+
+    let originalPostPath = Directory.GetFiles("site/_posts", originalDate + "*")
+                           |> reduce isbn
+    let postPath = originalPostPath
+                   |> replace originalDate startDate // fix date in path
+    let postLines = File.ReadAllLines originalPostPath
+    let postContent = postLines |> String.concat Environment.NewLine // get content
+    let bookTitle = postLines.[2].Substring(8, postLines.[2].Length - 9)
+    (postPath, postContent, bookTitle)
