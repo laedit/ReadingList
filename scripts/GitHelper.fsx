@@ -45,7 +45,7 @@ let Commit commitItems message =
 
     let owner = "laedit"
     let repo = "readinglist"
-    let headMasterRef = "heads/git-commit-test" //"heads/master"
+    let headMasterRef = "heads/master"
 
     let githubClient = new Octokit.GitHubClient(new ProductHeaderValue("Laedit-ReadingList"))
     githubClient.Credentials <- new Credentials(Environment.GetEnvironmentVariable("access_token"));
