@@ -1,159 +1,159 @@
-- date: 2015-10-28
+- date: *o1
   generated: true
-  isbn: 9782757854655
-- date: 2015-10-05
+  isbn: *o2
+- date: *o3
   generated: true
-  isbn: 9782290032725
-- date: 2015-11-12
+  isbn: *o4
+- date: *o5
   generated: true
-  isbn: 9782811215729
-- date: 2015-12-03
+  isbn: *o6
+- date: *o7
   generated: true
-  isbn: 9782070457748
-- date: 2015-12-10
+  isbn: *o8
+- date: *o9
   generated: true
-  isbn: 9782266233200
-- date: 2016-01-02
+  isbn: *o10
+- date: *o11
   generated: true
-  isbn: 9782264059567
-- date: 2016-01-13
+  isbn: *o12
+- date: *o13
   generated: true
-  isbn: 9782811211820
-- date: 2016-01-22
+  isbn: *o14
+- date: *o15
   generated: true
-  isbn: 9782266149150
-- date: 2016-02-29
+  isbn: *o16
+- date: *o17
   generated: true
-  isbn: 9782266174121
-- date: 2016-04-04
+  isbn: *o18
+- date: *o19
   generated: true
-  isbn: 9782070350896
-- date: 2016-06-16
+  isbn: *o20
+- date: *o21
   generated: true
-  isbn: 9782352949350
-- date: 2016-07-01
+  isbn: *o22
+- date: *o23
   generated: true
-  isbn: 9782330037376
-- date: 2016-07-23
+  isbn: *o24
+- date: *o25
   generated: true
-  isbn: 9782253111160
-- date: 2016-08-20
+  isbn: *o26
+- date: *o27
   generated: true
-  isbn: 9782352948124
-- date: 2016-08-06
+  isbn: *o28
+- date: *o29
   generated: true
-  isbn: 9781405924900
-- date: 2016-09-05
+  isbn: *o30
+- date: *o31
   generated: true
-  isbn: 9782290029596
-- date: 2016-10-05
+  isbn: *o32
+- date: *o33
   generated: true
-  isbn: 9782290029602
-- date: 2016-11-02
+  isbn: *o34
+- date: *o35
   generated: true
-  isbn: 9782290032954
-- date: 2016-12-08
+  isbn: *o36
+- date: *o37
   generated: true
-  isbn: 9782811218621
-- date: 2016-12-22
+  isbn: *o38
+- date: *o39
   generated: true
-  isbn: 9782864248743
-- date: 2016-12-24
+  isbn: *o40
+- date: *o41
   generated: true
-  isbn: 9791090648319
-- date: 2016-12-26
+  isbn: *o42
+- date: *o43
   generated: true
-  isbn: 9782952999410
-- date: 2017-01-02
+  isbn: *o44
+- date: *o45
   generated: true
-  isbn: 9782702138014
-- date: 2017-01-30
+  isbn: *o46
+- date: *o47
   generated: true
-  isbn: 9782330056919
-- date: 2017-03-06
+  isbn: *o48
+- date: *o49
   generated: true
-  isbn: 9782330064426
-- date: 2017-03-23
+  isbn: *o50
+- date: *o51
   generated: true
-  isbn: 9782354082055
-- date: 2017-04-21
+  isbn: *o52
+- date: *o53
   generated: true
-  isbn: 9782354080495
-- date: 2017-04-26
+  isbn: *o54
+- date: *o55
   generated: true
-  isbn: 9782354080556
-- date: 2017-05-20
+  isbn: *o56
+- date: *o57
   generated: true
-  isbn: 9782811219864
-- date: 2017-06-12
+  isbn: *o58
+- date: *o59
   generated: true
-  isbn: 9782811206758
-- date: 2017-07-19
+  isbn: *o60
+- date: *o61
   generated: true
-  isbn: 9782811207502
-- date: 2017-08-08
+  isbn: *o62
+- date: *o63
   generated: true
-  isbn: 9782811208387
-- date: 2017-09-06
+  isbn: *o64
+- date: *o65
   generated: true
-  isbn: 9782915825657
-- date: 2017-09-07
+  isbn: *o66
+- date: *o67
   generated: true
-  isbn: 9782915825657
-- date: 2017-09-13
+  isbn: *o68
+- date: *o69
   generated: true
-  isbn: 9791093749174
-- date: 2017-09-14
+  isbn: *o70
+- date: *o71
   generated: true
-  isbn: 9782253111160
-- date: 2017-10-05
+  isbn: *o72
+- date: *o73
   generated: true
-  isbn: 9782070469741
-- date: 2017-10-05
+  isbn: *o74
+- date: *o75
   generated: true
-  isbn: 9782253151340
-- date: 2017-10-22
+  isbn: *o76
+- date: *o77
   generated: true
-  isbn: 9782253151357
-- date: 2017-11-03
+  isbn: *o78
+- date: *o79
   generated: true
-  isbn: 9782501120234
-- date: 2017-11-05
+  isbn: *o80
+- date: *o81
   generated: true
-  isbn: 9782246713517
-- date: 2017-11-09
+  isbn: *o82
+- date: *o83
   generated: true
-  isbn: 9782246857365
-- date: 2017-11-13
+  isbn: *o84
+- date: *o85
   generated: true
-  isbn: 9782246861263
-- date: 2017-11-30
+  isbn: *o86
+- date: *o87
   generated: true
-  isbn: 9782953366457
-- date: 2017-12-05
+  isbn: *o88
+- date: *o89
   generated: true
-  isbn: 9782290079416
-- date: 2017-12-19
+  isbn: *o90
+- date: *o91
   generated: true
-  isbn: 9782266238847
-- date: 2017-12-20
+  isbn: *o92
+- date: *o93
   generated: true
-  isbn: 9782266238847
-- date: 2018-01-05
+  isbn: *o94
+- date: *o95
   generated: true
-  isbn: 9782070451470
-- date: 2018-01-12
+  isbn: *o96
+- date: *o97
   generated: true
-  isbn: 9782070792214
-- date: 2018-02-02
+  isbn: *o98
+- date: *o99
   generated: true
-  isbn: 9782253176015
-- date: 2018-02-09
+  isbn: *o100
+- date: *o101
   generated: true
-  isbn: 9782253122920
-- date: 2018-02-21
+  isbn: *o102
+- date: *o103
   generated: true
-  isbn: 9782253092766
-- date: 2018-03-09
+  isbn: *o104
+- date: *o105
   generated: false
-  isbn: 9782253176022
+  isbn: *o106
