@@ -5,10 +5,7 @@
 open System
 open System.IO
 open System.Linq
-open System.Collections.Generic
 open Utils
-open BookInfos
-open BookConfig
 
 let (template : Printf.StringFormat<_>) =
     "---

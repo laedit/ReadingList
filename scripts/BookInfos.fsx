@@ -4,9 +4,7 @@
 open System
 open System.Net
 open FSharp.Data
-open FSharp.Data.HtmlExtensions
 open FSharp.Data.JsonExtensions
-open BookConfig
 
 type BookInfo =
     { ReadingDate : string;
@@ -123,7 +121,6 @@ let private getInfosFromHtmlIfNecessary (book : BookInfo) =
     | _ -> book
 
 let GetBookInfo isbn startDate =
-    let isbn = isbn
     printfn "search for isbn '%s'" isbn
     let bookInfos =
         { ReadingDate = startDate;
