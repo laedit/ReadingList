@@ -27,7 +27,9 @@ let generatePosts = BuildTask
                                 booksList.Add(bookConfig)
                                 GitHelper.Commit [{ Path = configuration.BooksFilePath; Content = Text (booksList |> BookConfig.ToYaml) }]
                                                  (sprintf "Add book '%s' in database [skip ci]" isbn)
+
                                 bookConfig.Generated <- true
+                                booksList.[booksList.Count - 1] <- bookConfig
 
                                 match existingBookIndex with
                                 | -1 -> let imagePath, imageContent, postPath, postContent, bookTitle = GeneratePost isbn startDate
