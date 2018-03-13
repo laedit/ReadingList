@@ -157,3 +157,6 @@
 - date: 2018-03-09
   generated: true
   isbn: 9782253176022
+- date: 2018-03-11
+  generated: false
+  isbn: 9782253092872
