@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Le cycle des démons - Tome 1 : Le Cycle des démons, T1 : L'Homme-rune (nouvelle couv)"
+title: "Le cycle des démons - Tome 1 : L'Homme-rune"
 author: "Peter V. Brett"
 isbn: 9782811214449
 editor: Milady
