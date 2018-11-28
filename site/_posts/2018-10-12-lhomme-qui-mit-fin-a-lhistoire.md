@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "L'homme qui mit finàl’histoire"
+title: "L'homme qui mit fin à l’histoire"
 author: "Ken Liu"
 isbn: 9782843449093
 editor: Le Belial Eds
