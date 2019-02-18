@@ -41,7 +41,11 @@ let private getInfoFromHtml (specifications : HtmlNode) infoName =
 
 let private getInfosFromHtml (book : BookInfo) =
     printfn "\tbackup search"
-    let searchResult = HtmlDocument.Load(fnacSearchUrl + book.Isbn)
+    let searchRawResult = Http.RequestString
+      ( fnacSearchUrl + book.Isbn,
+        headers = [ Accept, "*/*";  "Accept-Language", "fr-FR"; "Accept-Encoding", "*"])
+
+    let searchResult = HtmlDocument.Parse(searchRawResult)
 
     let noResult =
         searchResult.Descendants
