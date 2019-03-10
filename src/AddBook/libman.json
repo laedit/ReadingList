@@ -1,0 +1,14 @@
+﻿{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "easymde@2.5.1",
+      "destination": "Content/easymde",
+      "files": [
+        "dist/easymde.min.css",
+        "dist/easymde.min.js"
+      ]
+    }
+  ]
+}

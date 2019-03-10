@@ -8,7 +8,9 @@ namespace AddBook.Modules
 {
     public class LoginModule : NancyModule
     {
-        public LoginModule() : base("/login")
+        private readonly Configuration configuration;
+
+        public LoginModule(Configuration configuration) : base("/login")
         {
             Get["/"] = _ =>
             {
@@ -19,13 +21,15 @@ namespace AddBook.Modules
             {
                 var loginData = this.Bind<LoginData>();
 
-                if (Configuration.SoleUser == null || loginData.Username != Configuration.SoleUser.Username || loginData.Password != Configuration.SoleUser.Password)
+                if (loginData.Username != configuration.SoleUser.Username
+                 || loginData.Password != configuration.SoleUser.Password)
                 {
                     return "username and/or password was incorrect";
                 }
 
                 return this.LoginAndRedirect(Guid.NewGuid());
             };
+            this.configuration = configuration;
         }
     }
 }

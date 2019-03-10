@@ -4,14 +4,12 @@
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<AddBook.ViewModels.LoginData>
 
 
-<form method="post" action="">
+<form method="post" action="" class="container small">
     <label for="Username">User name</label>
-    <div>
-        <input type="text" name="Username" id="Username" placeholder="user name" />
-    </div>
+    <input type="text" name="Username" id="Username" placeholder="User name" />
+
     <label for="Password">Password</label>
-    <div>
-        <input type="password" name="Password" id="Password" placeholder="password" />
-    </div>
-    <input type="submit" name="authenticate" value="Authenticate" />
+    <input type="password" name="Password" id="Password" placeholder="Password" />
+
+    <input type="submit" name="authenticate" value="Authenticate" class="button column2" />
 </form>

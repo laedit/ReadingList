@@ -1,21 +1,52 @@
 ﻿@{
     Layout = "Views/layout.cshtml";
 }
-@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<AddBook.ViewModels.Book>
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<AddBook.ViewModels.BookPost>
+
+@if (ViewBag["Errors"] != null)
+{
+    <div class="info error">
+        <b>Error(s):</b>
+        <ul>
+            @foreach (var fieldErrors in ViewBag["Errors"])
+            {
+                foreach (var error in fieldErrors.Value)
+                {
+                    <li>@error</li>
+                }
+            }
+        </ul>
+    </div>
+}
 
 @if (ViewBag["success"])
 {
-    <div>Book added.</div>
+    <div class="info success">Book added.</div>
 }
 
-<form method="post" action="/">
-    <label for="ISBN">ISBN</label>
-    <div>
-        <input name="ISBN" id="ISBN" placeholder="ISBN" />
-    </div>
-    <label for="StartDate">Reading start date</label>
-    <div>
-        <input type="text" name="StartDate" id="StartDate" placeholder="start date" value="@Model.StartDate.ToShortDateString()" />
-    </div>
-    <input type="submit" name="submitBook" value="Submit book" />
+<form method="post" action="/" class="container large" id="submit-book-form">
+    <label for="start-date">Start date</label>
+    <input type="date" name="start-date" id="start-date" placeholder="start date" value="@Model.StartDate" class="span2" required />
+
+    <label for="isbn">ISBN</label>
+    <input type="text" name="isbn" id="isbn" placeholder="ISBN" pattern="[0-9]{13}" value="@Model.Isbn" required />
+    <button type="button" id="search-book" class="button button-outline" disabled>Search</button>
+    
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" placeholder="Title" value="@Model.Title" class="span2" required />
+
+    <label for="author">Author</label>
+    <input type="text" name="author" id="author" placeholder="Author" value="@Model.Author" class="span2" required />
+
+    <label for="editor">Editor</label>
+    <input type="text" name="editor" id="editor" placeholder="Editor" value="@Model.Editor" class="span2" required />
+
+    <label for="cover-url" class="vertical-center">Cover url</label>
+    <input type="text" name="cover-url" id="cover-url" placeholder="Cover url" value="@Model.CoverUrl" class="vertical-center" required />
+    <img id="cover-img" />
+
+    <label for="summary">Summary</label>
+    <div class="span2" id="editor"><textarea name="summary" id="summary" placeholder="Summary" required>@Model.Summary</textarea></div>
+
+    <input type="submit" value="Submit book" class="button column2" />
 </form>

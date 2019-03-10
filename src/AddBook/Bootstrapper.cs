@@ -1,4 +1,6 @@
-﻿using Nancy;
+﻿using AddBook.Authentication;
+using AddBook.Business.Database;
+using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Bootstrapper;
 using Nancy.Conventions;
@@ -21,13 +23,14 @@ namespace AddBook
             var binDirectory = Path.GetDirectoryName(this.GetType().GetAssemblyPath());
             var configPath = Path.Combine(binDirectory ?? @".\", "app.config");
 
-            ConfigLoader.Load(configPath);
+            container.Register(Configuration.Load(configPath));
         }
 
         protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
         {
             base.ConfigureRequestContainer(container, context);
             container.Register<IUserMapper, ConfigUserMapper>();
+            container.Register<BooksRepository>();
         }
 
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)

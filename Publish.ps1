@@ -1,4 +1,4 @@
-$server = "ftp://laedit.net/"
+﻿$server = "ftp://laedit.net/"
 $user = $env:ftp_user
 $pass = $env:ftp_password
 
@@ -30,7 +30,7 @@ function UploadFtpFile ($fileToUpload)
 }
 
 Copy-Item "Publish" "Packaged" -Recurse
-New-Item "Packaged/bin/app.config" -type file -value "AppVeyorApiKey:$env:config1`r`nSoleUser:$env:config2"
+New-Item "Packaged/bin/app.config" -type file -value "AccessToken:$env:config1`r`nSoleUser:$env:config2"
 
 $source = "C:\projects\readinglist\Packaged\"
 $files = Get-ChildItem $source -Recurse
