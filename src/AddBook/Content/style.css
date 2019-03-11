@@ -135,6 +135,7 @@ label {
 
 #cover-img {
     height: 100px;
+    margin: auto;
 }
 
 #editor {
