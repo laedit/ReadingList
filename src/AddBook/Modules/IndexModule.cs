@@ -7,6 +7,7 @@ using Nancy.ModelBinding;
 using Nancy.Security;
 using Nancy.Validation;
 using System;
+using System.Collections.Generic;
 
 namespace AddBook.Modules
 {
@@ -41,14 +42,14 @@ namespace AddBook.Modules
                 var booksContentUpdated = books.Export();
 
                 // Commit it on github
-                var filesToCommit = new[]
+                var filesToCommit = new List<CommitItem>
                 {
                     CommitItem.Create(BooksRepository.Path, booksContentUpdated),
                     CommitItem.Create(generatedBookPost.PostPath, generatedBookPost.PostContent)
                 };
                 if(!string.IsNullOrEmpty(generatedBookPost.ImagePath))
                 {
-                    CommitItem.Create(generatedBookPost.ImagePath, generatedBookPost.ImageContent);
+                    filesToCommit.Add(CommitItem.Create(generatedBookPost.ImagePath, generatedBookPost.ImageContent));
                 }
 
                 gitHubHelper.Commit($"Add new book '{generatedBookPost.BookTitle}'", filesToCommit);
