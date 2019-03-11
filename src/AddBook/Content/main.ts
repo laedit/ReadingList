@@ -49,7 +49,9 @@ async function SearchBookInfo(isbn: string) {
             (document.getElementById("editor") as HTMLInputElement).value = response.book.editor;
             (document.getElementById("cover-url") as HTMLInputElement).value = response.book.coverUrl;
             SetCoverImage(response.book.coverUrl);
-            easyMDE.value(response.book.summary);
+            if (response.book.summary) {
+                easyMDE.value(response.book.summary);   
+            }
         }
         else if (response.status === "error") {
             console.error(response);
