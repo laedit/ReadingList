@@ -1,7 +1,15 @@
 ﻿@{
     Layout = "Views/layout.cshtml";
 }
+
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<AddBook.ViewModels.BookPost>
+
+@section Head
+{
+    <link rel="stylesheet" type="text/css" href="~/Content/easymde/dist/easymde.min.css" />
+    <script type="text/javascript" src="~/Content/main.js"></script>
+    <script type="text/javascript" src="~/Content/easymde/dist/easymde.min.js"></script>
+}
 
 @if (ViewBag["Errors"] != null)
 {
@@ -31,7 +39,7 @@
     <label for="isbn">ISBN</label>
     <input type="text" name="isbn" id="isbn" placeholder="ISBN" pattern="[0-9]{13}" value="@Model.Isbn" required />
     <button type="button" id="search-book" class="button button-outline" disabled>Search</button>
-    
+
     <label for="title">Title</label>
     <input type="text" name="title" id="title" placeholder="Title" value="@Model.Title" class="span2" required />
 
