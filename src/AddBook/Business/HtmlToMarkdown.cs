@@ -14,6 +14,11 @@ namespace AddBook.Business
         /// <returns>The markdown representation of the HTML content.</returns>
         public static string Convert(INode htmlNode)
         {
+            if(htmlNode == null)
+            {
+                return null;
+            }
+
             var sb = new StringBuilder();
             ConvertContentToText(htmlNode.ChildNodes, sb);
             var text = sb.ToString();
