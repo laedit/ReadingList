@@ -1,11 +1,11 @@
-﻿$server = "ftp://laedit.net/"
+$server = "ftp://laedit.net/"
 $user = $env:ftp_user
 $pass = $env:ftp_password
 
 function CreateFtpFolder ($folderToCreate)
 {
     # Create the direct path to the folder you want to create
-    $ftpPath = "$Server$folderToCreate"
+    $ftpPath = "$Server" + $folderToCreate.FullName.Replace($source, "").Replace("\", "/")
     Write-Host "Create folder: $ftpPath"
 
     # create the FtpWebRequest and configure it
@@ -22,10 +22,10 @@ function UploadFtpFile ($fileToUpload)
 {
     $webclient = New-Object -TypeName System.Net.WebClient
     $webclient.Credentials = New-Object System.Net.NetworkCredential($user, $pass)
-    Write-Host "Uploading $file"
-    $destination = New-Object System.Uri($server + $file.FullName.replace($source, ""))
+    Write-Host "Uploading $fileToUpload"
+    $destination = New-Object System.Uri($server + $fileToUpload.FullName.Replace($source, ""))
     Write-Host "Destination: $destination"
-    $webclient.UploadFile($destination, $file.FullName)
+    $webclient.UploadFile($destination, $fileToUpload.FullName)
     $webclient.Dispose()
 }
 
