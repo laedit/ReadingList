@@ -2,13 +2,13 @@
     public value(newValue: string): void;
     public value(): string;
 
-    public constructor(options: { toolbar: boolean, spellChecker: boolean, status: boolean, indentWithTabs: boolean, autoDownloadFontAwesome: boolean });
+    public constructor(options: { toolbar: boolean, spellChecker: boolean, status: boolean, indentWithTabs: boolean, autoDownloadFontAwesome: boolean, forceSync: boolean });
 }
 
 var easyMDE: EasyMDE;
 
 document.addEventListener("DOMContentLoaded", () => {
-    easyMDE = new EasyMDE({ toolbar: false, spellChecker: false, status: false, indentWithTabs: false, autoDownloadFontAwesome: false });
+    easyMDE = new EasyMDE({ toolbar: false, spellChecker: false, status: false, indentWithTabs: false, autoDownloadFontAwesome: false, forceSync: true });
 
     let searchBookButton = document.getElementById("search-book") as HTMLInputElement;
     let isbnInput = document.getElementById("isbn") as HTMLInputElement;
