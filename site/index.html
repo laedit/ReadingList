@@ -33,7 +33,7 @@ layout : layout
 	<ul>
 		{% for post in site.posts offset:5 %}
 		<li>
-			<time class="olderpostdate" datetime="{{ post.date | date: "%Y-%m-%d" }}"> {{ post.date | date: "%d %b %y"  }} </time> <a class="postlink" href="{{ post.url }}">{{ post.title }}</a>
+			<time class="olderpostdate" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date_justify }}</time> <a class="postlink" href="{{ post.url }}">{{ post.title }}</a>
 		</li>
 		{% endfor %}
 	</ul>
