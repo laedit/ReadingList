@@ -1,3 +1,4 @@
+Set-Culture fr-FR
 pretzel bake site
 
 if ($lastExitCode -ne 0)
