@@ -9,7 +9,7 @@ public class DateJustifyFilter : IFilter
     {
         var day = input.ToString("dd");
         var year = input.ToString("yy");
-        var month = input.ToString("MMM").PadRight(5, ' '); // unbreakable space
+        var month = input.ToString("MMM").PadRight(5, ' '); // unbreakable space
         return day + " " + month + " " + year;
     }
 }
