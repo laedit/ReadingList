@@ -9,7 +9,7 @@ namespace AddBook.Business.Search
 {
     internal sealed class FnacSiteBookSearch : IBookSearch
     {
-        private HttpClient httpClient;
+        private readonly HttpClient httpClient;
 
         public FnacSiteBookSearch()
         {

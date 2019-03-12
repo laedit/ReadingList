@@ -22,7 +22,7 @@ editor: ""{3}""
 
         internal async Task<GeneratedBookPost> GeneratePost(BookPost bookPost)
         {
-            string imageFileName = null;
+            string imageFileName;
             string imagePath = null;
             byte[] imageContent = null;
             if (bookPost.CoverUrl.IsAbsoluteUri)

@@ -8,8 +8,6 @@ namespace AddBook.Modules
 {
     public class LoginModule : NancyModule
     {
-        private readonly Configuration configuration;
-
         public LoginModule(Configuration configuration) : base("/login")
         {
             Get["/"] = _ =>
@@ -29,7 +27,6 @@ namespace AddBook.Modules
 
                 return this.LoginAndRedirect(Guid.NewGuid());
             };
-            this.configuration = configuration;
         }
     }
 }

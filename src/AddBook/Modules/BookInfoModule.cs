@@ -7,7 +7,7 @@ namespace AddBook.Modules
 {
     public class BookInfoModule : NancyModule
     {
-        private BookFinder bookFinder;
+        private readonly BookFinder bookFinder;
 
         public BookInfoModule(BookFinder bookFinder) : base("/bookinfo")
         {
@@ -27,7 +27,7 @@ namespace AddBook.Modules
             },
             () =>
             {
-                return Response.AsJson(new { Status = "error", Logs = searchResult.Logs }, Nancy.HttpStatusCode.NotFound);
+                return Response.AsJson(new { Status = "error", Logs = searchResult.Logs }, HttpStatusCode.NotFound);
             });
         }
     }
