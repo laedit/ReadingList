@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function SetCoverImage(coverUrl: string) {
+    if (coverUrl.indexOf('://') > 0 || coverUrl.indexOf('//') === 0) {
+        coverUrl = "https://readinglist.laedit.net" + coverUrl;
+    }
     document.getElementById("cover-img").setAttribute("src", coverUrl);
 }
 
@@ -50,7 +53,7 @@ async function SearchBookInfo(isbn: string) {
             (document.getElementById("cover-url") as HTMLInputElement).value = response.book.coverUrl;
             SetCoverImage(response.book.coverUrl);
             if (response.book.summary) {
-                easyMDE.value(response.book.summary);   
+                easyMDE.value(response.book.summary);
             }
         }
         else if (response.status === "error") {
