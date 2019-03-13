@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function SetCoverImage(coverUrl: string) {
-    if (coverUrl.indexOf('://') > 0 || coverUrl.indexOf('//') === 0) {
+    if (/\/img\/[0-9]{13}\.[a-z]{3,4}/.test(coverUrl)) {
         coverUrl = "https://readinglist.laedit.net" + coverUrl;
     }
     document.getElementById("cover-img").setAttribute("src", coverUrl);
