@@ -19,7 +19,9 @@ namespace AddBook
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
-            
+
+            StaticConfiguration.DisableErrorTraces = false;
+
             var binDirectory = Path.GetDirectoryName(this.GetType().GetAssemblyPath());
             var configPath = Path.Combine(binDirectory ?? @".\", "app.config");
 
