@@ -119,12 +119,12 @@ namespace AddBook.Business
                             break;
                         case "b":
                         case "strong":
-                            element.InnerHtml = "**" + element.InnerHtml + "**";
+                            element.InnerHtml = "**" + element.InnerHtml.Trim() + "** ";
                             break;
                         case "i":
                         case "u":
                         case "em":
-                            element.InnerHtml = "_" + element.InnerHtml + "_";
+                            element.InnerHtml = "_" + element.InnerHtml.Trim() + "_ ";
                             break;
                         case "li":
                             element.InnerHtml = "* " + element.InnerHtml + "<br />";
