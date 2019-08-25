@@ -78,6 +78,9 @@ namespace AddBook.Business
                             outText.AppendLine();
                             break;
                         case "br":
+                            outText.Append("  ");
+                            outText.AppendLine();
+                            break;
                         case "td":
                         case "ul":
                         case "ol":
