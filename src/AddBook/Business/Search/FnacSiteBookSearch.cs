@@ -36,13 +36,21 @@ namespace AddBook.Business.Search
 
                 htmlDoc = parser.ParseDocument(await httpClient.GetStringAsync(bookLink.Attributes["href"].Value));
 
-                var specifications = htmlDoc.QuerySelector("section[id='specifications']");
+                var characteristics = htmlDoc.QuerySelector("section[id='Characteristics']");
 
-                var author = WebUtility.HtmlDecode(specifications?.GetElementsByTagName("li")?.Where(node => node.ChildNodes[1]?.FirstChild?.TextContent == "Auteur")?.Select(node => node.ChildNodes[3]?.FirstChild?.TextContent)?.First());
-                var editor = WebUtility.HtmlDecode(specifications?.GetElementsByTagName("li")?.Where(node => node.ChildNodes[1]?.FirstChild?.TextContent == "Editeur").Select(node => node.ChildNodes[3]?.FirstChild?.TextContent)?.First());
+                var author = WebUtility.HtmlDecode(characteristics?.GetElementsByTagName("div")?
+                    .Where(node => node.GetElementsByTagName("dt")?.First().TextContent == "Auteur")?
+                    .Select(node => node.GetElementsByTagName("dd")?.First().TextContent)?.First()).Trim();
+
+                var editor = WebUtility.HtmlDecode(characteristics?.GetElementsByTagName("div")?
+                    .Where(node => node.GetElementsByTagName("dt")?.First().TextContent == "Editeur")?
+                    .Select(node => node.GetElementsByTagName("dd")?.First().TextContent)?.First()).Trim();
+
                 var coverUrl = htmlDoc.QuerySelector("img.js-ProductVisuals-imagePreview")?.Attributes["src"]?.Value;
+
                 var title = WebUtility.HtmlDecode(htmlDoc.QuerySelector("h1.f-productHeader-Title")?.TextContent?.Trim());
-                var summary = WebUtility.HtmlDecode(HtmlToMarkdown.Convert(htmlDoc.QuerySelector("section[id='Opinions']")?.ChildNodes[3]));
+
+                var summary = WebUtility.HtmlDecode(HtmlToMarkdown.Convert(htmlDoc.QuerySelector(".summaryStrate__raw")));
 
                 return Result<Book>.Success(new Book { Isbn = isbn, Title = title, Author = author, Editor = editor, CoverUrl = coverUrl, Summary = summary });
             }
