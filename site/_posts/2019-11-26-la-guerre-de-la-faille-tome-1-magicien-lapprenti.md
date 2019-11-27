@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "La guerre de la faille - Tome 1 : La Guerre de la Faille, T1 : Magicien - L'Apprenti"
+title: "La guerre de la Faille - Tome 1 : Magicien - L'Apprenti"
 author: "Raymond Elias Feist"
 isbn: "9782811211554"
 editor: "Milady"
