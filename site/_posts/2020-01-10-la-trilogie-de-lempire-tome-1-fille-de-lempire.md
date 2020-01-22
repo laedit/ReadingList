@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "La trilogie de l'Empire - Tome 1 : Fille de l'Empire"
-author: "Raymond Elias Feist          Janny Wurts          Janny Wurst"
+author: "Raymond Elias Feist, Janny Wurst"
 isbn: "9782811208943"
 editor: "Milady"
 ---
