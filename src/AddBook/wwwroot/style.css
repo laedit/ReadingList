@@ -31,11 +31,11 @@ a, a:visited {
     color: var(--main-color);
 }
 
-a:hover {
-    text-decoration: none;
-    color: white;
-    background: var(--main-color);
-}
+    a:hover {
+        text-decoration: none;
+        color: white;
+        background: var(--main-color);
+    }
 
 ul {
     margin: 0;
@@ -153,17 +153,17 @@ input[type="text"], input[type="password"], input[type="date"], textarea {
     padding: .6rem 1.0rem;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, textarea:focus {
-    border-color: var(--main-color);
-}
+    input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, textarea:focus {
+        border-color: var(--main-color);
+    }
 
-input[type="text"]:invalid:not(:placeholder-shown),
-input[type="password"]:invalid:not(:placeholder-shown),
-input[type="date"]:invalid:not(:placeholder-shown),
-textarea:invalid:not(:placeholder-shown) {
-    border-color: #8b1367;
-    outline: 0;
-}
+    input[type="text"]:invalid:not(:placeholder-shown),
+    input[type="password"]:invalid:not(:placeholder-shown),
+    input[type="date"]:invalid:not(:placeholder-shown),
+    textarea:invalid:not(:placeholder-shown) {
+        border-color: #8b1367;
+        outline: 0;
+    }
 
 .info {
     border-radius: .4rem;
@@ -173,17 +173,17 @@ textarea:invalid:not(:placeholder-shown) {
     padding: 10px;
 }
 
-.info.error {
-    background-color: #8b1367;
-}
+    .info.error {
+        background-color: #8b1367;
+    }
 
-.info.success {
-    background-color: #678b13;
-}
+    .info.success {
+        background-color: #678b13;
+    }
 
-.info.warning {
-    background-color: #CAB252;
-}
+    .info.warning {
+        background-color: #CAB252;
+    }
 
 .button {
     background-color: var(--main-color);
@@ -199,31 +199,31 @@ textarea:invalid:not(:placeholder-shown) {
     text-decoration: none;
 }
 
-.button[disabled] {
-    cursor: default;
-    opacity: .5;
-}
+    .button[disabled] {
+        cursor: default;
+        opacity: .5;
+    }
 
-.button:focus, .button:hover {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-}
+    .button:focus, .button:hover {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+    }
 
-.button[disabled]:focus, .button[disabled]:hover {
-    background-color: var(--main-color);
-    border-color: var(--main-color);
-}
+    .button[disabled]:focus, .button[disabled]:hover {
+        background-color: var(--main-color);
+        border-color: var(--main-color);
+    }
 
-.button.button-outline {
-    background-color: transparent;
-    color: var(--main-color);
-}
+    .button.button-outline {
+        background-color: transparent;
+        color: var(--main-color);
+    }
 
-.button.button-outline:focus, .button.button-outline:hover {
-    background-color: transparent;
-    border-color: var(--secondary-color);
-    color: var(--secondary-color);
-}
+        .button.button-outline:focus, .button.button-outline:hover {
+            background-color: transparent;
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
 
 svg {
     width: 25px;
@@ -248,34 +248,34 @@ svg {
     left: calc(50% - 5px);
 }
 
-.dot-flashing::before, .dot-flashing::after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0;
-}
+    .dot-flashing::before, .dot-flashing::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 0;
+    }
 
-.dot-flashing::before {
-    left: -15px;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-    background-color: var(--main-color);
-    color: var(--main-color);
-    animation: dotFlashing 1s infinite alternate;
-    animation-delay: 0s;
-}
+    .dot-flashing::before {
+        left: -15px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: var(--main-color);
+        color: var(--main-color);
+        animation: dotFlashing 1s infinite alternate;
+        animation-delay: 0s;
+    }
 
-.dot-flashing::after {
-    left: 15px;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-    background-color: var(--main-color);
-    color: var(--main-color);
-    animation: dotFlashing 1s infinite alternate;
-    animation-delay: 1s;
-}
+    .dot-flashing::after {
+        left: 15px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: var(--main-color);
+        color: var(--main-color);
+        animation: dotFlashing 1s infinite alternate;
+        animation-delay: 1s;
+    }
 
 @keyframes dotFlashing {
     0% {

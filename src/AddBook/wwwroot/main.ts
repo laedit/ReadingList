@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     searchBookButton.addEventListener("click", () => SearchBookInfo(isbnInput.value));
 
-    document.getElementById("cover-url").addEventListener("input", () => SetCoverImage((document.getElementById("cover-url") as HTMLInputElement).value));
+    document.getElementById("coverUrl").addEventListener("input", () => SetCoverImage((document.getElementById("coverUrl") as HTMLInputElement).value));
 });
 
 function SetCoverImage(coverUrl: string) {
@@ -50,7 +50,7 @@ async function SearchBookInfo(isbn: string) {
             (document.getElementById("title") as HTMLInputElement).value = response.book.title;
             (document.getElementById("author") as HTMLInputElement).value = response.book.author;
             (document.getElementById("editor") as HTMLInputElement).value = response.book.editor;
-            (document.getElementById("cover-url") as HTMLInputElement).value = response.book.coverUrl;
+            (document.getElementById("coverUrl") as HTMLInputElement).value = response.book.coverUrl;
             SetCoverImage(response.book.coverUrl);
             if (response.book.summary) {
                 easyMDE.value(response.book.summary);

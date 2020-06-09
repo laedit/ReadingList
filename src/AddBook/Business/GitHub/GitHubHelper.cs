@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using Octokit;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Octokit;
 
 namespace AddBook.Business.GitHub
 {
@@ -12,9 +13,9 @@ namespace AddBook.Business.GitHub
         private const string Repository = "readinglist";
         private const string HeadMasterRef = "heads/master";
 
-        private readonly Configuration configuration;
+        private readonly IConfiguration configuration;
 
-        public GitHubHelper(Configuration configuration)
+        public GitHubHelper(IConfiguration configuration)
         {
             this.configuration = configuration;
         }
@@ -109,7 +110,7 @@ namespace AddBook.Business.GitHub
             {
                 In = new[] { CodeInQualifier.Path },
                 Path = "site/_posts",
-                Extension = "md"
+                Extensions = new[] { "md" }
             };
 
             var searchResult = await githubClient.Search.SearchCode(searchRequest);
@@ -126,7 +127,7 @@ namespace AddBook.Business.GitHub
         {
             return new GitHubClient(new ProductHeaderValue("Laedit-ReadingList"))
             {
-                Credentials = new Credentials(configuration.AccessToken)
+                Credentials = new Credentials(configuration["AccessToken"])
             };
         }
     }

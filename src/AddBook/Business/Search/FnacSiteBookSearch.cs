@@ -62,12 +62,10 @@ namespace AddBook.Business.Search
 
         private HttpClient InstanciateHttpClient()
         {
-            var httpClient = new HttpClient(
-                new HttpClientHandler
-                {
-                    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
-                }
-                );
+            var httpClient = new HttpClient(new HttpClientHandler
+                                    {
+                                        AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+                                    });
             httpClient.DefaultRequestHeaders.Add("Accept", "*/*");
             httpClient.DefaultRequestHeaders.Add("Accept-Language", "en-US");
             httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate");

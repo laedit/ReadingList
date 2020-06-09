@@ -9,7 +9,7 @@ namespace AddBook.Business
         public static Result<T> Fail(string reason) => new FailResult(reason);
 
         public static Result<T> Success(T value) => new SuccessResult(value);
-        
+
         private sealed class SuccessResult : Result<T>
         {
             private readonly T value;
@@ -18,7 +18,7 @@ namespace AddBook.Business
             {
                 this.value = value;
             }
-            
+
             public override TResult Match<TResult>(Func<T, TResult> successFunc, Func<string, TResult> failFunc) => successFunc(value);
         }
 
@@ -30,7 +30,7 @@ namespace AddBook.Business
             {
                 this.reason = reason;
             }
-            
+
             public override TResult Match<TResult>(Func<T, TResult> successFunc, Func<string, TResult> failFunc) => failFunc(reason);
         }
     }

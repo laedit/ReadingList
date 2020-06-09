@@ -23,7 +23,7 @@ namespace AddBook.Business.Database
             books = new Lazy<Task<Books>>(async () =>
             {
                 var booksList = await gitHubHelper.GetFileContent(Path);
-                var deserializer = new DeserializerBuilder().WithNamingConvention(new CamelCaseNamingConvention()).Build();
+                var deserializer = new DeserializerBuilder().WithNamingConvention(CamelCaseNamingConvention.Instance).Build();
                 return new Books(deserializer.Deserialize<List<BooksItem>>(booksList));
             });
         }

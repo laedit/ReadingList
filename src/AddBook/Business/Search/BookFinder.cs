@@ -35,7 +35,7 @@ namespace AddBook.Business.Search
         private static async Task<SearchResult> FindBook(string isbn)
         {
             var searchResult = new SearchResult { Book = Option<Book>.None };
-            var logs = new StringBuilder();
+            var logs = new List<string>();
 
             foreach (var bookSearch in _bookSearches)
             {
@@ -44,12 +44,12 @@ namespace AddBook.Business.Search
                 searchResult = result.Match(book =>
                 {
                     searchResult.Book = Option<Book>.Some(book);
-                    logs.AppendLine($"{bookSearch.GetType().Name} have found the book.");
+                    logs.Add($"{bookSearch.GetType().Name} have found the book.");
                     return searchResult;
                 },
                 failReason =>
                 {
-                    logs.AppendLine($"{bookSearch.GetType().Name}: {failReason}");
+                    logs.Add($"{bookSearch.GetType().Name}: {failReason}");
                     return searchResult;
                 });
 
@@ -58,7 +58,7 @@ namespace AddBook.Business.Search
                     break;
                 }
             }
-            searchResult.Logs = logs.ToString();
+            searchResult.Logs = logs;
             return searchResult;
         }
     }

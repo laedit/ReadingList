@@ -5,8 +5,10 @@ using System.Text.RegularExpressions;
 
 namespace AddBook.Business
 {
-    public class HtmlToMarkdown
+    internal static class HtmlToMarkdown
     {
+        private static readonly Regex WhiteSpaceRegex = new Regex(@"\s+", RegexOptions.Compiled);
+
         /// <summary>
         /// Convert HTML to Markdown.
         /// </summary>
@@ -14,7 +16,7 @@ namespace AddBook.Business
         /// <returns>The markdown representation of the HTML content.</returns>
         public static string Convert(INode htmlNode)
         {
-            if(htmlNode == null)
+            if (htmlNode == null)
             {
                 return null;
             }
@@ -57,8 +59,7 @@ namespace AddBook.Business
                     {
                         // get text with all characters remodes which are not visible in html
                         html = html.Replace("\t", string.Empty).Replace("\r", string.Empty).Replace("\n", string.Empty);
-                        var regEx = new Regex(@"\s+", RegexOptions.Compiled);
-                        html = regEx.Replace(html, " ");
+                        html = WhiteSpaceRegex.Replace(html, " ");
                     }
 
                     if (html.Length > 0)

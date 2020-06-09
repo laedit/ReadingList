@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace AddBook.ViewModels
+namespace AddBook.Models
 {
-    public sealed class BookPost : IValidatableObject
+    public sealed class BookPost : IValidatableObject // FIXME how to handle in asp.net core 2.0
     {
         private static readonly Regex HtmlTagRegex = new Regex("<[^>]*>", RegexOptions.Compiled);
 
@@ -14,8 +14,10 @@ namespace AddBook.ViewModels
         public string Isbn { get; set; }
 
         [Required]
-        [RegularExpression("[0-9]{4}-[0-9]{2}-[0-9]{2}")]
-        public string StartDate { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Start date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime StartDate { get; set; }
 
         [Required]
         public string Title { get; set; }
@@ -27,6 +29,8 @@ namespace AddBook.ViewModels
         public string Editor { get; set; }
 
         [Required]
+        [DataType(DataType.ImageUrl)]
+        [Display(Name = "Cover url")]
         public Uri CoverUrl { get; set; }
 
         [Required]
@@ -34,12 +38,12 @@ namespace AddBook.ViewModels
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (!DateTime.TryParse(StartDate, out _))
+            if(!Uri.IsWellFormedUriString(CoverUrl.OriginalString, UriKind.RelativeOrAbsolute))
             {
-                yield return new ValidationResult($"{nameof(StartDate)} must be a valid date", new[] { nameof(StartDate) });
+                yield return new ValidationResult($"Cover url must be a valid uri", new[] { nameof(CoverUrl) });
             }
 
-            if(HtmlTagRegex.IsMatch(Summary))
+            if (HtmlTagRegex.IsMatch(Summary))
             {
                 yield return new ValidationResult($"{nameof(Summary)} must not contain html tag", new[] { nameof(Summary) });
             }

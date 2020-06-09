@@ -1,40 +1,34 @@
-﻿@{
-    Layout = "Views/layout.cshtml";
-}
+﻿@model AddBook.Models.BookPost
 
-@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<AddBook.ViewModels.BookPost>
 
 @section Head
 {
-    <link rel="stylesheet" type="text/css" href="~/Content/easymde/dist/easymde.min.css" />
-    <script type="text/javascript" src="~/Content/main.js"></script>
-    <script type="text/javascript" src="~/Content/easymde/dist/easymde.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/lib/easymde/dist/easymde.min.css" />
+    <script type="text/javascript" src="~/main.js"></script>
+    <script type="text/javascript" src="~/lib/easymde/dist/easymde.min.js"></script>
 }
 
-@if (ViewBag["Errors"] != null)
+@if (ViewBag.Errors != null)
 {
     <div class="info error">
         <b>Error(s):</b>
         <ul>
-            @foreach (var fieldErrors in ViewBag["Errors"])
+            @foreach (var error in ViewBag.Errors)
             {
-                foreach (var error in fieldErrors.Value)
-                {
-                    <li>@error</li>
-                }
+                <li>@error</li>
             }
         </ul>
     </div>
 }
 
-@if (ViewBag["success"])
+@if (ViewBag.Success != null && ViewBag.Success) // FIXME replace by a proper model?
 {
     <div class="info success">Book added.</div>
 }
 
 <form method="post" action="/" class="container large" id="submit-book-form">
-    <label for="start-date">Start date</label>
-    <input type="date" name="start-date" id="start-date" placeholder="start date" value="@Model.StartDate" class="span2" required />
+    <label for="startDate">Start date</label>
+    <input type="date" name="startDate" id="startDate" placeholder="start date" asp-format="{0:yyyy-MM-dd}" asp-for="StartDate" class="span2" required />
 
     <label for="isbn">ISBN</label>
     <input type="text" name="isbn" id="isbn" placeholder="ISBN" pattern="[0-9]{13}" value="@Model.Isbn" required />
@@ -49,8 +43,8 @@
     <label for="editor">Editor</label>
     <input type="text" name="editor" id="editor" placeholder="Editor" value="@Model.Editor" class="span2" required />
 
-    <label for="cover-url" class="vertical-center">Cover url</label>
-    <input type="text" name="cover-url" id="cover-url" placeholder="Cover url" value="@Model.CoverUrl" class="vertical-center" required />
+    <label for="coverUrl" class="vertical-center">Cover url</label>
+    <input type="text" name="coverUrl" id="coverUrl" placeholder="Cover url" value="@Model.CoverUrl" class="vertical-center" required />
     <img id="cover-img" />
 
     <label for="summary">Summary</label>

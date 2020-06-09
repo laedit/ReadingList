@@ -6,7 +6,6 @@ namespace AddBook.Business
 {
     internal static class StringExtensions
     {
-
         /// <summary>
         /// white space, em-dash, en-dash, underscore
         /// </summary>
@@ -21,7 +20,6 @@ namespace AddBook.Business
         /// multiple hyphens
         /// </summary>
         private static readonly Regex MultipleHyphens = new Regex(@"-{2,}", RegexOptions.Compiled);
-
 
         private static string RemoveDiacritics(string stIn)
         {

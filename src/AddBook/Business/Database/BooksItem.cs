@@ -1,5 +1,4 @@
-﻿
-namespace AddBook.Business.Database
+﻿namespace AddBook.Business.Database
 {
     internal sealed class BooksItem
     {

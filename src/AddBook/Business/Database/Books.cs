@@ -1,5 +1,6 @@
-﻿using System.Linq;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -14,9 +15,9 @@ namespace AddBook.Business.Database
             this.booksList = booksList;
         }
 
-        internal void Add(string isbn, string startDate, bool generated)
+        internal void Add(string isbn, DateTime startDate, bool generated)
         {
-            booksList.Add(new BooksItem { Date = startDate, Generated = generated, Isbn = isbn });
+            booksList.Add(new BooksItem { Date = startDate.ToString("yyyy-MM-dd"), Generated = generated, Isbn = isbn });
         }
 
         internal Option<BooksItem> Find(string isbn)
@@ -27,7 +28,7 @@ namespace AddBook.Business.Database
 
         internal string Export()
         {
-            var serializer = new SerializerBuilder().EmitDefaults().WithNamingConvention(new CamelCaseNamingConvention()).Build();
+            var serializer = new SerializerBuilder().WithNamingConvention(CamelCaseNamingConvention.Instance).Build();
             return serializer.Serialize(booksList);
         }
     }

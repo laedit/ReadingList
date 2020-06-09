@@ -1,11 +1,11 @@
-﻿using AddBook.ViewModels;
+﻿using AddBook.Models;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 
 namespace AddBook.Business.Generation
 {
-    public class PostGenerator
+    public sealed class PostGenerator
     {
         private const string PostTemplate = @"---
 layout: post
