@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\main.Ts" />
+    <Content Remove="wwwroot\main.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,7 +31,7 @@
     <TypeScriptCompile Include="wwwroot\main.ts" />
   </ItemGroup>
 
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+  <PropertyGroup>
     <TypeScriptTarget>ES2019</TypeScriptTarget>
     <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
     <TypeScriptModuleKind>None</TypeScriptModuleKind>
