@@ -1,4 +1,4 @@
-﻿image: Visual Studio 2017
+﻿image: Visual Studio 2019
 
 version: 1.0.{build}
 
@@ -16,7 +16,7 @@ before_build:
   - nuget restore src
 
 build_script:
-  - msbuild "src\AddBook.sln" /p:Configuration=Release /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /p:PublishProfile=Local /p:DeployOnBuild=True
+  - dotnet publish "src\AddBook.sln" --framework netcoreapp2.0 --configuration Release --output "./Publish" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 test: off
 
