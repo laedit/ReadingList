@@ -11,7 +11,7 @@ namespace AddBook.Business.GitHub
     {
         private const string Owner = "laedit";
         private const string Repository = "readinglist";
-        private const string HeadMasterRef = "heads/master";
+        private const string HeadMainRef = "heads/main";
 
         private readonly IConfiguration configuration;
 
@@ -63,8 +63,8 @@ namespace AddBook.Business.GitHub
         {
             var githubClient = InstanciateGitHubClient();
 
-            var master = await githubClient.Git.Reference.Get(Owner, Repository, HeadMasterRef);
-            var baseTree = await githubClient.Git.Commit.Get(Owner, Repository, master.Object.Sha);
+            var main = await githubClient.Git.Reference.Get(Owner, Repository, HeadMainRef);
+            var baseTree = await githubClient.Git.Commit.Get(Owner, Repository, main.Object.Sha);
 
             var nt = new NewTree
             {
@@ -79,11 +79,11 @@ namespace AddBook.Business.GitHub
             }
 
             var newTree = await githubClient.Git.Tree.Create(Owner, Repository, nt);
-            var newCommit = new NewCommit(message, newTree.Sha, master.Object.Sha);
+            var newCommit = new NewCommit(message, newTree.Sha, main.Object.Sha);
 
             var commit = await githubClient.Git.Commit.Create(Owner, Repository, newCommit);
 
-            await githubClient.Git.Reference.Update(Owner, Repository, HeadMasterRef, new ReferenceUpdate(commit.Sha));
+            await githubClient.Git.Reference.Update(Owner, Repository, HeadMainRef, new ReferenceUpdate(commit.Sha));
         }
 
         /// <summary>
