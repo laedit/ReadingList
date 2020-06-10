@@ -33,7 +33,9 @@ namespace AddBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (loginData.Username == configuration["Username"] && loginData.Password == configuration["Password"])
+                var infos = configuration["SoleUser"]?.Split('/');
+
+                if (infos != null && loginData.Username == infos[0] && loginData.Password == infos[1])
                 {
                     var claims = new[]
                     {
@@ -49,7 +51,7 @@ namespace AddBook.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Login failed. Please check username and/or password");
+                    ViewBag.Error = "Login failed. Please check username and/or password";
                 }
             }
             return View();

@@ -1,5 +1,12 @@
 ﻿@model AddBook.Models.LoginData
 
+@if (!string.IsNullOrWhiteSpace(ViewBag.Error))
+{
+    <div class="info error">
+            @ViewBag.Error
+    </div>
+}
+
 <form method="post" action="" class="container small">
     <label for="Username">User name</label>
     <input type="text" name="Username" id="Username" placeholder="User name" />
