@@ -5,7 +5,7 @@ layout : layout
 <section>
 	<!--<ul class="posts">-->
 
-		{% for post in site.posts  limit:5 %}
+		{% for post in site.posts limit:5 %}
 
 			<!--<li>-->
 				<article>
@@ -32,9 +32,16 @@ layout : layout
 	<h3>Précédemment</h3>
 	<ul>
 		{% for post in site.posts offset:5 %}
+		{% capture post_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+		{% if year %}{% unless year == post_year %}
+		<li>
+			<hr class="hr-text" data-content="{{ post_year }}">
+		</li>
+		{% endunless %}{% endif %}
 		<li>
 			<time class="olderpostdate" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date_justify }}</time> <a class="postlink" href="{{ post.url }}">{{ post.title }}</a>
 		</li>
+		{% assign year = post_year %}
 		{% endfor %}
 	</ul>
 	{% endif %}
