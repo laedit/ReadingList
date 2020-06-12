@@ -1,4 +1,4 @@
-﻿using AddBook.Business.Database;
+using AddBook.Business.Database;
 using AddBook.Business.Generation;
 using AddBook.Business.GitHub;
 using AddBook.Business.Search;
@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
 
@@ -27,7 +28,7 @@ namespace AddBook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddControllersWithViews();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
@@ -43,44 +44,45 @@ namespace AddBook
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
-                app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
             }
-            
+
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
-           
+
+            app.UseRouting();
+
             app.UseCookiePolicy(new CookiePolicyOptions
             {
                 HttpOnly = HttpOnlyPolicy.Always,
                 MinimumSameSitePolicy = SameSiteMode.Strict,
                 Secure = CookieSecurePolicy.Always
             });
-
+            
             app.UseAuthentication();
+            app.UseAuthorization();
 
-            app.UseRouter(route =>
+            app.UseEndpoints(endpoints =>
             {
-                route.MapGet(".well-known/acme-challenge/{id}", async (request, response, routeData) =>
+                endpoints.MapGet(".well-known/acme-challenge/{id}", async context =>
                 {
-                    var id = routeData.Values["id"] as string;
+                    var id = context.GetRouteValue("id") as string;
                     var file = Path.Combine(env.WebRootPath, ".well-known", "acme-challenge", id);
-                    await response.SendFileAsync(file);
+                    await context.Response.SendFileAsync(file);
                 });
-            });
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

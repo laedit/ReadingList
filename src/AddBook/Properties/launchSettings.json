@@ -1,10 +1,10 @@
-{
+﻿{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:54225/",
-      "sslPort": 0
+      "applicationUrl": "http://localhost:25757",
+      "sslPort": 44392
     }
   },
   "profiles": {
@@ -18,10 +18,10 @@
     "AddBook": {
       "commandName": "Project",
       "launchBrowser": true,
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:54226/"
+      }
     }
   }
 }
