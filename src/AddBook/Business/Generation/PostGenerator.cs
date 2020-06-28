@@ -36,7 +36,7 @@ editor: ""{3}""
                 imageFileName = bookPost.CoverUrl.OriginalString.Replace("/img/", "");
             }
 
-            var postPath = $"{PostsFolder}{bookPost.StartDate}-{bookPost.Title.Slugify()}.md";
+            var postPath = $"{PostsFolder}{bookPost.StartDate:yyyy-MM-dd}-{bookPost.Title.Slugify()}.md";
             var postContent = string.Format(PostTemplate, bookPost.Title, bookPost.Author, bookPost.Isbn, bookPost.Editor, imageFileName, bookPost.Summary);
             return new GeneratedBookPost { ImagePath = imagePath, ImageContent = imageContent, PostPath = postPath, PostContent = postContent, BookTitle = bookPost.Title };
         }

@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace AddBook.Models
 {
-    public sealed class BookPost : IValidatableObject // FIXME how to handle in asp.net core 2.0
+    public sealed class BookPost : IValidatableObject
     {
         private static readonly Regex HtmlTagRegex = new Regex("<[^>]*>", RegexOptions.Compiled);
 
