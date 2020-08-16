@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Millénium - Ce qui ne me tue pas Tome 4 : Millénium"
+title: "Millénium - Tome 4 : Ce qui ne me tue pas"
 author: "David Lagercrantz"
 isbn: "9782330053901"
 editor: "Actes sud"
