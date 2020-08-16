@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Le Cycle des démons, T4 : Le Trône de crâne"
-author: "Peter V. Brett (Illustration), Peter V. Brett"
+title: "Le Cycle des démons - Tome 4 : Le Trône de crâne"
+author: "Peter V. Brett"
 isbn: 9782811217785
 editor: Milady
 ---

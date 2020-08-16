@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Le Cycle des démons, T3 : La Guerre du Jour"
-author: "Peter V. Brett , Peter V. Brett"
+title: "Le Cycle des démons - Tome 3 : La Guerre du Jour"
+author: "Peter V. Brett"
 isbn: 9782811213961
 editor: Milady
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Le Cycle des démons, T2 : La Lance du Désert"
-author: "Peter V. Brett , Peter V. Brett"
+title: "Le Cycle des démons - Tome 2 : La Lance du Désert"
+author: "Peter V. Brett"
 isbn: 9782811208028
 editor: Milady
 ---
