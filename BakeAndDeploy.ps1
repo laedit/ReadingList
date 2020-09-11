@@ -9,7 +9,7 @@ else
 {
     Write-Host "Starting deploy"
     $envConf = '{{""default"": {{""connection"": ""ftp://{0}:{1}@laedit.net""}}}}' -f $env:ftp_user, $env:ftp_password
-    creep -e $envConf -d '{""source"": ""hash""}' -b site/_site -y
+    creep site/_site -e $envConf -d '{""source"": ""hash""}' -y
 
     if ($lastExitCode -ne 0)
     {
