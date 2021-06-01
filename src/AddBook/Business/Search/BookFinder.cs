@@ -25,11 +25,16 @@ namespace AddBook.Business.Search
         internal async Task<SearchResult> Find(string isbn)
         {
             SearchResult searchResult = null;
+
             if (!_cache.ContainsKey(isbn))
             {
                 searchResult = await FindBook(isbn);
             }
+#if !DEBUG
             return _cache.GetOrAdd(isbn, searchResult);
+#else
+            return searchResult;
+#endif
         }
 
         private static async Task<SearchResult> FindBook(string isbn)
