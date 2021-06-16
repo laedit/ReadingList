@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Le Montespan"
+author: "Jean Teulé"
+isbn: "9782260017233"
+editor: "Julliard"
+---
+![Couverture](/img/9782260017233.jpg)Voici l'histoire du cocu le plus célèbre et le plus insolent du siècle de Louis XIV...
+
+En 1663, Louis-Henri de Montespan, jeune marquis désargenté, épouse la somptueuse Françoise " Athénaïs " de Rochechouart. Lorsque cette dernière accède à la charge de dame de compagnie de la reine, ses charmes ne tardent pas à éblouir le monarque – à qui nulle femme ne saurait résister. D'époux comblé, le Montespan devient alors la risée des courtisans. Désormais, et jusqu'à la fin de ses jours, il n'aura de cesse de braver l'autorité de Louis XIV et d'exiger de lui qu'il lui rende sa femme.  
+Lorsqu'il apprend son infortune conjugale, le marquis fait repeindre son carrosse en noir et orner le toit du véhicule d'énormes ramures de cerf. La provocation fait scandale mais ne s'arrête pas là. Le roi lui a pris sa femme, qu'à cela ne tienne : il séduira la sienne. Une fois introduit dans la chambre de la reine, seule la laideur repoussante de celle-ci le fera renoncer à ses plans. À force d'impertinences répétées, l'atypique, facétieux et très amoureux marquis échappera de justesse à une tentative d'assassinat, puis sera exilé sur ses terres jusqu'à sa mort. En ayant porté haut son indignation, y compris auprès du pape, le marquis de Montespan fut l'une des premières figures historiques à oser contester la légitimité de la monarchie absolue de droit divin. Il incarne à lui seul l'esprit révolutionnaire qui renversera un siècle plus tard l'Ancien Régime. Après avoir si brillamment dépeint le Moyen Âge dans Je, François Villon, Teulé, qui a le don de brosser l'atmosphère d'une époque, restitue le temps des précieuses ridicules et des salons mondains, comme celui des chansons paillardes et des crasseuses garnisons du roi. Son style emprunte aussi bien à la verve des fabulistes dont Mme de Montespan fut la protectrice, qu'à la grivoiserie populaire. Et nous fait reprendre goût, par son humour irrésistible, à la saveur d'une langue piquante et imagée...
