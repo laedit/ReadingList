@@ -35,14 +35,15 @@ a, &:visited {
 }
 
 ul {
-    margin: 0;
-    padding: 0;
+    list-style-type: none;
 }
 
-li {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+ul li::before {
+    content: "\2022";
+    color: @accentColor;
+    display: inline-block;
+    width: 1em;
+    font-weight: bold;
 }
 
 article {
@@ -105,6 +106,8 @@ footer {
 
 .book-infos {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
     display: inline;
     color: @detailColor;
     margin-left: 10px;
@@ -112,6 +115,26 @@ footer {
     li {
         display: inline;
         margin-left: 10px;
+    }
+
+    li:before {
+        content: "";
+        display: none;
+        width: 0;
+        margin-left: 0;
+    }
+}
+
+.archives {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li:before {
+        content: "";
+        display: none;
+        width: 0;
+        margin-left: 0;
     }
 }
 

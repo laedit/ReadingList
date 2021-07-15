@@ -30,7 +30,7 @@ layout : layout
 <section class="archive">
 	{% if site.posts.size > 5 %}
 	<h3>Précédemment</h3>
-	<ul>
+	<ul class="archives">
 		{% for post in site.posts offset:5 %}
 		{% capture post_year %}{{ post.date | date: "%Y" }}{% endcapture %}
 		{% if year %}{% unless year == post_year %}
