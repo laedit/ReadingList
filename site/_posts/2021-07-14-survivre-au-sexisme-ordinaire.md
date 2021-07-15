@@ -10,6 +10,7 @@ editor: "Librio"
 Dix-huit personnalités féministes, venues d'horizons divers, s'emparent de ces "petites phrases" et proposent leur analyse ou leurs conseils pour se défendre, répliquer et lutter ainsi avec impertinence contre le sexisme ordinaire.
 
 Sommaire :
+
 - C'est un truc de fille, par Eve Cambreleng
 - Hé, mademoiselle !, par Alizée Vincent
 - T'as des poils, c'est sale !, par Klaire fait Grr
