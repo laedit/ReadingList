@@ -1,0 +1,8 @@
+---
+layout: post
+title: "Libration"
+author: "Becky Chambers"
+isbn: "9782841728114"
+editor: "Atalante"
+---
+![Couverture](/img/9782841728114.jpg)Lovelace, intelligence artificielle née à bord du Voyageur à la fin de L'Espace d'un an, accepte de se transférer à bord d'un corps synthétique. Devenir humaine, une chance ? Pas pour elle : les limitations de la chair l'étouffent. Champ de vision ridiculement restreint, pas d'accès au réseau, réactions physiologiques incontrôlables... A ses côtés, Poivre, mécano. l'aide de son mieux. Ancienne enfant esclave libérée par miracle, grandie seule sur une planète ravagée, elle aussi a dû lutter pour accéder pleinement à l'humanité et se construire une vie, sinon ordinaire, du moins normale. Libration - nom d'un point de l'espace en équilibre entre deux astres, zone de stabilité mouvante qui accompagne les planètes dans leur danse - raconte l'histoire de ces deux femmes. Chacune à sa façon s'arrache à une vie liminale pour se tailler une identité, conquérir l'indispensable : la dignité. On ne croise pas ici les autres personnages de L'Espace d'un an ; Chambers, au lieu de prolonger leur histoire, l'élargit. Sa tendresse et sa lucidité nous offrent des pages déchirantes - l'enfance tragique de Poivre, qui ignore tout de l'amour, et l'isolement de Lovelace, identique à nous mais incapable de vivre comme nous - et un chant d'amour plein de confiance et de courage.
