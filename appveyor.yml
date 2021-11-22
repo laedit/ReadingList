@@ -11,7 +11,7 @@ environment:
 install:
   - cup pretzel -y
   - cup pretzel.scriptcs -y
-  - ps: $env:Path += ";C:\\Python310;C:\\Python35\\Python310"
+  - ps: $env:Path += ";C:\\Python310;C:\\Python310\\Scripts"
   - C:\Python310\python.exe -m pip install creep
 
 cache:
