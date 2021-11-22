@@ -11,8 +11,7 @@ environment:
 install:
   - cup pretzel -y
   - cup pretzel.scriptcs -y
-  - ps: $env:Path += ";C:\\Python35;C:\\Python35\\Scripts"
-  - pip install creep
+  - C:\Python310\python.exe -m pip install creep
 
 cache:
   - C:\ProgramData\chocolatey\bin -> appveyor.yml
