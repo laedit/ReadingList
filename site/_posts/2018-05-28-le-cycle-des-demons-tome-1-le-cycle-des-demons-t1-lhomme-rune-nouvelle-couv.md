@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le cycle des démons - Tome 1 : L'Homme-rune"
 author: "Peter V. Brett"
 isbn: 9782811214449

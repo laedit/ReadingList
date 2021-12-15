@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Mister T & moi"
 author: "Elisa Rojas"
 isbn: "9782501138574"

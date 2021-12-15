@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La vie secrète d'une mère indigne"
 author: "Fiona Neill"
 isbn: "9782266203197"

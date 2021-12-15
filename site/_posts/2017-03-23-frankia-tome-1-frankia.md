@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Frankia - Tome 1 : Frankia"
 author: "Jean-Luc Marcastel"
 isbn: 9782354082055

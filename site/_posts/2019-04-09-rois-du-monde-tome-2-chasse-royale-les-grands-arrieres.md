@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Rois du monde - Tome 2 : Chasse royale, les grands arrières"
 author: "Jean-Philippe Jaworski"
 isbn: "9782072735271"

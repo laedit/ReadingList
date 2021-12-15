@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "L'evangile cannibale"
 author: "Fabien Clavel"
 isbn: 9782366298765

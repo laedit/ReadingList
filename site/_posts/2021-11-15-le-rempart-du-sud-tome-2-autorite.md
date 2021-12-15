@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le Rempart du Sud - Tome 2 : Autorité"
 author: "Jeff VanderMeer"
 isbn: "9782253183792"

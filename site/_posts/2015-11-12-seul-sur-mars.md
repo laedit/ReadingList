@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Seul sur Mars"
 author: "Andy Weir"
 isbn: 9782811215729

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "L'incroyable histoire de Wheeler Burden"
 author: "Selden Edwards"
 isbn: "9782264066039"

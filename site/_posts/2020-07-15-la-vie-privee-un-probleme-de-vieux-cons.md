@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La vie privée, un problème de vieux cons ?"
 author: "Jean-Marc Manach"
 isbn: "9782916571393"

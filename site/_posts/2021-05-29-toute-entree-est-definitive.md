@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Toute entrée est définitive"
 author: "Vincent Mondiot"
 isbn: "9782490972494"

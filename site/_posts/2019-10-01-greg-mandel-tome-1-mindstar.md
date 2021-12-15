@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Greg Mandel - Tome 1 : Mindstar"
 author: "Peter F. Hamilton"
 isbn: "9782811202903"

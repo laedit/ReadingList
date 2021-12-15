@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La Demi-pensionnaire"
 author: "Didier van Cauwelaert"
 isbn: "9782253150558"

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Dune - Tome 1 : Dune"
 author: "Frank Herbert"
 isbn: 9782266233200

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Irena - L'Ange du ghetto : Irena - Édition complète"
 author: "Jean-David Morvan, Séverine Tréfouël, David Evrard, Walter"
 isbn: "9782344050606"

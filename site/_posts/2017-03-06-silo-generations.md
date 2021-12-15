@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Silo générations"
 author: "Hugh Howey"
 isbn: 9782330064426

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le travail du Furet"
 author: "Jean-Pierre Andrevon"
 isbn: 9782366298888

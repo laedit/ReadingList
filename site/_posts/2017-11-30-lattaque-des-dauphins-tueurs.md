@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "L´attaque des dauphins tueurs"
 author: "Julien Campredon"
 isbn: 9782953366457

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Les naufragés du Commonwealth - Tome 2 : Une nuit sans étoiles"
 author: "Peter F. Hamilton"
 isbn: 9791028108731

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Plaidoyer (impossible) pour les socialistes"
 author: "Bernard Maris"
 isbn: "9782226240200"

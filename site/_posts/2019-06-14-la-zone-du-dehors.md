@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La Zone du Dehors"
 author: "Alain Damasio"
 isbn: "9782070464241"

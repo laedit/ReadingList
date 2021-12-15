@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "L'âge des ténèbres - Tome 2 : Mage de sang"
 author: "Stephen Aryan"
 isbn: 9782811226176

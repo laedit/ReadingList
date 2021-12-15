@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "L'âge des ténèbres - Tome 3 : Mage du chaos"
 author: "Stephen Aryan"
 isbn: 9782811222215

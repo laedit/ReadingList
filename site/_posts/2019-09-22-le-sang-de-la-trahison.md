@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le Sang de la trahison"
 author: "Hervé Jourdain"
 isbn: "9782213677286"

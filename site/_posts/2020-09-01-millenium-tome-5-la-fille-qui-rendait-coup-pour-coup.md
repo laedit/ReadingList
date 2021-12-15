@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Millénium - Tome 5 : La fille qui rendait coup pour coup"
 author: "David Lagercrantz"
 isbn: "9782330081812"

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La première loi - Tome 3 : Dernière querelle"
 author: "Joe Abercrombie"
 isbn: 9782290032954

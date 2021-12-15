@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La Soudaine apparition de Hope Arden"
 author: "Claire North"
 isbn: "9782811230951"

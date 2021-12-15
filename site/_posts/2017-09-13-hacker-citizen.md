@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Hacker citizen"
 author: "Geoffrey Dorne"
 isbn: 9791093749174

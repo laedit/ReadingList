@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Aucun souvenir assez solide"
 author: "Alain Damasio"
 isbn: "9782070464258"

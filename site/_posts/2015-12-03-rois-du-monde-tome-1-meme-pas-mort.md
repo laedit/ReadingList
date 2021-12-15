@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Rois du monde - Tome 1 : Même pas mort"
 author: "Jean-Philippe Jaworski"
 isbn: 9782070457748

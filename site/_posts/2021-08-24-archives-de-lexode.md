@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Archives de l'exode"
 author: "Becky Chambers"
 isbn: "9791036000218"

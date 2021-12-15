@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La Ligne verte"
 author: "Stephen King"
 isbn: 9782253122920

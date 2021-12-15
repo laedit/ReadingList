@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La ballade de Black Tom"
 author: "Victor Lavalle"
 isbn: 9782843449338

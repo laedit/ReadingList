@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Silo origines"
 author: "Hugh Howey"
 isbn: 9782330056919

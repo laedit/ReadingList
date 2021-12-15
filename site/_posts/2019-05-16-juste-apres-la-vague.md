@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Juste après la vague"
 author: "Sandrine Collette"
 isbn: "9782253237525"

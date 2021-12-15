@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Libration"
 author: "Becky Chambers"
 isbn: "9782841728114"

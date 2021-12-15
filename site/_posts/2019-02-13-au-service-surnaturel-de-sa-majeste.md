@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Au service surnaturel de sa Majesté"
 author: "Daniel O'Malley"
 isbn: "9782266250566"

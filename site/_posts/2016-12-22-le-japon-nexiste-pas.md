@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le Japon n'existe pas"
 author: "Alberto Torres Blandina"
 isbn: 9782864248743

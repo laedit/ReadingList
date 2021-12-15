@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Les naufragés du Commonwealth - Tome 1 : L'abîme au-delà des rêves"
 author: "Peter F. Hamilton"
 isbn: 9782811219864

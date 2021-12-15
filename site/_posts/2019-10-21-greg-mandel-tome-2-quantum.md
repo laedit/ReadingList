@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Greg Mandel - Tome 2 : Quantum"
 author: "Peter F. Hamilton"
 isbn: "9782811204143"

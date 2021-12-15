@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Les plus qu'humains"
 author: "Theodore Sturgeon"
 isbn: "9782290172902"

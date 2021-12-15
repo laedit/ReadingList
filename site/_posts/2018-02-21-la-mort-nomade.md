@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La Mort nomade"
 author: "Ian Manook"
 isbn: 9782253092766

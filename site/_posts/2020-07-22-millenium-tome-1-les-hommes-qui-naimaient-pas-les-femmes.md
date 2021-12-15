@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Millénium - Tome 1 : Les hommes qui n'aimaient pas les femmes"
 author: "Stieg Larsson"
 isbn: "9782742793099"

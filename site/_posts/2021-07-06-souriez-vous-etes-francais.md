@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Souriez, vous êtes français"
 author: "Bernard Maris"
 isbn: "9782818505236"

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Bienvenue à Night Vale"
 author: "Joanne Fink"
 isbn: 9782352949350

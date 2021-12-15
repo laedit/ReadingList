@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le meurtre des nuages"
 author: "Lil Esuria"
 isbn: 9782952999410

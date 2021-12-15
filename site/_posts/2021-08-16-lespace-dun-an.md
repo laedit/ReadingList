@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "L'espace d'un an"
 author: "Becky Chambers"
 isbn: "9782841727667"

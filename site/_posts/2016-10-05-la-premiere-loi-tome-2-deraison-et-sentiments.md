@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La première loi - Tome 2 : Déraison et sentiments"
 author: "Joe Abercrombie"
 isbn: 9782290029602

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Soleil vert"
 author: "Harry Harrison"
 isbn: 9782290079416

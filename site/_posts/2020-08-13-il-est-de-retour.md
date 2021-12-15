@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Il est de retour"
 author: "Timur Vermes"
 isbn: "9782714456090"

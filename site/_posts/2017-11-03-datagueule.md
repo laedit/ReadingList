@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Datagueule"
 author: "Julien Goetz, Henri Poulain, Sylvain Lapoix"
 isbn: 9782501120234

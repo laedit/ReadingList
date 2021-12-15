@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le président a disparu"
 author: "Bill Clinton, James Patterson"
 isbn: 9782709662390

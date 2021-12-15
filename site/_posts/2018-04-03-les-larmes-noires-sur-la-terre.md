@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Les Larmes noires sur la terre"
 author: "Sandrine Collette"
 isbn: 9782253092629

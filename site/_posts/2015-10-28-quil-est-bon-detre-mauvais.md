@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Qu´il est bon d´être mauvais"
 author: "L´odieux Connard"
 isbn: 9782757854655

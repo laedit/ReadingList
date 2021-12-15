@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Flashback"
 author: "Dan Simmons"
 isbn: 9782266238847

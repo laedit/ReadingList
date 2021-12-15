@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le faucheur l'intégrale"
 author: "David Gunn"
 isbn: 9782352948124

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Simetierre"
 author: "Stephen King"
 isbn: "9782253151432"

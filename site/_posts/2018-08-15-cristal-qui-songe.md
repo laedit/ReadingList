@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Cristal qui songe"
 author: "Theodore Sturgeon , Alain Glatigny (Traduction)"
 isbn: 9782290155042

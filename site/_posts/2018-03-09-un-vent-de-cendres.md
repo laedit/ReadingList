@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Un vent de cendres"
 author: "Sandrine Collette"
 isbn: 9782253176022

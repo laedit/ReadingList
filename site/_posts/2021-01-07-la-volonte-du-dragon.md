@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La Volonté du Dragon"
 author: "Lionel Davoust"
 isbn: "9782953499810"

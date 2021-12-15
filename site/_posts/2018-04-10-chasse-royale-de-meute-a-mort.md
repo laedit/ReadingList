@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Chasse royale, de Meute a Mort"
 author: "Jean-Philippe Jaworski"
 isbn: 9782070457755

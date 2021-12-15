@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Six fourmis blanches"
 author: "Sandrine Collette"
 isbn: 9782253092872

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Les mille et une vies de Billy Milligan"
 author: "Daniel Keyes"
 isbn: 9782702138014

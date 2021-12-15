@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Survivre au sexisme ordinaire"
 author: "Collectif"
 isbn: "9782290229903"

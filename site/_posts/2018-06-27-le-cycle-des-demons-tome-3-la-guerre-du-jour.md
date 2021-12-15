@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le Cycle des démons - Tome 3 : La Guerre du Jour"
 author: "Peter V. Brett"
 isbn: 9782811213961

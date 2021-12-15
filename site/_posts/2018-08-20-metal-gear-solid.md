@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Metal gear solid"
 author: "Mehdi El Kanafi , Nicolas Courcier"
 isbn: 9791094723227

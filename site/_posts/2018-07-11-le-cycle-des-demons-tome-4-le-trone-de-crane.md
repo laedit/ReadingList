@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le Cycle des démons - Tome 4 : Le Trône de crâne"
 author: "Peter V. Brett"
 isbn: 9782811217785

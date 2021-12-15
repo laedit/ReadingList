@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "L´homme-feu"
 author: "Joe Hill"
 isbn: 9782253083467

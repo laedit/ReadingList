@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le Montespan"
 author: "Jean Teulé"
 isbn: "9782260017233"

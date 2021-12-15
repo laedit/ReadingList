@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La guerre de la faille - Tome 3 : Silverthorn"
 author: "Raymond Elias Feist"
 isbn: "9782811213251"

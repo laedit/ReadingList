@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "L'homme illustré"
 author: "Ray Bradbury"
 isbn: "9782070417797"

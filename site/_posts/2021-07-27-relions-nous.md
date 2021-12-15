@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Relions-nous ! "
 author: "Collectif"
 isbn: "9791020909817"

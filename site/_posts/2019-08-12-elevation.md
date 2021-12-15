@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Elévation"
 author: "Stephen King"
 isbn: "9782253820079"

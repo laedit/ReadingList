@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Les peaux-épaisses"
 author: "Laurent Genefort"
 isbn: "9782072752193"

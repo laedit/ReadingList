@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le Cycle des démons - Tome 2 : La Lance du Désert"
 author: "Peter V. Brett"
 isbn: 9782811208028

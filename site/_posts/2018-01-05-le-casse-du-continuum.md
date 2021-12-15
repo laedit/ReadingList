@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le casse du continuum"
 author: "Léo Henry"
 isbn: 9782070451470

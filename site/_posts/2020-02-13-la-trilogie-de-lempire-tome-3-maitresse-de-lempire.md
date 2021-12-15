@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La trilogie de l'Empire - Tome 3 : Maîtresse de l'Empire"
 author: "Raymond Elias Feist, Janny Wurts"
 isbn: "9782811209322"

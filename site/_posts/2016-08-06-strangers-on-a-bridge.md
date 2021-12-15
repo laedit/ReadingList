@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Strangers on a bridge"
 author: "James B. Donovan"
 isbn: 9781405924900

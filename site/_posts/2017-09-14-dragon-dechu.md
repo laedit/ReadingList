@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Dragon déchu"
 author: "Peter F. Hamilton"
 isbn: 9782253111160

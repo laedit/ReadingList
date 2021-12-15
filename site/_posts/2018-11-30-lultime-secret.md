@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "L'Ultime secret"
 author: "Bernard Werber"
 isbn: 9782253153986

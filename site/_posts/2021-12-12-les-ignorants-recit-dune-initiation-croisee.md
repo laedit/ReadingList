@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Les Ignorants - Récit d'une initiation croisée"
 author: "Etienne Davodeau"
 isbn: "9782754832786"

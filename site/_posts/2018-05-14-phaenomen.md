@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Phaenomen"
 author: "Erik L'Homme"
 isbn: 9782072736964

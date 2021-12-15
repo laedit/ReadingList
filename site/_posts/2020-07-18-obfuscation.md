@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Obfuscation"
 author: "Finn Brunton et Helen Nissenbaum"
 isbn: "9782915825923"

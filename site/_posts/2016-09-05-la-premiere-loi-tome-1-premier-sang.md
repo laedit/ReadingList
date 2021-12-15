@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La première loi - Tome 1 : Premier sang"
 author: "Joe Abercrombie"
 isbn: 9782290029596

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Millénium - Tome 6 : La fille qui devait mourir"
 author: "David Lagercrantz"
 isbn: "9782330125448"

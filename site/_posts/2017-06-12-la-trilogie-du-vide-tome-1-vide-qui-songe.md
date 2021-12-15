@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La trilogie du vide - Tome 1 : Vide qui songe"
 author: "Peter F. Hamilton"
 isbn: 9782811206758

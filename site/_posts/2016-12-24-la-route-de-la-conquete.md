@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La route de la conquête"
 author: "L. Davoust"
 isbn: 9791090648319

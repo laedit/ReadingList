@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Des noeuds d´acier"
 author: "Sandrine Collette"
 isbn: 9782253176015

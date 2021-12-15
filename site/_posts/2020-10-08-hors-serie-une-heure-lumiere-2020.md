@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Hors-série Une Heure-Lumière 2020"
 author: "Kij JOHNSON"
 isbn: "3269900000214"

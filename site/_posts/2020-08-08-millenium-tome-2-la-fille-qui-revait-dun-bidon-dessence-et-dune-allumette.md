@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Millénium - Tome 2 : La fille qui rêvait d'un bidon d'essence et d'une allumette"
 author: "Stieg Larsson"
 isbn: "9782742765010"

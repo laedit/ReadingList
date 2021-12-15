@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Vernon Subutex, 2"
 author: "Virginie Despentes"
 isbn: 9782246857365

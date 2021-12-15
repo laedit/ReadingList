@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Ce qui divise"
 author: "Laurent Genefort"
 isbn: "9782072752094"

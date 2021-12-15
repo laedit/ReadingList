@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La guerre de la Faille - Tome 1 : Magicien - L'Apprenti"
 author: "Raymond Elias Feist"
 isbn: "9782811211554"

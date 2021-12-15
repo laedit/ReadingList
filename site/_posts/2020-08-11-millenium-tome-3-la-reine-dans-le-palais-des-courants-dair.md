@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Millénium - Tome 3 : La Reine dans le palais des courants d'air"
 author: "Stieg Larsson"
 isbn: "9782742770311"

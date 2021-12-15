@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le sang des immortels"
 author: "Laurent Genefort"
 isbn: "9782072752247"

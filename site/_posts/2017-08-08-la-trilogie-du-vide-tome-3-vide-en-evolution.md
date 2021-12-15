@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La trilogie du vide - Tome 3 : Vide en évolution"
 author: "Peter F. Hamilton"
 isbn: 9782811208387

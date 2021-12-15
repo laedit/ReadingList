@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Les agents de Dreamland"
 author: "Caitlín R. Kiernan"
 isbn: "9782843449666"

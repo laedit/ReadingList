@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Du sang, des larmes et des pixels"
 author: "JASON SCHREIER
 J. Schreier"

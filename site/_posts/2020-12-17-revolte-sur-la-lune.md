@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Révolte sur la lune"
 author: "Robert Anson Heinlein"
 isbn: "9782253133094"

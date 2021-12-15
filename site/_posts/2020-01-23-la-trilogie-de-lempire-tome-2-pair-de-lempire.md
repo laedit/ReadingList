@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La trilogie de l'Empire - Tome 2 : Pair de l'Empire"
 author: "Raymond Elias Feist, Janny Wurts"
 isbn: "9782811209124"

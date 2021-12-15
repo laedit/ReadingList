@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Les bienveillantes"
 author: "Jonathan Littell"
 isbn: 9782070350896

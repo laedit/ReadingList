@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le cycle des démons - Tome 5 : Le cœur"
 author: "Peter V. Brett"
 isbn: 9791028110291

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Objet trouvé"
 author: "Matthias Jambon-Puillet"
 isbn: 9782843379215

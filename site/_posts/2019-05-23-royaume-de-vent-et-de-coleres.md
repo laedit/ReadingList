@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Royaume de Vent et de Colères"
 author: "Jean-Laurent  Del Socorro"
 isbn: "9782917689837"

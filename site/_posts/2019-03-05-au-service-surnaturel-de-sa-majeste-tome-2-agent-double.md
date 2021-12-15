@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Au service surnaturel de sa Majesté - Tome 2 : Agent double"
 author: "Daniel O'Malley"
 isbn: "9782266286107"

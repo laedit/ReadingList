@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Greg Mandel - Tome 3 : Nano"
 author: "Peter F. Hamilton"
 isbn: "9782811206352"

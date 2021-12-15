@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La trilogie du vide - Tome 2 : Vide temporel"
 author: "Peter F. Hamilton"
 isbn: 9782811207502

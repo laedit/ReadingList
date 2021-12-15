@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Des fleurs pour Algernon"
 author: "Daniel Keyes"
 isbn: 9782290032725

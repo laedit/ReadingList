@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Frankia - Tome 3 : Frankia"
 author: "Jean-Luc Marcastel"
 isbn: 9782354080556

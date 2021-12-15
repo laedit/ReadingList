@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Gagner la guerre"
 author: "Jean-Philippe Jaworski"
 isbn: 9782070464272

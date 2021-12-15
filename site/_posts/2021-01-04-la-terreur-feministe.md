@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La Terreur Féministe"
 author: "Irene"
 isbn: "9782957529902"

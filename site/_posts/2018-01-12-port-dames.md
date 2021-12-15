@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Port d´âmes"
 author: "Lionel Davoust (Direction)"
 isbn: 9782070792214

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Surveillance ://"
 author: "Tristan Nitot"
 isbn: 9782915825657

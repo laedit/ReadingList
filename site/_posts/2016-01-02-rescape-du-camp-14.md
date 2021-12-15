@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Rescapé du camp 14"
 author: "Blaine Harden"
 isbn: 9782264059567

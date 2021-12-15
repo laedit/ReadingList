@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Ce qui révèle"
 author: "Laurent Genefort"
 isbn: "9782072752148"

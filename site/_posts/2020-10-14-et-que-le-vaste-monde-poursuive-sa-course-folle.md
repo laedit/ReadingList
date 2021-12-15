@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Et que le vaste monde poursuive sa course folle"
 author: "Colum McCann"
 isbn: "9782264052179"

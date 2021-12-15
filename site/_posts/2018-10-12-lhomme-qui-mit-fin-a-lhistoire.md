@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "L'homme qui mit fin à l’histoire"
 author: "Ken Liu"
 isbn: 9782843449093

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "La guerre de la Faille - Tome 2 : Magicien - Le Mage"
 author: "Raymond Elias Feist"
 isbn: "9782811211561"

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Chroniques martiennes"
 author: "Ray Bradbury"
 isbn: "9782070417742"

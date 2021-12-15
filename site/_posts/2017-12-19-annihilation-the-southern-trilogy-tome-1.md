@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Annihilation (The Southern Trilogy, Tome 1)"
 author: "Jeff VanderMeer"
 isbn: 9782253183785

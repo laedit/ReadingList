@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "L'âge des ténèbres - Tome 1 : Mage de guerre"
 author: "Stephen Aryan"
 isbn: 9782811225698

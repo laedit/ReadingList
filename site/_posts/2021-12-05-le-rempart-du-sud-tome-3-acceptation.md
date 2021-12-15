@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: book
 title: "Le Rempart du Sud - Tome 3 : Acceptation"
 author: "Jeff VanderMeer"
 isbn: "9782253183808"
