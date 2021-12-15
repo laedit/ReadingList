@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace AddBook.Business.Search
+namespace AddBook.Business.Search.Book
 {
     internal sealed class FnacSiteBookSearch : IBookSearch
     {
@@ -38,10 +38,13 @@ namespace AddBook.Business.Search
 
                 var characteristics = htmlDoc.QuerySelector("section[id='Characteristics']");
 
-                var author = WebUtility.HtmlDecode(characteristics?.QuerySelectorAll("dl.characteristicsStrate__item")
-                    .First(node => node.FirstElementChild.TextContent == "Auteur")
-                    .Children[1].TextContent).Trim();
+                var author = WebUtility.HtmlDecode(string.Join(", ", characteristics?.QuerySelectorAll("dl.characteristicsStrate__item")
+                    .Where(node => node.FirstElementChild.TextContent == "Auteur").SelectMany(n => n
+                    .Children[1].Children.Select(c => c.TextContent.Trim()))));
 
+                author = AddToAuthor(characteristics, author, "Scénario");
+                author = AddToAuthor(characteristics, author, "Dessinateur");
+                author = AddToAuthor(characteristics, author, "Illustration", illustrator => illustrator != "(donnée non spécifiée)" && illustrator != "Illustrations couleur" && illustrator != "Pas d'illustrations");
 
                 var editor = WebUtility.HtmlDecode(characteristics?.QuerySelectorAll("dl.characteristicsStrate__item")
                     .First(node => node.FirstElementChild.TextContent == "Editeur")
@@ -59,6 +62,28 @@ namespace AddBook.Business.Search
             {
                 return Result<Book>.Fail(ex.ToString());
             }
+        }
+
+        private static string AddToAuthor(AngleSharp.Dom.IElement characteristics, string author, string characteristicName, Func<string, bool> checkValidity = null)
+        {
+            var scenarioParentNodes = characteristics?.QuerySelectorAll("dl.characteristicsStrate__item")
+                .Where(node => node.FirstElementChild.TextContent == characteristicName);
+            if (scenarioParentNodes.Any())
+            {
+                foreach (var writer in scenarioParentNodes.SelectMany(n => n.Children[1].Children.Select(c => WebUtility.HtmlDecode(c.TextContent.Trim()))))
+                {
+                    if (!author.Contains(writer) && (checkValidity == null || checkValidity(writer)))
+                    {
+                        if (!string.IsNullOrWhiteSpace(author))
+                        {
+                            author += ", ";
+                        }
+                        author += writer;
+                    }
+                }
+            }
+
+            return author;
         }
 
         private HttpClient InstanciateHttpClient()

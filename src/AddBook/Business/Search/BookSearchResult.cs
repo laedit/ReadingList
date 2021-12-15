@@ -2,10 +2,11 @@
 
 namespace AddBook.Business.Search
 {
-    internal sealed class SearchResult
+    internal sealed class SearchResult<T>
     {
-        public Option<Book> Book { get; set; }
+        public Option<T> Result { get; set; }
 
         public IEnumerable<string> Logs { get; set; }
+
     }
 }

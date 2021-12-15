@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace AddBook.Business.Search
+namespace AddBook.Business.Search.Book
 {
     public interface IBookSearch
     {

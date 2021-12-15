@@ -2,14 +2,13 @@
 using AddBook.Business.GitHub;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace AddBook.Business.Search
+namespace AddBook.Business.Search.Book
 {
     public class BookFinder
     {
-        private static readonly ConcurrentDictionary<string, SearchResult> _cache = new ConcurrentDictionary<string, SearchResult>();
+        private static readonly ConcurrentDictionary<string, SearchResult<Book>> _cache = new ConcurrentDictionary<string, SearchResult<Book>>();
 
         private static List<IBookSearch> _bookSearches;
 
@@ -22,9 +21,9 @@ namespace AddBook.Business.Search
             };
         }
 
-        internal async Task<SearchResult> Find(string isbn)
+        internal async Task<SearchResult<Book>> Find(string isbn)
         {
-            SearchResult searchResult = null;
+            SearchResult<Book> searchResult = null;
 
             if (!_cache.ContainsKey(isbn))
             {
@@ -37,9 +36,9 @@ namespace AddBook.Business.Search
 #endif
         }
 
-        private static async Task<SearchResult> FindBook(string isbn)
+        private static async Task<SearchResult<Book>> FindBook(string isbn)
         {
-            var searchResult = new SearchResult { Book = Option<Book>.None };
+            var searchResult = new SearchResult<Book> { Result = Option<Book>.None };
             var logs = new List<string>();
 
             foreach (var bookSearch in _bookSearches)
@@ -48,7 +47,7 @@ namespace AddBook.Business.Search
 
                 searchResult = result.Match(book =>
                 {
-                    searchResult.Book = Option<Book>.Some(book);
+                    searchResult.Result = Option<Book>.Some(book);
                     logs.Add($"{bookSearch.GetType().Name} have found the book.");
                     return searchResult;
                 },
@@ -58,7 +57,7 @@ namespace AddBook.Business.Search
                     return searchResult;
                 });
 
-                if (searchResult.Book.HasSome())
+                if (searchResult.Result.HasSome())
                 {
                     break;
                 }

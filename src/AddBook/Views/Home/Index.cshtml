@@ -1,4 +1,5 @@
-﻿@model AddBook.Models.BookPost
+﻿@using AddBook.Business.Search.Magazine
+@model AddBook.Models.Post
 
 
 @section Head
@@ -30,18 +31,38 @@
     <label for="startDate">Start date</label>
     <input type="date" name="startDate" id="startDate" placeholder="start date" asp-format="{0:yyyy-MM-dd}" asp-for="StartDate" class="span2" required />
 
+    <label>Type</label>
+
+    <div>
+      <input type="radio" id="type-book" name="type" value="book" @(Model.Type == PostType.Book ? "checked" : "")>
+      <label for="type-book">Book</label>
+    </div>
+
+    <div>
+      <input type="radio" id="type-magazine" name="type" value="magazine" @(Model.Type == PostType.Magazine ? "checked" : "")>
+      <label for="type-magazine">Magazine</label>
+    </div>
+
     <label for="isbn">ISBN</label>
-    <input type="text" name="isbn" id="isbn" placeholder="ISBN" pattern="[0-9]{13}" value="@Model.Isbn" required />
+    <input type="text" name="isbn" id="isbn" placeholder="ISBN" pattern="[0-9]{13}" value="@Model.Isbn" />
+    
+    <label for="name">Name</label>
+    <select id="name" name="name" asp-items="Html.GetEnumSelectList<MagazineName>()" class="span2" >
+    </select>
+
+    <label for="number">Number</label>
+    <input type="text" name="number" id="number" placeholder="Number" value="@Model.Number" />
+    
     <button type="button" id="search-book" class="button button-outline" disabled>Search</button>
 
     <label for="title">Title</label>
     <input type="text" name="title" id="title" placeholder="Title" value="@Model.Title" class="span2" required />
 
     <label for="author">Author</label>
-    <input type="text" name="author" id="author" placeholder="Author" value="@Model.Author" class="span2" required />
+    <input type="text" name="author" id="author" placeholder="Author" value="@Model.Author" class="span2" />
 
     <label for="editor">Editor</label>
-    <input type="text" name="editor" id="editor" placeholder="Editor" value="@Model.Editor" class="span2" required />
+    <input type="text" name="editor" id="editor" placeholder="Editor" value="@Model.Editor" class="span2" />
 
     <label for="coverUrl" class="vertical-center">Cover url</label>
     <input type="text" name="coverUrl" id="coverUrl" placeholder="Cover url" value="@Model.CoverUrl" class="vertical-center" required />

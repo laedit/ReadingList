@@ -5,29 +5,21 @@ using System.Threading.Tasks;
 
 namespace AddBook.Business.Generation
 {
-    public sealed class PostGenerator
+    public abstract class PostGenerator
     {
-        private const string PostTemplate = @"---
-layout: post
-title: ""{0}""
-author: ""{1}""
-isbn: ""{2}""
-editor: ""{3}""
----
-![Couverture](/img/{4}){5}";
-
         private const string PostsFolder = "site/_posts/";
         private const string ImagesFolder = "site/img/";
 
+        protected abstract string FormatContent(Post bookPost, string imageFileName);
 
-        internal async Task<GeneratedBookPost> GeneratePost(BookPost bookPost)
+        internal async Task<GeneratedPost> GeneratePost(Post bookPost)
         {
             string imageFileName;
             string imagePath = null;
             byte[] imageContent = null;
             if (bookPost.CoverUrl.IsAbsoluteUri)
             {
-                imageFileName = $"{bookPost.Isbn}{Path.GetExtension(bookPost.CoverUrl.AbsoluteUri)}";
+                imageFileName = $"{bookPost.GetKey()}{Path.GetExtension(bookPost.CoverUrl.AbsoluteUri)}";
                 imagePath = $"{ImagesFolder}{imageFileName}";
                 imageContent = await DownloadImage(bookPost.CoverUrl);
             }
@@ -37,11 +29,11 @@ editor: ""{3}""
             }
 
             var postPath = $"{PostsFolder}{bookPost.StartDate:yyyy-MM-dd}-{bookPost.Title.Slugify()}.md";
-            var postContent = string.Format(PostTemplate, bookPost.Title, bookPost.Author, bookPost.Isbn, bookPost.Editor, imageFileName, bookPost.Summary);
-            return new GeneratedBookPost { ImagePath = imagePath, ImageContent = imageContent, PostPath = postPath, PostContent = postContent, BookTitle = bookPost.Title };
+            var postContent = FormatContent(bookPost, imageFileName);
+            return new GeneratedPost { ImagePath = imagePath, ImageContent = imageContent, PostPath = postPath, PostContent = postContent, PostTitle = bookPost.Title };
         }
 
-        private static async Task<byte[]> DownloadImage(Uri imageUrl)
+        protected static async Task<byte[]> DownloadImage(Uri imageUrl)
         {
             return await new System.Net.WebClient().DownloadDataTaskAsync(imageUrl);
         }

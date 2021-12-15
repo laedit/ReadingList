@@ -1,7 +1,8 @@
 using AddBook.Business.Database;
 using AddBook.Business.Generation;
 using AddBook.Business.GitHub;
-using AddBook.Business.Search;
+using AddBook.Business.Search.Book;
+using AddBook.Business.Search.Magazine;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.CookiePolicy;
@@ -37,10 +38,12 @@ namespace AddBook
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
                 });
 
-            services.AddSingleton<PostGenerator>();
+            services.AddSingleton<BookPostGenerator>();
             services.AddSingleton<GitHubHelper>();
             services.AddSingleton<BooksRepository>();
             services.AddSingleton<BookFinder>();
+            services.AddSingleton<MagazineFinder>();
+            services.AddSingleton<MagazinePostGenerator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

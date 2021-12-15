@@ -4,6 +4,6 @@
     {
         public string Date { get; set; }
         public bool Generated { get; set; }
-        public string Isbn { get; set; }
+        public string Reference { get; set; }
     }
 }

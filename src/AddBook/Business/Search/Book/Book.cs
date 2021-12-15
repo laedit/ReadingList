@@ -1,4 +1,4 @@
-﻿namespace AddBook.Business.Search
+﻿namespace AddBook.Business.Search.Book
 {
     public sealed class Book
     {

@@ -15,57 +15,64 @@ namespace AddBook.Controllers
     public class HomeController : Controller
     {
         private readonly GitHubHelper gitHubHelper;
-        private readonly PostGenerator postGenerator;
+        private readonly BookPostGenerator bookPostGenerator;
+        private readonly MagazinePostGenerator magazinePostGenerator;
         private readonly BooksRepository booksRepository;
 
-        public HomeController(GitHubHelper gitHubHelper, PostGenerator postGenerator, BooksRepository booksRepository)
+        public HomeController(GitHubHelper gitHubHelper, BooksRepository booksRepository, BookPostGenerator bookPostGenerator, MagazinePostGenerator magazinePostGenerator)
         {
             this.gitHubHelper = gitHubHelper;
-            this.postGenerator = postGenerator;
             this.booksRepository = booksRepository;
+            this.bookPostGenerator = bookPostGenerator;
+            this.magazinePostGenerator = magazinePostGenerator;
         }
 
         [Authorize]
         public IActionResult Index()
         {
-            return View(new BookPost { StartDate = DateTime.Now });
+            return View(new Post { StartDate = DateTime.Now });
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Index(BookPost book)
+        public async Task<IActionResult> Index(Post post)
         {
             if (!ModelState.IsValid)
             {
                 ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
 
-                var view = View(book);
+                var view = View(post);
                 view.StatusCode = 400;
                 return view;
             }
 
             // Generates post
-            var generatedBookPost = await postGenerator.GeneratePost(book);
+            var generatedPost = post.Type switch
+            {
+                PostType.Book => await bookPostGenerator.GeneratePost(post),
+                PostType.Magazine => await magazinePostGenerator.GeneratePost(post),
+                _ => throw new Exception($"Type {post.Type} unknown")
+            };
 
             // Add book to books.yml
             var books = await booksRepository.GetBooks();
-            books.Add(book.Isbn, book.StartDate, true);
+            books.Add(post.GetKey(), post.StartDate, true);
             var booksContentUpdated = books.Export();
 
             // Commit it on github
             var filesToCommit = new List<CommitItem>
                 {
                     CommitItem.Create(BooksRepository.Path, booksContentUpdated),
-                    CommitItem.Create(generatedBookPost.PostPath, generatedBookPost.PostContent)
+                    CommitItem.Create(generatedPost.PostPath, generatedPost.PostContent)
                 };
-            if (!string.IsNullOrEmpty(generatedBookPost.ImagePath))
+            if (!string.IsNullOrEmpty(generatedPost.ImagePath))
             {
-                filesToCommit.Add(CommitItem.Create(generatedBookPost.ImagePath, generatedBookPost.ImageContent));
+                filesToCommit.Add(CommitItem.Create(generatedPost.ImagePath, generatedPost.ImageContent));
             }
 
-            gitHubHelper.Commit($"Add new book '{generatedBookPost.BookTitle}'", filesToCommit);
+            gitHubHelper.Commit($"Add new {(post.Type == PostType.Book ? "book" : "magazine")} '{generatedPost.PostTitle}'", filesToCommit);
             ViewBag.Success = true;
-            return View(new BookPost { StartDate = book.StartDate });
+            return View(new Post { StartDate = post.StartDate });
         }
 
         public IActionResult Error()

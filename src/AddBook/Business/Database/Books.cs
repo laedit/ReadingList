@@ -15,14 +15,14 @@ namespace AddBook.Business.Database
             this.booksList = booksList;
         }
 
-        internal void Add(string isbn, DateTime startDate, bool generated)
+        internal void Add(string reference, DateTime startDate, bool generated)
         {
-            booksList.Add(new BooksItem { Date = startDate.ToString("yyyy-MM-dd"), Generated = generated, Isbn = isbn });
+            booksList.Add(new BooksItem { Date = startDate.ToString("yyyy-MM-dd"), Generated = generated, Reference = reference });
         }
 
-        internal Option<BooksItem> Find(string isbn)
+        internal Option<BooksItem> Find(string reference)
         {
-            var bookItem = booksList.FirstOrDefault(bi => bi.Isbn == isbn);
+            var bookItem = booksList.FirstOrDefault(bi => bi.Reference == reference);
             return bookItem == null ? Option<BooksItem>.None : Option<BooksItem>.Some(bookItem);
         }
 

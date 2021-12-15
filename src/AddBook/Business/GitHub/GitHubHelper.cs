@@ -103,24 +103,25 @@ namespace AddBook.Business.GitHub
         /// </summary>
         /// <param name="postDate">Post date in the path</param>
         /// <returns>Path of the post</returns>
-        internal async Task<Option<string>> SearchPost(string postDate)
+        internal async Task<Option<IEnumerable<string>>> SearchPost(string postDate)
         {
             var githubClient = InstanciateGitHubClient();
             var searchRequest = new SearchCodeRequest(postDate, Owner, Repository)
             {
                 In = new[] { CodeInQualifier.Path },
                 Path = "site/_posts",
-                Extensions = new[] { "md" }
+                Extensions = new[] { "md" },
+                FileName = $"{postDate}-*"
             };
 
             var searchResult = await githubClient.Search.SearchCode(searchRequest);
 
             if (searchResult.TotalCount == 0)
             {
-                return Option<string>.None;
+                return Option<IEnumerable<string>>.None;
             }
 
-            return Option<string>.Some(searchResult.Items[0].Path);
+            return Option<IEnumerable<string>>.Some(searchResult.Items.Select(i => i.Path));
         }
 
         private IGitHubClient InstanciateGitHubClient()
