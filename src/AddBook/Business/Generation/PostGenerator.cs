@@ -19,7 +19,7 @@ namespace AddBook.Business.Generation
             byte[] imageContent = null;
             if (bookPost.CoverUrl.IsAbsoluteUri)
             {
-                imageFileName = $"{bookPost.GetKey()}{Path.GetExtension(bookPost.CoverUrl.AbsoluteUri)}";
+                imageFileName = $"{bookPost.GetKey()}{Path.GetExtension(bookPost.CoverUrl.AbsolutePath)}";
                 imagePath = $"{ImagesFolder}{imageFileName}";
                 imageContent = await DownloadImage(bookPost.CoverUrl);
             }
