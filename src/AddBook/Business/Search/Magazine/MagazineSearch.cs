@@ -48,7 +48,7 @@ namespace AddBook.Business.Search.Magazine
 
                 var magazinesInfo = await magazineResponse.Content.ReadFromJsonAsync<List<MagazineInfo>>();
 
-                var magazine = magazinesInfo.First(mi => mi.Libelle.Contains(magazineSearchParameters.Number));
+                var magazine = magazinesInfo.First(mi => mi.Libelle.ToLowerInvariant().Contains(magazineSearchParameters.Number.ToLowerInvariant()));
                 // FIXME prendre en compte le cas où le numéro n'est pas dans la liste et qu'il faut chercher la suite
                 return Result<Magazine>.Success(new Magazine {
                     Title = (magazineSearchParameters.Name == MagazineName.LaRevueDessinee ? "La Revue Dessinée" : "") + magazine.Libelle,

@@ -3,7 +3,6 @@ using AddBook.Business.GitHub;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using static AddBook.Controllers.BookInfoController;
 
 namespace AddBook.Business.Search.Magazine
 {
