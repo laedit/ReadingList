@@ -28,7 +28,7 @@ namespace AddBook.Business.Search.Book
                     return Result<Book>.Fail("Data not found.");
                 }
 
-                var bookLink = htmlDoc.QuerySelector("a.js-minifa-title");
+                var bookLink = htmlDoc.QuerySelector("a.js-Search-hashLink");
                 if (bookLink == null)
                 {
                     return Result<Book>.Fail("Book infos link not found.");
@@ -54,7 +54,17 @@ namespace AddBook.Business.Search.Book
 
                 var title = WebUtility.HtmlDecode(htmlDoc.QuerySelector("h1.f-productHeader-Title")?.TextContent?.Trim());
 
-                var summary = WebUtility.HtmlDecode(HtmlToMarkdown.Convert(htmlDoc.QuerySelector(".summaryStrate__raw")));
+                var descriptions = htmlDoc.QuerySelectorAll(".f-productDesc__raw");
+                var summary = "";
+                if (descriptions.Length == 1)
+                {
+                    summary = WebUtility.HtmlDecode(HtmlToMarkdown.Convert(descriptions[0]));
+                }
+                else
+                {
+                    // The full description is usually in the second description
+                    summary = WebUtility.HtmlDecode(HtmlToMarkdown.Convert(descriptions[1]));
+                }
 
                 return Result<Book>.Success(new Book { Isbn = isbn, Title = title, Author = author, Editor = editor, CoverUrl = coverUrl, Summary = summary });
             }
