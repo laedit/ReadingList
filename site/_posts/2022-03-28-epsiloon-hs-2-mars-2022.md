@@ -3,7 +3,7 @@ layout: magazine
 title: "Epsiloon HS 2 - Mars 2022"
 ---
 ![Couverture](/img/epsiloon-hs2.jpg)**AMOUR, C´EST LA SCIENCE QUI EN PARLE LE MIEUX**  
-Découvrez pourquoi dans ce deuxième hors-série d´_Epsiloon_ 
+Découvrez pourquoi dans ce deuxième hors-série d´Epsiloon 
 
 Nous vous avions prévenu, à _Epsiloon_ , nous ne nous intéressons pas à la science en elle-même : notre crédo, c´est de vous parler du monde. De vous raconter comment la science le dévoile dans sa diversité, sa complexité, sa beauté. Alors, d´accord, un hors-série sur l´amour peut paraître incongru, tant la légèreté supposée du sujet semble davantage convenir aux magazines people. Ou au contraire, tant sa gravité plaiderait pour le laisser intact, dans toute sa plénitude, à la poésie et la littérature... Mais ce sentiment, à la fois évanescent et essentiel, peut aussi être considéré comme un objet d´étude scientifique. Pas seulement pour la psychologie, mais aussi pour la biochimie, la génétique, l´anthropologie, l´éthologie, et même la mécanique quantique. Et cela donne des histoires d´amour fascinantes. L´amour ? Osons le sacrilège : c´est la science qui en parle le mieux. 
 
