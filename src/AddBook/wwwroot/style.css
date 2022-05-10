@@ -1,6 +1,16 @@
 ﻿:root {
     --main-color: #13678b;
     --secondary-color: #aaaaaa;
+    --color: #000;
+    --background-color: #fcfcfa;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-color: #1a8fc1;
+        --color: #bfbfbf;
+        --background-color: #1f1f1f;
+    }
 }
 
 body {
@@ -9,6 +19,8 @@ body {
     margin-right: auto;
     width: auto;
     text-align: center;
+    color: var(--color);
+    background-color: var(--background-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -142,6 +154,11 @@ label {
     text-align: justify;
 }
 
+.CodeMirror {
+    color: var(--color);
+    background-color: var(--background-color);
+}
+
 input[type="text"], input[type="password"], input[type="date"], textarea {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -151,6 +168,7 @@ input[type="text"], input[type="password"], input[type="date"], textarea {
     border-radius: .4rem;
     box-shadow: none;
     padding: .6rem 1.0rem;
+    color: var(--color);
 }
 
     input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, textarea:focus {
