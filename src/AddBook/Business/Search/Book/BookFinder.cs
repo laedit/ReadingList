@@ -17,6 +17,7 @@ namespace AddBook.Business.Search.Book
             _bookSearches = new List<IBookSearch>
             {
                 new PostsBookSearch(booksRepository, gitHubHelper),
+                new KleberLibraryBookSearch(),
                 new FnacSiteBookSearch()
             };
         }
