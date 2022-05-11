@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.16.1" />
-    <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="11.1.0" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.6.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

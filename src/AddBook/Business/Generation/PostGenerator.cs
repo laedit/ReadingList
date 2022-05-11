@@ -1,5 +1,4 @@
 ﻿using AddBook.Models;
-using ImageMagick;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -36,13 +35,7 @@ namespace AddBook.Business.Generation
 
         protected static async Task<byte[]> DownloadImage(Uri imageUrl)
         {
-            using (var image = new MagickImage(await new System.Net.WebClient().DownloadDataTaskAsync(imageUrl)))
-            {
-                // crop borders
-                image.Trim();
-                image.RePage();
-                return image.ToByteArray();
-            }
+            return await new System.Net.WebClient().DownloadDataTaskAsync(imageUrl);
         }
     }
 }
