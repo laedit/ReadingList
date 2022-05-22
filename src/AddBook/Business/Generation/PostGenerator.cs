@@ -1,6 +1,7 @@
 ﻿using AddBook.Models;
 using System;
 using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace AddBook.Business.Generation
@@ -9,6 +10,8 @@ namespace AddBook.Business.Generation
     {
         private const string PostsFolder = "site/_posts/";
         private const string ImagesFolder = "site/img/";
+
+        private static readonly HttpClient httpClient = new ();
 
         protected abstract string FormatContent(Post bookPost, string imageFileName);
 
@@ -35,7 +38,7 @@ namespace AddBook.Business.Generation
 
         protected static async Task<byte[]> DownloadImage(Uri imageUrl)
         {
-            return await new System.Net.WebClient().DownloadDataTaskAsync(imageUrl);
+            return await httpClient.GetByteArrayAsync(imageUrl);
         }
     }
 }
