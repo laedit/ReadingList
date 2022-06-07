@@ -2,7 +2,7 @@
 layout: magazine
 title: "Next INpact #3"
 ---
-![Couverture](/img/epsiloon-3.webp)Après deux numéros à succès, Next INpact publie son troisième magazine, toujours sans aucune publicité, qui revient cette fois sur la question de l'INdépendance technologique, l'éducation au numérique, les approches françaises en la matière avec différents dossiers sur des projets et des portraits sur ce qui a marqué notre époque.
+![Couverture](/img/nextinpact-3.webp)Après deux numéros à succès, Next INpact publie son troisième magazine, toujours sans aucune publicité, qui revient cette fois sur la question de l'INdépendance technologique, l'éducation au numérique, les approches françaises en la matière avec différents dossiers sur des projets et des portraits sur ce qui a marqué notre époque.
 
 Voici son sommaire :
 
