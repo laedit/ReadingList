@@ -1,0 +1,12 @@
+---
+layout: magazine
+title: "La Revue DessinéeOn leur vend des armes"
+---
+![Couverture](/img/larevuedessinee-onleurvenddesarmes.jpeg)**De Paris à Moscou, en passant par Le Caire et Riyad… Notre édition spéciale plonge au cœur du business des ventes d’armes _Made in France_ .** 
+
+Une bande dessinée sous le sceau du secret-défense. Les ventes d’armes sont un business opaque, domaine réservé de l’État et qui bénéficie aux marchands de canons. **Un commerce florissant pour la France, troisième exportateur d’armes au monde** . Mais derrière les cocoricos, se cache une toute autre réalité, bien moins avouable.
+
+ Pour s’assurer cette place, la France fournit des armes à des régimes autoritaires : à l’Arabie saoudite, aux Émirats arabes unis, à l’Égypte, mais aussi à la Russie. **La France a livré à Moscou des armes pour moderniser ses tanks, avions de chasse et hélicoptères de combat, jusqu’en 2020.** Les mêmes qui bombardent aujourd’hui les populations civiles en Ukraine. Un commerce mortifère, aujourd’hui plus que jamais remis en question, et sur lequel l’État installe une chape de plomb pour étouffer le débat démocratique. C’est ce que cette bande dessinée inédite vous propose de découvrir sur **160 pages, rythmées par des enquêtes, des interviews, des décryptages.**  Le tout basé sur les témoignages de lanceurs d’alerte et des documents secret-défense.
+
+ 
+ À travers ces enquêtes, vous découvrirez **comment la France est devenue un seigneur de guerre** , dont les armes servent à alimenter des conflits meurtriers. **Comment elle entraîne sur son sol des militaires saoudiens**  accusés de crimes de guerre au Yémen. **Comment elle coopère avec la dictature égyptienne**  en lui fournissant des armes, des logiciels de surveillance de masse. Ou encore, **comment elle met au service de l’Égypte des militaires français**  à des fins de sécurité intérieure et de répression aveugle, sous couvert de lutte contre le terrorisme. « _Le cynisme et l´hypocrisie de la France en matière de ventes d’armes ne peut qu’inspirer des dessinateurs. Cette bande dessinée s’empare de ce sujet grave en alliant rigueur et légèreté. _ » Amélie Mougey, rédactrice en chef de _La Revue Dessiné_ Ce sont ces enquêtes que nous vous proposons de découvrir dans un hors-série inédit, fruit de la collaboration entre _La Revue Dessinée_  et le site d’investigation Disclose. Aux crayons : Cyril Elophe, M. LeRouge, Vincent Mahé, Jean-Christophe Mazurie, Vincent Sorel et Cédric Villain.
