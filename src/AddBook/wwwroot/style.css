@@ -303,10 +303,18 @@ svg {
     h1 {
         margin-top: -0px;
     }
+
+    .small {
+        width: 85vw;
+    }
+
+    .large {
+        width: 95vw;
+    }
 }
 
 @media screen and (max-width: 600px) {
-    label, input, button, .column2 {
+    label, input, button, .column2, #editor {
         grid-column: 1 / 5;
     }
 
