@@ -92,22 +92,6 @@ footer {
     width: auto;
 }
 
-/* min-device-width: 800px instead? */
-@media screen and (max-width:900px) {
-    body {
-        width: auto;
-        margin: 10px;
-    }
-
-    main {
-        width: 100%;
-    }
-
-    h1 {
-        margin-top: -0px;
-    }
-}
-
 /* from https://github.com/milligram/milligram/ */
 .container {
     display: grid;
@@ -305,10 +289,27 @@ svg {
     }
 }
 
+/* min-device-width: 800px instead? */
+@media screen and (max-width:900px) {
+    body {
+        width: auto;
+        margin: 10px;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    h1 {
+        margin-top: -0px;
+    }
+}
+
 @media screen and (max-width: 600px) {
     label, input, button, .column2 {
         grid-column: 1 / 5;
     }
+
     .span2 {
         grid-column: span 3;
     }
