@@ -311,6 +311,10 @@ svg {
     .large {
         width: 95vw;
     }
+
+    .info {
+        width: 95vw;
+    }
 }
 
 @media screen and (max-width: 600px) {
