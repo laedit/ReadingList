@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             searchBookButton.disabled = !isbnInput.value || !isbnInput.checkValidity();
         }
     });
- 
+
     let nameInput = document.getElementById("name") as HTMLInputElement;
     let numberInput = document.getElementById("number") as HTMLInputElement;
     nameInput.addEventListener("input", () => {
@@ -69,7 +69,11 @@ function SwitchFromFromType(type: string) {
 
     let showBook = type === "book";
 
-    document.getElementById("isbn").hidden = !showBook;
+    const isbnElement = document.getElementById("isbn");
+    isbnElement.hidden = !showBook;
+    if (showBook) {
+        isbnElement.focus();
+    }
     (document.querySelector(`label[for='isbn']`) as HTMLLabelElement).hidden = !showBook;
 
     document.getElementById("author").hidden = !showBook;
