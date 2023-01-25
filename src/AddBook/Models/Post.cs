@@ -37,7 +37,6 @@ namespace AddBook.Models
         [Display(Name = "Cover url")]
         public Uri CoverUrl { get; set; }
 
-        [Required]
         public string Summary { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
