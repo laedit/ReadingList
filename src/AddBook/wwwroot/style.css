@@ -143,7 +143,7 @@ label {
     background-color: var(--background-color);
 }
 
-input[type="text"], input[type="password"], input[type="date"], textarea {
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime-local"], textarea {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -155,7 +155,7 @@ input[type="text"], input[type="password"], input[type="date"], textarea {
     color: var(--color);
 }
 
-    input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, textarea:focus {
+    input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime-local"]:focus, textarea:focus {
         border-color: var(--main-color);
     }
 
