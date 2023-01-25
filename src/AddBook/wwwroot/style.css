@@ -325,4 +325,16 @@ svg {
     .span2 {
         grid-column: span 3;
     }
+
+    .small {
+        width: 85vw;
+    }
+
+    .large {
+        width: 95vw;
+    }
+
+    .info {
+        width: 95vw;
+    }
 }
