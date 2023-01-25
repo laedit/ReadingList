@@ -29,7 +29,7 @@
 
 <form method="post" action="/" class="container large" id="submit-book-form">
     <label for="startDate">Start date</label>
-    <input type="date" name="startDate" id="startDate" placeholder="start date" asp-format="{0:yyyy-MM-dd}" asp-for="StartDate" class="span2" required />
+    <input type="datetime-local" name="startDate" id="startDate" placeholder="start date" asp-format="{0:yyyy-MM-ddTHH:mm}" asp-for="StartDate" class="span2" required />
 
     <label>Type</label>
 

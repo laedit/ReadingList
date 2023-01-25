@@ -22,7 +22,7 @@ namespace AddBook.Models
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Start date")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime StartDate { get; set; }
 
         [Required]

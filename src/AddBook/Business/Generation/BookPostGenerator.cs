@@ -6,6 +6,7 @@ namespace AddBook.Business.Generation
     {
         private const string PostTemplate = @"---
 layout: book
+date: ""{6}""
 title: ""{0}""
 author: ""{1}""
 isbn: ""{2}""
@@ -15,7 +16,7 @@ editor: ""{3}""
 
         protected override string FormatContent(Post bookPost, string imageFileName)
         {
-            return string.Format(PostTemplate, bookPost.Title, bookPost.Author, bookPost.Isbn, bookPost.Editor, imageFileName, bookPost.Summary);
+            return string.Format(PostTemplate, bookPost.Title, bookPost.Author, bookPost.Isbn, bookPost.Editor, imageFileName, bookPost.Summary, bookPost.StartDate.ToString("yyyy-MM-dd HH:mm"));
         }
     }
 }
