@@ -55,7 +55,7 @@ namespace AddBook.Business.Search.Book
 
                             if (postLine.StartsWith("![Couverture]"))
                             {
-                                book.CoverUrl = postLine.Substring(14, postLine.LastIndexOf(')') - 14);
+                                book.CoverUrl = postLine.Substring(14, postLine.IndexOf(')') - 14);
                                 summary.AppendLine(postLine.Substring(postLine.IndexOf(')') + 1));
                                 continue;
                             }
