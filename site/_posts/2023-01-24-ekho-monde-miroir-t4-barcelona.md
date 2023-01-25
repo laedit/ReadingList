@@ -1,4 +1,5 @@
 ---
+date: "2023-01-24 13:00"
 layout: book
 title: "Ekhö, monde miroir t.4 : Barcelona"
 author: "Christophe Arleston, Alessandro Barbucci"

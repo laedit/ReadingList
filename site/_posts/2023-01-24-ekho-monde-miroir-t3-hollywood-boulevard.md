@@ -1,4 +1,5 @@
 ---
+date: "2023-01-24 10:00"
 layout: book
 title: "Ekhö, monde miroir t.3 : Hollywood Boulevard"
 author: "Christophe Arleston, Alessandro Barbucci"

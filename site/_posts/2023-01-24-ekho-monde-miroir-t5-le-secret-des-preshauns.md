@@ -1,4 +1,5 @@
 ---
+date: "2023-01-24 13:30"
 layout: book
 title: "Ekhö, monde miroir t.5 : le secret des Preshauns"
 author: "Christophe Arleston, Alessandro Barbucci"

@@ -1,4 +1,5 @@
 ---
+date: "2023-01-24 09:00"
 layout: book
 title: "Ekhö, monde miroir t.2 : Paris Empire"
 author: "Christophe Arleston, Alessandro Barbucci"

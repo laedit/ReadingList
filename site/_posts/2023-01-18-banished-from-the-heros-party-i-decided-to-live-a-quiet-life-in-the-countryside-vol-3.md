@@ -1,4 +1,5 @@
 ---
+date: "2023-01-18 07:00"
 layout: book
 title: "Banished from the Hero's Party, I Decided to Live a Quiet Life in the Countryside, Vol. 3 "
 author: "Zappon, Masahiro Ikeno, Yasumo"

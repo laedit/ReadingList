@@ -1,4 +1,5 @@
 ---
+date: "2023-01-24 15:00"
 layout: book
 title: "Ekhö, monde miroir t.7 : swinging London"
 author: "Christophe Arleston, Alessandro Barbucci"

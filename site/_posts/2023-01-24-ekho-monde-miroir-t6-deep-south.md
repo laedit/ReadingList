@@ -1,4 +1,5 @@
 ---
+date: "2023-01-24 14:00"
 layout: book
 title: "Ekhö, monde miroir t.6 : deep south"
 author: "Christophe Arleston, Alessandro Barbucci"
