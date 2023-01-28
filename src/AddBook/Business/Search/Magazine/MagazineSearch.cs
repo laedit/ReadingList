@@ -38,19 +38,26 @@ namespace AddBook.Business.Search.Magazine
                     default: return Result<Magazine>.Fail($"Magazine '{magazineSearchParameters.Name}' not handled.");
                 }
 
-                var magazineResponse = await httpClient.PostAsync($"{urlBase}/core/getapi.php", 
+                var magazineResponse = await httpClient.PostAsync($"{urlBase}/core/getapi.php",
                     new StringContent(requestBody, System.Text.Encoding.UTF8, "application/x-www-form-urlencoded"));
 
-                if(magazineResponse.StatusCode != HttpStatusCode.OK)
+                if (magazineResponse.StatusCode != HttpStatusCode.OK)
                 {
                     throw new Exception($"Error during magazine search: {await magazineResponse.Content.ReadAsStringAsync()}");
                 }
 
                 var magazinesInfo = await magazineResponse.Content.ReadFromJsonAsync<List<MagazineInfo>>();
 
-                var magazine = magazinesInfo.First(mi => mi.Libelle.ToLowerInvariant().Contains(magazineSearchParameters.Number.ToLowerInvariant()));
+                var magazine = magazinesInfo.FirstOrDefault(mi => mi.Libelle.ToLowerInvariant().Contains(magazineSearchParameters.Number.ToLowerInvariant()));
+
+                if (magazine == null)
+                {
+                    return Result<Magazine>.Fail($"No magazine found for search '{magazineSearchParameters.Name}'.");
+                }
+
                 // FIXME prendre en compte le cas où le numéro n'est pas dans la liste et qu'il faut chercher la suite
-                return Result<Magazine>.Success(new Magazine {
+                return Result<Magazine>.Success(new Magazine
+                {
                     Title = (magazineSearchParameters.Name == MagazineName.LaRevueDessinee ? "La Revue Dessinée" : "") + magazine.Libelle,
                     CoverUrl = magazine.ImageGrandFormat,
                     Summary = magazine.Tarif == null ? "" : HtmlToMarkdown.Convert(new HtmlParser().ParseDocument(WebUtility.HtmlDecode(magazine.Tarif.Description)))
