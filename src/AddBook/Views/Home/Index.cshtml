@@ -9,12 +9,12 @@
     <script type="text/javascript" src="~/lib/easymde/dist/easymde.min.js"></script>
 }
 
-@if (ViewBag.Errors != null)
+@if (Model.Errors != null)
 {
     <div class="info error">
         <b>Error(s):</b>
         <ul>
-            @foreach (var error in ViewBag.Errors)
+            @foreach (var error in Model.Errors)
             {
                 <li>@error</li>
             }
@@ -22,7 +22,7 @@
     </div>
 }
 
-@if (ViewBag.Success != null && ViewBag.Success) // FIXME replace by a proper model?
+@if (Model.IsBookAdded)
 {
     <div class="info success">Book added.</div>
 }

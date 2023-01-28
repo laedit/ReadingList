@@ -39,7 +39,7 @@ namespace AddBook.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
+                post.Errors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
 
                 var view = View(post);
                 view.StatusCode = 400;
@@ -71,8 +71,8 @@ namespace AddBook.Controllers
             }
 
             gitHubHelper.Commit($"Add new {(post.Type == PostType.Book ? "book" : "magazine")} '{generatedPost.PostTitle}'", filesToCommit);
-            ViewBag.Success = true;
-            return View(new Post { StartDate = post.StartDate });
+
+            return View(new Post { StartDate = post.StartDate, IsBookAdded = true });
         }
 
         public IActionResult Error()

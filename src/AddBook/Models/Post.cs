@@ -10,6 +10,10 @@ namespace AddBook.Models
     {
         private static readonly Regex HtmlTagRegex = new Regex("<[^>]*>", RegexOptions.Compiled);
 
+        public bool IsBookAdded { get; set; }
+
+        public IEnumerable<string> Errors { get; internal set; }
+
         public PostType Type { get; set; }
 
         [RegularExpression("[0-9]{13}")]
