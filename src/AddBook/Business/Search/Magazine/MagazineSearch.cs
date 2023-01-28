@@ -52,7 +52,7 @@ namespace AddBook.Business.Search.Magazine
 
                 if (magazine == null)
                 {
-                    return Result<Magazine>.Fail($"No magazine found for search '{magazineSearchParameters.Name}'.");
+                    return Result<Magazine>.Fail($"No magazine found for search '{magazineSearchParameters.Number}' in {magazineSearchParameters.Name}.");
                 }
 
                 // FIXME prendre en compte le cas où le numéro n'est pas dans la liste et qu'il faut chercher la suite
