@@ -8,7 +8,7 @@ namespace AddBook.Business.Search.Book
 {
     public class BookFinder
     {
-        private static readonly ConcurrentDictionary<string, SearchResult<Book>> _cache = new ConcurrentDictionary<string, SearchResult<Book>>();
+        private static readonly ConcurrentDictionary<string, SearchResult<Book>> _cache = new();
 
         private static List<IBookSearch> _bookSearches;
 

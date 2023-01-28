@@ -142,7 +142,7 @@ namespace AddBook.Business
                             // headlines
                             outText.AppendLine();
                             outText.AppendLine();
-                            element.InnerHtml = "#######".Substring(0, 7 - int.Parse(element.TagName.Substring(1))) + " " + element.InnerHtml + "<br />";
+                            element.InnerHtml = $"{"#######"[..(7 - int.Parse(element.TagName[1..]))]} {element.InnerHtml}<br />";
                             break;
                     }
 
