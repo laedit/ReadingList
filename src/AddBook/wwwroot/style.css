@@ -201,11 +201,11 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     justify-content: space-between;
 }
 
-.info-label::after {
-    content: "❯";
-    text-align: center;
-    transition: all 0.35s;
-}
+    .info-label::after {
+        content: "❯";
+        text-align: center;
+        transition: all 0.35s;
+    }
 
 .info-content {
     max-height: 0;
@@ -348,7 +348,7 @@ svg {
     }
 
     .info {
-        width: 95vw;
+        width: 85vw;
     }
 }
 
@@ -359,17 +359,5 @@ svg {
 
     .span2 {
         grid-column: span 3;
-    }
-
-    .small {
-        width: 85vw;
-    }
-
-    .large {
-        width: 95vw;
-    }
-
-    .info {
-        width: 95vw;
     }
 }
