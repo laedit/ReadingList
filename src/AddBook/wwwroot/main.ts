@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     searchBookButton.addEventListener("click", () => {
         if (bookRadio.checked) {
-            SearchBookInfo(isbnInput.value);
+            SearchInfo(`/bookinfo/${isbnInput.value}`, "Book");
         }
         else if (magazineRadio.checked) {
-            SearchMagazineInfo(nameInput.value, numberInput.value);
+            SearchInfo(`/magazineinfo/${nameInput.value}/${numberInput.value}`, "Magazine");
         }
         else {
             alert("Type inconnu");
@@ -51,17 +51,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("coverUrl").addEventListener("input", () => SetCoverImage((document.getElementById("coverUrl") as HTMLInputElement).value));
 
-    bookRadio.addEventListener("change", function () { SwitchFromFromType(this.value) });
+    bookRadio.addEventListener("change", () => SwitchToType(bookRadio.value));
     if (bookRadio.checked) {
-        SwitchFromFromType(bookRadio.value);
+        SwitchToType(bookRadio.value);
     }
-    magazineRadio.addEventListener("change", function () { SwitchFromFromType(this.value) });
+    magazineRadio.addEventListener("change", () => SwitchToType(magazineRadio.value));
     if (magazineRadio.checked) {
-        SwitchFromFromType(magazineRadio.value);
+        SwitchToType(magazineRadio.value);
     }
 });
 
-function SwitchFromFromType(type: string) {
+function SwitchToType(type: string) {
 
     if (type != "book" && type != "magazine") {
         alert(`Type ${type} unknown!`);
@@ -98,7 +98,7 @@ function SetCoverImage(coverUrl: string) {
     document.getElementById("cover-img").setAttribute("src", coverUrl);
 }
 
-async function SearchBookInfo(isbn: string) {
+async function SearchInfo(url: string, name: string) {
     let formElements = Array.from(document.getElementById("submit-book-form").children);
     formElements.forEach(element => (element as HTMLInputElement).disabled = true);
 
@@ -110,14 +110,14 @@ async function SearchBookInfo(isbn: string) {
     searchBookButton.appendChild(dotFlashingDiv);
 
     try {
-        let rawResponse = await fetch(`/bookinfo/${isbn}`, { credentials: "same-origin" });
+        let rawResponse = await fetch(url, { credentials: "same-origin" });
         let response = await rawResponse.json();
         if (response.status === "ok") {
             console.info(response);
-            (document.getElementById("title") as HTMLInputElement).value = response.result.title;
-            (document.getElementById("author") as HTMLInputElement).value = response.result.author;
-            (document.getElementById("editor") as HTMLInputElement).value = response.result.editor;
-            (document.getElementById("coverUrl") as HTMLInputElement).value = response.result.coverUrl;
+            (document.getElementById("title") as HTMLInputElement).value = response.result.title ?? "";
+            (document.getElementById("author") as HTMLInputElement).value = response.result.author ?? "";
+            (document.getElementById("editor") as HTMLInputElement).value = response.result.editor ?? "";
+            (document.getElementById("coverUrl") as HTMLInputElement).value = response.result.coverUrl ?? "";
             SetCoverImage(response.result.coverUrl);
             if (response.result.summary) {
                 easyMDE.value(response.result.summary);
@@ -125,16 +125,16 @@ async function SearchBookInfo(isbn: string) {
         }
         else if (response.status === "error") {
             console.error(response);
-            DisplayInfoMessage("Book not found", "warning");
+            DisplayMessage(`${name} not found`, "warning");
         }
         else {
             console.error(response);
-            DisplayInfoMessage(response.message + "\r\n\r\n" + response.details, "error");
+            DisplayMessage(response.message + "\r\n\r\n" + response.details, "error");
         }
     }
     catch (error) {
         console.error(error);
-        DisplayInfoMessage(error, "error");
+        DisplayMessage(error, "error");
     }
 
     searchBookButton.firstChild.remove();
@@ -142,49 +142,7 @@ async function SearchBookInfo(isbn: string) {
     formElements.forEach(element => (element as HTMLInputElement).disabled = false);
 }
 
-async function SearchMagazineInfo(name: string, number: string) {
-    let formElements = Array.from(document.getElementById("submit-book-form").children);
-    formElements.forEach(element => (element as HTMLInputElement).disabled = true);
-
-    // loader
-    let searchBookButton = document.getElementById("search-book");
-    searchBookButton.firstChild.remove();
-    var dotFlashingDiv = document.createElement("div");
-    dotFlashingDiv.classList.add("dot-flashing");
-    searchBookButton.appendChild(dotFlashingDiv);
-
-    try {
-        let rawResponse = await fetch(`/magazineinfo/${name}/${number}`, { credentials: "same-origin" });
-        let response = await rawResponse.json();
-        if (response.status === "ok") {
-            console.info(response);
-            (document.getElementById("title") as HTMLInputElement).value = response.result.title;
-            (document.getElementById("coverUrl") as HTMLInputElement).value = response.result.coverUrl;
-            SetCoverImage(response.result.coverUrl);
-            if (response.result.summary) {
-                easyMDE.value(response.result.summary);
-            }
-        }
-        else if (response.status === "error") {
-            console.error(response);
-            DisplayInfoMessage("Magazine not found", "warning");
-        }
-        else {
-            console.error(response);
-            DisplayInfoMessage(response.message + "\r\n\r\n" + response.details, "error");
-        }
-    }
-    catch (error) {
-        console.error(error);
-        DisplayInfoMessage(error, "error");
-    }
-
-    searchBookButton.firstChild.remove();
-    searchBookButton.appendChild(document.createTextNode("Search"));
-    formElements.forEach(element => (element as HTMLInputElement).disabled = false);
-}
-
-function DisplayInfoMessage(message: string, type: "error" | "warning" | "success") {
+function DisplayMessage(message: string, type: "error" | "warning" | "success") {
     var infoDiv = document.createElement("div");
     infoDiv.classList.add("info");
     infoDiv.classList.add(type);
