@@ -125,11 +125,11 @@ async function SearchInfo(url: string, name: string) {
         }
         else if (response.status === "error") {
             console.error(response);
-            DisplayMessage(`${name} not found`, "warning");
+            DisplayMessage(`${name} not found`, "warning", response.logs);
         }
         else {
             console.error(response);
-            DisplayMessage(response.message + "\r\n\r\n" + response.details, "error");
+            DisplayMessage(response.message, "error", response.details);
         }
     }
     catch (error) {
@@ -142,10 +142,40 @@ async function SearchInfo(url: string, name: string) {
     formElements.forEach(element => (element as HTMLInputElement).disabled = false);
 }
 
-function DisplayMessage(message: string, type: "error" | "warning" | "success") {
+function DisplayMessage(message: string, type: "error" | "warning" | "success", details?: string | string[]) {
     var infoDiv = document.createElement("div");
     infoDiv.classList.add("info");
     infoDiv.classList.add(type);
-    infoDiv.append(message);
+    if (details) {
+        var detailsCheck = document.createElement("input");
+        detailsCheck.classList.add("info-input");
+        detailsCheck.type = "checkbox";
+        detailsCheck.id = "tab";
+        infoDiv.appendChild(detailsCheck);
+
+        var detailsLabel = document.createElement("label");
+        detailsLabel.classList.add("info-label");
+        detailsLabel.htmlFor = "tab";
+        detailsLabel.append(message);
+        infoDiv.appendChild(detailsLabel);
+
+        var detailsDiv = document.createElement("div");
+        detailsDiv.classList.add("info-content");
+        if (typeof (details) == "string") {
+            detailsDiv.append(details);
+        }
+        else {
+            for (var i = 0; i < details.length; i++) {
+                if (i > 0) {
+                    detailsDiv.append(document.createElement("br"));
+                }
+                detailsDiv.append(details[i]);
+            }
+        }
+        infoDiv.appendChild(detailsDiv);
+    }
+    else {
+        infoDiv.append(message);
+    }
     document.getElementsByTagName("main")[0].insertBefore(infoDiv, document.getElementById("submit-book-form"));
 }
