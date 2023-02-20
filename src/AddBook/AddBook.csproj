@@ -12,7 +12,7 @@
     </PackageReference>
     <PackageReference Include="Octokit" Version="5.0.0" />
     <PackageReference Include="System.Net.Http.Json" Version="7.0.0" />
-    <PackageReference Include="YamlDotNet" Version="13.0.0" />
+    <PackageReference Include="YamlDotNet" Version="13.0.1" />
   </ItemGroup>
 
   <PropertyGroup>
