@@ -3,7 +3,7 @@ layout: magazine
 date: "2023-03-28 22:02"
 title: "Epsiloon n° 20 - Février 2023"
 ---
-![Couverture](/img/epsiloon-fevrier2023.jpg)**-_EN COUVERTURE_  -**  CYBERGUERRE - ENQUÊTE SUR L’AUTRE CHAMP DE BATAILLE
+![Couverture](/img/epsiloon-fevrier2023.jpg)**- _EN COUVERTURE_  -**  CYBERGUERRE - ENQUÊTE SUR L’AUTRE CHAMP DE BATAILLE
 
 Depuis le 23 février 2022, veille de l’invasion de l’Ukraine, la première vraie cyberguerre de l’histoire est déclarée. Loin derrière la ligne de front et ses tapis de bombes, des logiciels malveillants, des effaceurs de données, des?virus dormants lancés par les militaires et les hackers tentent de briser l’adversaire au cœur de ses infrastructures vitales. Un an plus tard, voici les?premières leçons de cette guerre invisible et silencieuse. 
 
@@ -19,7 +19,7 @@ Face à l’inefficacité croissante des antibiotiques, les biologistes cherchen
 
 Les scientifiques commencent à peine à saisir l’ampleur de ce monde englouti : prodigieux refuges de biodiversité et pièges à carbone hors normes, les forêts marines n’ont rien à envier aux jungles terrestres. Au point de susciter déjà les mêmes convoitises. 
 
-**_- UNE HYPOTHÈS_ _E VERTIGINEUSE _ -** DANS LES MÉTAUX ÉTRANGES…?
+**_- UNE HYPOTHÈSE VERTIGINEUSE_ -** DANS LES MÉTAUX ÉTRANGES…?
 
 Et si la plus ambitieuse des théories physiques, celle qui décrit les trous noirs, la gravité quantique, et des dimensions supplémentaires de l’espace-temps, était en train de se matérialiser dans ces petits bouts de caillou à peine brillants ? La question passionne aujourd’hui certains théoriciens, parmi les plus prestigieux...
 
