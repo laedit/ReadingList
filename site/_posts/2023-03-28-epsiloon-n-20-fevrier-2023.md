@@ -3,7 +3,7 @@ layout: magazine
 date: "2023-03-28 22:02"
 title: "Epsiloon n° 20 - Février 2023"
 ---
-![Couverture](/img/epsiloon-fevrier2023.jpg)**-_ EN COUVERTURE_  -**  CYBERGUERRE - ENQUÊTE SUR L’AUTRE CHAMP DE BATAILLE
+![Couverture](/img/epsiloon-fevrier2023.jpg)**-_EN COUVERTURE_  -**  CYBERGUERRE - ENQUÊTE SUR L’AUTRE CHAMP DE BATAILLE
 
 Depuis le 23 février 2022, veille de l’invasion de l’Ukraine, la première vraie cyberguerre de l’histoire est déclarée. Loin derrière la ligne de front et ses tapis de bombes, des logiciels malveillants, des effaceurs de données, des?virus dormants lancés par les militaires et les hackers tentent de briser l’adversaire au cœur de ses infrastructures vitales. Un an plus tard, voici les?premières leçons de cette guerre invisible et silencieuse. 
 
