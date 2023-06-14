@@ -1,0 +1,9 @@
+---
+layout: book
+date: "2023-06-14 10:16"
+title: "Jungle Juice t.1"
+author: "Hyeongeun, Juder"
+isbn: "9791039119108"
+editor: "Panini"
+---
+![Couverture](/img/9791039119108.jpg)Suchan Jang est un étudiant hyper populaire, les filles de l'université rêvent de sortir avec lui et il est le leader de sa bande de copains. Mais Suchan dissimule en réalité un lourd secret : il a des ailes de libellule qui lui ont poussé dans le dos après avoir utilisé un insecticide appelé le « Jungle Juice ». S'il a réussi pendant des années à les dissimuler, il est contraint de les montrer au monde entier lorsqu'il vole à la rescousse de Mihee, une amie proche. À partir de ce jour-là, reconnu par ses camarades, Suchan est rejeté et moqué. Il n'a alors qu'un désir : disparaître ou redevenir humain. Cette opportunité se présente à lui lorsqu'une jeune fille mystérieuse lui fait découvrir une université secrète dans laquelle tous les étudiants ont comme lui été victimes du mystérieux insecticide... Imaginé par Hyeongeun et illustré par Juder, Jungle Juice est un webtoon qui a fait sensation dès ses premiers chapitres. En utilisant des transformations insectoïdes pour parler de problèmes de société, le récit se montre tout à la fois riche en émotions et spectaculaire par ses scènes d'action. Porté par un scénario aux multiples rebondissements, ce projet est aussi sublimé par le soin apporté aux dessins. Comptant plus de 19,5 millions de vues sur la plateforme WEBTOON et une note de 9,79, la première saison a su fédérer bon nombre de lecteurs à travers le monde. Une saison 2 est d'ailleurs en préparation.
