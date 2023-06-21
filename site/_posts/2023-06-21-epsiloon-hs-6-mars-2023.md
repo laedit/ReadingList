@@ -1,9 +1,9 @@
 ---
 layout: magazine
-date: "2023-06-21 07:34"
+date: "2023-06-21 08:25"
 title: "Epsiloon HS 6 - Mars 2023"
 ---
-![Couverture](/img/epsiloon-numero23.jpg)Dans ce sixième numéro de nos Hors-Séries Epsiloon, nous allons tourner autour de ce mot sorti tout droit des blockbusters. En révélant de façon spectaculaire, profonde et décontractée ses résonnances avec la biologie, la psychologie, la cosmologie, la technologie ou les mathématiques les plus modernes…
+![Couverture](/img/epsiloon-n23.jpg)Dans ce sixième numéro de nos Hors-Séries Epsiloon, nous allons tourner autour de ce mot sorti tout droit des blockbusters. En révélant de façon spectaculaire, profonde et décontractée ses résonnances avec la biologie, la psychologie, la cosmologie, la technologie ou les mathématiques les plus modernes…
 
 **- LE DOSSIER SURPUISSANT**  Une fleur qui écoute les abeilles, une grenouille qui dissimule des griffes sous sa peau, un animal marin qui fait repousser tout son corps, une liane qui se rend invisible... Le monde du vivant pullule d'êtres aux pouvoirs extraordinaires, qui n'en finissent pas de fasciner les chercheurs qui les étudient.
 
