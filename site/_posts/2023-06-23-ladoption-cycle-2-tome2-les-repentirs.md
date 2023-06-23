@@ -1,6 +1,6 @@
 ---
 layout: book
-date: "2023-06-23 20:08"
+date: "2023-06-23 20:09"
 title: "L'adoption - cycle 2 Tome2 : les repentirs"
 author: "Zidrou, Arno Monin"
 isbn: "9782818989364"
