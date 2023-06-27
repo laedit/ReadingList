@@ -38,7 +38,7 @@ namespace AddBook.Business.Search.Magazine
 
                 var magazinesInfo = await magazineResponse.Content.ReadFromJsonAsync<List<WooCommerceMagazineInfo>>();
 
-                var magazine = magazinesInfo.FirstOrDefault(mi => mi.Slug.ToLowerInvariant() == $"sick-{int.Parse(magazineSearchParameters.Number):000}");
+                var magazine = magazinesInfo.FirstOrDefault(mi => mi.Name.ToUpperInvariant() == $"S!CK #{int.Parse(magazineSearchParameters.Number):000}");
 
                 if (magazine == null)
                 {
