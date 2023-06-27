@@ -19,6 +19,11 @@ namespace AddBook.Business.Search.Magazine
             httpClient.DefaultRequestHeaders.Add("Accept", "application/json; charset=utf-8");
         }
 
+        public bool CanSearch(MagazineName magazineName)
+        {
+            return magazineName == MagazineName.LaRevueDessinee || magazineName == MagazineName.Epsiloon;
+        }
+
         public async Task<Result<Magazine>> Search(MagazineSearchParameters magazineSearchParameters)
         {
             try

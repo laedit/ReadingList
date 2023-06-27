@@ -17,6 +17,11 @@ namespace AddBook.Business.Search.Magazine
             this.gitHubHelper = gitHubHelper;
         }
 
+        public bool CanSearch(MagazineName magazineName)
+        {
+            return true;
+        }
+
         public async Task<Result<Magazine>> Search(MagazineSearchParameters magazineSearchParameters)
         {
             var reference = magazineSearchParameters.GetKey();

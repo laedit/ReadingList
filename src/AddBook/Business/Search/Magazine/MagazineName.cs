@@ -7,6 +7,8 @@ namespace AddBook.Business.Search.Magazine
         Epsiloon,
         [Display(Name = "La Revue Dessinée")]
         LaRevueDessinee,
+        [Display(Name = "S!CK")]
+        Sick,
         [Display(Name = "Inconnu")]
         Unknown
     }

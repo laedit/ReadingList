@@ -17,7 +17,8 @@ namespace AddBook.Business.Search.Magazine
             _magazineSearches = new List<IMagazineSearch>
             {
                 new PostsMagazineSearch(booksRepository, gitHubHelper),
-                new MagazineSearch()
+                new MagazineSearch(),
+                new WooCommerceMagazineSearch()
             };
         }
 
@@ -38,30 +39,33 @@ namespace AddBook.Business.Search.Magazine
 #endif
         }
 
-        private async Task<SearchResult<Magazine>> FindMagazine(MagazineSearchParameters magazineSearchParameters)
+        private static async Task<SearchResult<Magazine>> FindMagazine(MagazineSearchParameters magazineSearchParameters)
         {
             var searchResult = new SearchResult<Magazine> { Result = Option<Magazine>.None };
             var logs = new List<string>();
 
             foreach (var magazineSearch in _magazineSearches)
             {
-                var result = await magazineSearch.Search(magazineSearchParameters);
+                if (magazineSearch.CanSearch(magazineSearchParameters.Name))
+                {
+                    var result = await magazineSearch.Search(magazineSearchParameters);
 
-                searchResult = result.Match(magazine =>
-                {
-                    searchResult.Result = Option<Magazine>.Some(magazine);
-                    logs.Add($"{magazineSearch.GetType().Name} have found the magazine.");
-                    return searchResult;
-                },
-                failReason =>
-                {
-                    logs.Add($"{magazineSearch.GetType().Name}: {failReason}");
-                    return searchResult;
-                });
+                    searchResult = result.Match(magazine =>
+                    {
+                        searchResult.Result = Option<Magazine>.Some(magazine);
+                        logs.Add($"{magazineSearch.GetType().Name} have found the magazine.");
+                        return searchResult;
+                    },
+                    failReason =>
+                    {
+                        logs.Add($"{magazineSearch.GetType().Name}: {failReason}");
+                        return searchResult;
+                    });
 
-                if (searchResult.Result.HasSome())
-                {
-                    break;
+                    if (searchResult.Result.HasSome())
+                    {
+                        break;
+                    }
                 }
             }
             searchResult.Logs = logs;
