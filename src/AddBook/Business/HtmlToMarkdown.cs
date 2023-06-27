@@ -89,33 +89,35 @@ namespace AddBook.Business
                             break;
                         case "img":
                             // images
-                            var imageContent = new List<string>();
-                            if (element.Attributes["src"] != null && element.Attributes["src"].Value.Trim() != string.Empty)
-                            {
-                                imageContent.Add("[" + element.Attributes["src"].Value + "]");
-                            }
-                            if (element.Attributes["alt"] != null && element.Attributes["alt"].Value.Trim() != string.Empty)
-                            {
-                                imageContent.Add("[" + element.Attributes["alt"].Value + "]");
-                            }
-                            if (element.Attributes["title"] != null && element.Attributes["title"].Value.Trim() != string.Empty)
-                            {
-                                imageContent.Add("(\"" + element.Attributes["title"].Value + "\")");
-                            }
-                            outText.Append("[" + string.Join(" ", imageContent.ToArray()) + "] ");
+                            //var imageContent = new List<string>();
+                            //if (element.Attributes["src"] != null && element.Attributes["src"].Value.Trim() != string.Empty)
+                            //{
+                            //    imageContent.Add("[" + element.Attributes["src"].Value + "]");
+                            //}
+                            //if (element.Attributes["alt"] != null && element.Attributes["alt"].Value.Trim() != string.Empty)
+                            //{
+                            //    imageContent.Add("[" + element.Attributes["alt"].Value + "]");
+                            //}
+                            //if (element.Attributes["title"] != null && element.Attributes["title"].Value.Trim() != string.Empty)
+                            //{
+                            //    imageContent.Add("(\"" + element.Attributes["title"].Value + "\")");
+                            //}
+                            //outText.Append("[" + string.Join(" ", imageContent.ToArray()) + "] ");
+                            // images are not wanted here
                             break;
                         case "a":
                             // links
-                            var linkContent = new List<string>();
-                            if (element.Attributes["href"] != null && element.Attributes["href"].Value.Trim() != string.Empty)
-                            {
-                                linkContent.Add("[" + element.Attributes["href"].Value + "]");
-                            }
-                            if (element.Attributes["title"] != null && element.Attributes["title"].Value.Trim() != string.Empty)
-                            {
-                                linkContent.Add("(\"" + element.Attributes["title"].Value + "\")");
-                            }
-                            outText.Append(string.Join(" ", linkContent.ToArray()) + " ");
+                            //var linkContent = new List<string>();
+                            //if (element.Attributes["href"] != null && element.Attributes["href"].Value.Trim() != string.Empty)
+                            //{
+                            //    linkContent.Add("[" + element.Attributes["href"].Value + "]");
+                            //}
+                            //if (element.Attributes["title"] != null && element.Attributes["title"].Value.Trim() != string.Empty)
+                            //{
+                            //    linkContent.Add("(\"" + element.Attributes["title"].Value + "\")");
+                            //}
+                            //outText.Append(string.Join(" ", linkContent.ToArray()) + " ");
+                            // links are not wanted here
                             break;
                         case "hr":
                             outText.AppendLine();
