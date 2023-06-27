@@ -6,6 +6,8 @@ namespace AddBook.Business.Search.Magazine
     {
         Epsiloon,
         [Display(Name = "La Revue Dessinée")]
-        LaRevueDessinee
+        LaRevueDessinee,
+        [Display(Name = "Inconnu")]
+        Unknown
     }
 }

@@ -29,7 +29,7 @@ namespace AddBook.Controllers
 
         [Authorize]
         [HttpGet("/magazineinfo/{name}/{number}")]
-        public async Task<IActionResult> GetMagazineInco([FromRoute] MagazineSearchParameters magazineSearchParameters)
+        public async Task<IActionResult> GetMagazineInfo([FromRoute] MagazineSearchParameters magazineSearchParameters)
         {
             var searchResult = await magazineFinder.Find(magazineSearchParameters);
 
