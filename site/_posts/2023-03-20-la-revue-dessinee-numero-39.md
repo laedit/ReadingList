@@ -1,7 +1,7 @@
 ---
 layout: magazine
 date: "2023-03-20 21:30"
-title: "La Revue DessinéeNuméro 39"
+title: "La Revue Dessinée Numéro 39"
 ---
 ![Couverture](/img/larevuedessinee-39.jpg)Comment ne pas se sentir impuissants lorsque l’on se demande, devant un illusionniste de talent, où va l’argent ? Mis bout à bout, ces centimes qui transitent par nos comptes en banque, fructifient sur des livrets d’épargne ou sont versés à nos caisses de retraites deviennent des milliards. Une fortune dont la trace, prise dans un imbroglio de montages financiers complexes, échappe au commun des mortels. Notre numéro de printemps dévoile, à grand renfort d’enquêtes, l’envers de ces tours de magie. Démêler l’inextricable, et permettre aux spectateurs que nous sommes de ne plus être abasourdis. En librairie le mercredi 8 mars et en précommande dès maintenant.  
 **Retraites plombées**   
