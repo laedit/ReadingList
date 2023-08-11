@@ -2,7 +2,7 @@
 layout: book
 date: "2023-08-10 12:53"
 title: "Wishful Drinking"
-author: "Carrie Fishet"
+author: "Carrie Fisher"
 isbn: "9781471163197"
 editor: "Simon & Schuster"
 ---
