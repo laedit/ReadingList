@@ -11,6 +11,8 @@ namespace AddBook.Business.Search.Book
         private readonly BooksRepository booksRepository;
         private readonly GitHubHelper gitHubHelper;
 
+        public string Name => "Posts";
+
         public PostsBookSearch(BooksRepository booksRepository, GitHubHelper gitHubHelper)
         {
             this.booksRepository = booksRepository;

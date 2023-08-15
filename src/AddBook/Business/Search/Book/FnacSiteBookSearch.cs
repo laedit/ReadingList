@@ -11,6 +11,8 @@ namespace AddBook.Business.Search.Book
     {
         private readonly HttpClient httpClient;
 
+        public string Name => "Fnac";
+
         public FnacSiteBookSearch()
         {
             httpClient = InstanciateHttpClient();
@@ -50,20 +52,24 @@ namespace AddBook.Business.Search.Book
                     .First(node => node.FirstElementChild.TextContent == "Editeur")
                     .Children[1].TextContent).Trim();
 
-                var coverUrl = htmlDoc.QuerySelector("img.js-ProductVisuals-imagePreview")?.Attributes["src"]?.Value;
+                var coverUrl = htmlDoc.QuerySelector("img.js-ProductVisuals-imagePreview")?.Attributes["src"]?.Value ?? "";
 
                 var title = WebUtility.HtmlDecode(htmlDoc.QuerySelector("h1.f-productHeader-Title")?.TextContent?.Trim());
 
                 var descriptions = htmlDoc.QuerySelectorAll(".f-productDesc__raw");
                 var summary = "";
-                if (descriptions.Length == 1)
+
+                if (descriptions.Length > 0)
                 {
-                    summary = WebUtility.HtmlDecode(HtmlToMarkdown.Convert(descriptions[0]));
-                }
-                else
-                {
-                    // The full description is usually in the second description
-                    summary = WebUtility.HtmlDecode(HtmlToMarkdown.Convert(descriptions[1]));
+                    if (descriptions.Length == 1)
+                    {
+                        summary = WebUtility.HtmlDecode(HtmlToMarkdown.Convert(descriptions[0]));
+                    }
+                    else
+                    {
+                        // The full description is usually in the second description
+                        summary = WebUtility.HtmlDecode(HtmlToMarkdown.Convert(descriptions[1]));
+                    }
                 }
 
                 return Result<Book>.Success(new Book { Isbn = isbn, Title = title, Author = author, Editor = editor, CoverUrl = coverUrl, Summary = summary });
@@ -99,9 +105,9 @@ namespace AddBook.Business.Search.Book
         private HttpClient InstanciateHttpClient()
         {
             var httpClient = new HttpClient(new HttpClientHandler
-                                    {
-                                        AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
-                                    });
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            });
             httpClient.DefaultRequestHeaders.Add("Accept", "*/*");
             httpClient.DefaultRequestHeaders.Add("Accept-Language", "fr-FR");
             httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate");

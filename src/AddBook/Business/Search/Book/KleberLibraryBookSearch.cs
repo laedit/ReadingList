@@ -10,6 +10,8 @@ namespace AddBook.Business.Search.Book
     {
         private readonly HttpClient httpClient;
 
+        public string Name => "Librairie Kléber";
+
         public KleberLibraryBookSearch()
         {
             httpClient = new HttpClient();

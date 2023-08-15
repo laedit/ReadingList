@@ -54,7 +54,7 @@ namespace AddBook.Business.Search.Book
                 },
                 failReason =>
                 {
-                    logs.Add($"{bookSearch.GetType().Name}: {failReason}");
+                    logs.Add($"{bookSearch.Name}: {failReason}");
                     return searchResult;
                 });
 

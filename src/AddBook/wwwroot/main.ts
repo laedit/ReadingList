@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     searchBookButton.addEventListener("click", () => {
+        RemoveMessages();
         if (bookRadio.checked) {
             SearchInfo(`/bookinfo/${isbnInput.value}`, "Book");
         }
@@ -140,6 +141,14 @@ async function SearchInfo(url: string, name: string) {
     searchBookButton.firstChild.remove();
     searchBookButton.appendChild(document.createTextNode("Search"));
     formElements.forEach(element => (element as HTMLInputElement).disabled = false);
+}
+
+function RemoveMessages() {
+    const infos = document.getElementsByClassName('info');
+    const main = document.getElementsByTagName("main")[0];
+    for (var i = 0; i < infos.length; i++) {
+        main.removeChild(infos[i]);
+    }
 }
 
 function DisplayMessage(message: string, type: "error" | "warning" | "success", details?: string | string[]) {

@@ -1,12 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30204.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddBook", "AddBook\AddBook.csproj", "{B4F9C525-5C56-440E-B4C2-972A33D7C8CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddBook", "AddBook\AddBook.csproj", "{B4F9C525-5C56-440E-B4C2-972A33D7C8CD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9A38398E-898E-48BB-83D1-7F1F00D1925B}"
 	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
 		..\.gitignore = ..\.gitignore
 		..\appveyor.yml = ..\appveyor.yml
 		..\Publish.ps1 = ..\Publish.ps1

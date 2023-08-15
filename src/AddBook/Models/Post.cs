@@ -16,7 +16,7 @@ namespace AddBook.Models
 
         public PostType Type { get; set; }
 
-        [RegularExpression("[0-9]{13}")]
+        [RegularExpression("\\d{10}|\\d{13}")]
         public string Isbn { get; set; }
 
         public MagazineName Name { get; set; }
