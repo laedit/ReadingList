@@ -143,6 +143,10 @@ label {
     background-color: var(--background-color);
 }
 
+.CodeMirror-cursor {
+    border-color: var(--color);
+}
+
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime-local"], textarea {
     -webkit-appearance: none;
     -moz-appearance: none;
