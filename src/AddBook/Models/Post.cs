@@ -87,7 +87,9 @@ namespace AddBook.Models
             return Type switch
             {
                 PostType.Book => Isbn,
-                PostType.Magazine => $"{Name}-{Number.Replace(" ", "")}".ToLowerInvariant(),
+                PostType.Magazine => Name == MagazineName.Unknown
+                                        ? Title.ToLowerInvariant()
+                                        : $"{Name}-{Number.Replace(" ", "")}".ToLowerInvariant(),
                 _ => throw new Exception($"Type {Type} unknown"),
             };
         }
