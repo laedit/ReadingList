@@ -1,6 +1,6 @@
 ---
 layout: magazine
-date: "2023-08-15 09:54"
+date: "2023-08-02 09:54"
 title: "Picsou Magazine HS06 : Castors Juniors - Les grandes aventures - Spécial collector numéro 2"
 ---
 ![Couverture](/img/picsou-magazine-hs06-castors-juniors-les-grandes-aventures-special-collector-numero-2.jpg)Seize histoires présentes dans l'album : 
