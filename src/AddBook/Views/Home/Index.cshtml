@@ -44,7 +44,7 @@
     </div>
 
     <label for="isbn">ISBN</label>
-    <input type="text" inputmode="numeric" name="isbn" id="isbn" placeholder="ISBN" pattern="\d{10}|\d{13}" value="@Model.Isbn" autofocus />
+    <input type="text" inputmode="numeric" name="isbn" id="isbn" placeholder="ISBN" pattern="\d{13}|\d{10}" value="@Model.Isbn" autofocus />
     
     <label for="name">Name</label>
     <select id="name" name="name" asp-items="Html.GetEnumSelectList<MagazineName>()" class="span2" >
