@@ -1,6 +1,6 @@
 ---
 layout: book
-date: "2023-08-20 18:43"
+date: "2023-08-20 18:53"
 title: "Re : monster Tome 8"
 author: "Kogitsune Kanekiru, Haruyoshi Kobayakawa"
 isbn: "9782377175338"
