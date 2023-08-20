@@ -72,7 +72,7 @@ namespace AddBook.Controllers
 
             gitHubHelper.Commit($"Add new {(post.Type == PostType.Book ? "book" : "magazine")} '{generatedPost.PostTitle}'", filesToCommit);
 
-            return View(new Post { StartDate = post.StartDate, IsBookAdded = true });
+            return View(new Post { StartDate = DateTime.Now, IsBookAdded = true });
         }
 
         public IActionResult Error()
