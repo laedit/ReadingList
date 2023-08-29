@@ -55,6 +55,4 @@ On commence peut-être enfin à observer les événements les plus colossaux de 
 
 _Nous admirerons aussi la plus féériques des réactions chimiques, retournerons dans le Métavers pour voir si les hologrammes le ravivent, tomberons dans tous les pièges optiques d’un magicien scientifique._ 
 
-_ _ 
-
-_Sans oublier bien sûr toutes nos rubriques habituelles, drôles, belles, piquantes (saviez-vous que les grenouilles aussi ont un accent ?)…_ __
+_Sans oublier bien sûr toutes nos rubriques habituelles, drôles, belles, piquantes (saviez-vous que les grenouilles aussi ont un accent ?)…_
