@@ -71,7 +71,7 @@ namespace AddBook.Models
                 yield return new ValidationResult($"Cover url must be a valid uri", new[] { nameof(CoverUrl) });
             }
 
-            if (HtmlTagRegex.IsMatch(Summary))
+            if (!string.IsNullOrWhiteSpace(Summary) && HtmlTagRegex.IsMatch(Summary))
             {
                 yield return new ValidationResult($"{nameof(Summary)} must not contain html tag", new[] { nameof(Summary) });
             }
