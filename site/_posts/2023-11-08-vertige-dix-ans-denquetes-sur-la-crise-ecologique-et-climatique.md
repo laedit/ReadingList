@@ -1,0 +1,9 @@
+---
+layout: book
+date: "2023-11-08 05:44"
+title: "Vertige : dix ans d'enquêtes sur la crise écologique et climatique"
+author: "Collectif"
+isbn: "9782382640203"
+editor: "La Revue Dessinee"
+---
+![Couverture](/img/9782382640203.jpg)« Qui aurait pu prédire la crise climatique aux effets spectaculaires ? », se demandait Emmanuel Macron lors de ses voeux aux Français, le 31 décembre dernier. Depuis sa création il y a dix ans, La Revue Dessinée n'a eu de cesse de proposer, dans chacun de ses quarante numéros, de riches enquêtes en bande dessinée sur les crises climatique et écologique qui secouent le monde. L'une d'elles est même devenue un album best-seller : Algues vertes, l'histoire interdite. Beaucoup d'autres ont documenté ce monde qui, sous nos yeux, se transforme à toute vitesse, à en faire tourner la tête. VERTIGE -, dix ans d'enquêtes sur la crise écologique et climatique rassemble pour la première fois dans un seul et même album les plus emblématiques. Le réchauffement climatique, ses conséquences en cascade liées à sa prise en compte tardive ; l'agro-industrie et son héritage parfois empoisonné, comme avec les algues vertes en Bretagne ou le chlordécone aux Antilles ; la biodiversité menacée, entre extinction massive, compensations aux allures de green- washing et sauvetage à la carte des espèces ; les limites de la planète, qui voit ses ressources les plus rares surexploitées et incite certains à se préparer à une potentielle nouvelle ère, celle de l'effondrement... VERTIGE aborde l'ensemble de ces enjeux d'une actualité brûlante, pour mieux les comprendre, les appréhender et les expliquer.
