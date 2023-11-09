@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace AddBook.Business.Search.Magazine
 {
-    internal class MagazineSearch : IMagazineSearch
+    internal class LaRevueDessineeMagazineSearch : IMagazineSearch
     {
         private readonly HttpClient httpClient;
 
-        public MagazineSearch()
+        public LaRevueDessineeMagazineSearch()
         {
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("Accept", "application/json; charset=utf-8");
@@ -21,27 +21,15 @@ namespace AddBook.Business.Search.Magazine
 
         public bool CanSearch(MagazineName magazineName)
         {
-            return magazineName == MagazineName.LaRevueDessinee || magazineName == MagazineName.Epsiloon;
+            return magazineName == MagazineName.LaRevueDessinee;
         }
 
         public async Task<Result<Magazine>> Search(MagazineSearchParameters magazineSearchParameters)
         {
             try
             {
-                string urlBase;
-                string requestBody;
-                switch (magazineSearchParameters.Name)
-                {
-                    case MagazineName.Epsiloon:
-                        urlBase = "https://www.epsiloon.com";
-                        requestBody = "datas%5Boauth%5D%5Bscope%5D=public&datas%5Boauth%5D%5Beditor%5D=813&datas%5Boauth%5D%5Bcompany%5D=1&datas%5Bservice%5D=productsbycategories%2Ffr%2F2%2F0&datas%5Btarget%5D=prod";
-                        break;
-                    case MagazineName.LaRevueDessinee:
-                        urlBase = "https://boutique.4revues.fr";
-                        requestBody = "datas%5Boauth%5D%5Bscope%5D=public&datas%5Boauth%5D%5Beditor%5D=740&datas%5Boauth%5D%5Bcompany%5D=1&datas%5Bservice%5D=productsbycategories%2Ffr%2F6%2F0&datas%5Btarget%5D=prod";
-                        break;
-                    default: return Result<Magazine>.Fail($"Magazine '{magazineSearchParameters.Name}' not handled.");
-                }
+                string urlBase = "https://boutique.4revues.fr";
+                string requestBody = "datas%5Boauth%5D%5Bscope%5D=public&datas%5Boauth%5D%5Beditor%5D=740&datas%5Boauth%5D%5Bcompany%5D=1&datas%5Bservice%5D=productsbycategories%2Ffr%2F6%2F0&datas%5Btarget%5D=prod";
 
                 var magazineResponse = await httpClient.PostAsync($"{urlBase}/core/getapi.php",
                     new StringContent(requestBody, System.Text.Encoding.UTF8, "application/x-www-form-urlencoded"));

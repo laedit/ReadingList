@@ -17,7 +17,8 @@ namespace AddBook.Business.Search.Magazine
             _magazineSearches = new List<IMagazineSearch>
             {
                 new PostsMagazineSearch(booksRepository, gitHubHelper),
-                new MagazineSearch(),
+                new EpsiloonMagazineSearch(),
+                new LaRevueDessineeMagazineSearch(),
                 new WooCommerceMagazineSearch()
             };
         }
