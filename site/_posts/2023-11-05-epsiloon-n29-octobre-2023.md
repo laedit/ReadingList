@@ -1,9 +1,9 @@
 ---
 layout: magazine
-date: "2023-11-04 21:49"
+date: "2023-11-05 21:49"
 title: "Epsiloon n°29 octobre 2023"
 ---
-![Couverture](/img/epsiloon-29.img)**L'invasion des fourmis**  
+![Couverture](/img/epsiloon-29.webp)**L'invasion des fourmis**  
 Les experts européens lancent l’alerte&nbsp;: deux des plus dangereuses espèces de fourmis, la fourmi électrique et la fourmi de feu, s’installent en Europe. Une&nbsp;calamité.
 
 **Effet Proteus : le pouvoir des avatars**  
