@@ -6,7 +6,7 @@ author: " Michel Decré ; Mathilde Leclère ; Marie Leclère ; Noëmie Lemos ; T
 isbn: "9782958730307"
 editor: "La Fabrique à histoires"
 ---
-![Couverture](/img/9782958730307.html)**On ne part pas à l'aventure sans fromage !**
+![Couverture](/img/9782958730307.jpg)**On ne part pas à l'aventure sans fromage !**
 
 Quoi de plus riche que les littératures de l'imaginaire, avec leur infinité d'univers à explorer ? Quoi de plus savoureux que le fromage, avec ses formes et ses façons de le déguster si variées ? Quoi de plus normal et de plus fou que de les réunir dans un même recueil ? C'est ce que propose cette anthologie : parcourir fantasy, fantastique et science-fiction via le prisme fromager.
 
