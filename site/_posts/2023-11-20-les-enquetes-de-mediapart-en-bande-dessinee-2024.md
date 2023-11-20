@@ -24,5 +24,5 @@ En Syrie, le cimentier Lafarge a vendu son âme aux groupes djihadistes, comme D
 **Les semeurs de trouble**  
 Plongée dans l’univers des petites mains de la désinformation, bras armé d’un business florissant.
 
-**Chroniques de la haine ordinaire en ligne**
+**Chroniques de la haine ordinaire en ligne**  
 Trois courts récits comme autant de témoignages d’un fléau qui n’a rien de virtuel.
