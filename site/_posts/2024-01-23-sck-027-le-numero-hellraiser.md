@@ -1,0 +1,10 @@
+---
+layout: magazine
+date: "2024-01-23 05:45"
+title: "S!CK #027 - Le numéro Hellraiser"
+---
+![Couverture](/img/sick-27.jpeg)**Pour ce numéro, nous voulions porter un autre regard sur Hellraiser, le monstre d’horreur engendré par Clive Barker. C’était aussi l’occasion de repousser nos propres limites en donnant vie à un opus de long de 186 pages, qui rassemble plus d’entretiens et de talents que n’importe-quel autre numéro de S!CK jusqu’ici.** 
+
+
+
+Pour retrouver notre chemin dans les abysses, nous avons pu compter sur la participation exceptionnelle de **Christopher Young – le compositeur iconique de Hellraiser**  qui s’est confié au fil **d’un dossier de +80 pages**  qui partage sa réflexion sur le Hellbound Heart, les deux premiers films, et le dernier opus de David Bruckner dont nous avons pu décortiquer la création de chacun des Cenobites avec **Josh Russel et Sierra Spence** , les maestros des effets pratiques, qui ont par ailleurs couvert nos pages d’images inédites des coulisses. On a également discuté d’horreur existentielle avec **Quentin de Beukelaer** , créateur du jeu **Decarnation** , avant de plonger dans sa bande-son tourmentée avec le compositeur **Corentin Brasart** , le duo **Fleur & Bleue** , et **ALT236**  qui nous a parlé de sa manière de composer. On s’est plongé dans les entrailles de l’**Event Horizon**  – un classique de la science-fiction dont on explore les obsessions avec le scénariste **Philip Eisner,** avant de basculer dans la noirceur de l’horreur espagnole avec le lead game designer **Maikel Ortega**  et l’artiste **Jesús Campos,**  qui nous ont guidés dans le sombre dédale des jeux **Blasphemous** . Le cinéaste **Bertrand Mandico**  nous a également ouvert les portes de son magnifique **After Blue** , nous laissant glisser dans son cinéma de l’étrange, de l’utopie et du western surréaliste.
