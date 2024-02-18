@@ -1,0 +1,10 @@
+---
+layout: magazine
+date: "2024-02-18 21:35"
+title: "S!CK #026 - Le numéro Shadow of the Colossus"
+---
+![Couverture](/img/sick-26.jpeg)**Dans le brouillard de terres reculées, l’homérique silhouette d’un colosse se dessine à l’horizon… Pour ce vingt-sixième numéro, S!CK revient avec une nouvelle version qui prend le temps. Des textes plus en profondeur, et un sujet de couverture qui plonge dans la cruelle poésie de SHADOW OF THE COLOSSUS — une œuvre fondamentale du jeu vidéo, où beauté et austérité côtoient gigantisme et mélancolie.** 
+
+
+
+**Ce numéro 26 est notre plus ambitieux jusqu’à présent** , célébrant une nouvelle version de la revue qui prend encore plus son temps, et où chaque sujet abordé ouvre les portes d’une proposition narrative et visuelle à part entière. En couverture, la perle de Fumito Ueda dont on explore la cruelle poésie tout au long **d’un dossier de +70 pages avec** **Mak Malovic** , artiste et responsable de la partie architecturale du remake de **Shadow of the Colossus.** On plonge également dans les entrailles sanglantes d’**Evil Dead Rise et Ash vs Evil Dead**  avec son chef décorateur **Nick Bassett** , juste avant d’inaugurer notre rubrique « SFX Sous Anesthésie » sur les effets spéciaux avec le prothésiste **Tristan Lucas** . On explore les ruines du capitalisme avec **Guillaume Singelin** , qui nous parle de son travail croisé sur **Frontier et Citizen Sleeper** , avant de s’immerger dans la sublime soundtrack du jeu avec son compositeur **Amos Roddy** . On a décortiqué la discographie d’**Alan Braxe** , pionnier de la French Touch qui parle de ses débuts aux côtés de Thomas Bangalter (moitié de **Daft Punk** ), avant de déterrer les souvenirs de l’excellent **Jason Wilson** , designer de **MediEvil**  qui raconte les secrets de conception du classique de la PlayStation.
