@@ -51,7 +51,7 @@ namespace AddBook.Business.Search.Magazine
                 // FIXME prendre en compte le cas où le numéro n'est pas dans la liste et qu'il faut chercher la suite
                 return Result<Magazine>.Success(new Magazine
                 {
-                    Title = (magazineSearchParameters.Name == MagazineName.LaRevueDessinee ? "La Revue Dessinée " : "") + magazine.Libelle.Trim(),
+                    Title = (!magazine.Libelle.Trim().StartsWith("La Revue Dessinée ") ? "La Revue Dessinée " : "") + magazine.Libelle.Trim(),
                     CoverUrl = magazine.ImageGrandFormat,
                     Summary = magazine.Tarif == null ? "" : HtmlToMarkdown.Convert(new HtmlParser().ParseDocument(WebUtility.HtmlDecode(magazine.Tarif.Description)))
                 });
