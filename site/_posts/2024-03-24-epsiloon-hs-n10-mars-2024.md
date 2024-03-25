@@ -12,7 +12,7 @@ Ils additionnent, soustraient, reconnaissent des proportions et en ont même une
 **Une analyse de la méthode de Singapour**  
 Ça a tout l’air de la solution miracle. Au point que Gabriel Attal a décidé de faire appliquer cette méthode d’apprentissage des maths dès la rentrée&nbsp;2024 en primaire. Le copier-coller est-il possible&nbsp;? Pas sûr.
 
-**Le dossier crypté **  
+**Le dossier crypté**  
 Il y a le 27 500 000, le 17, le 2√2 ou le 125,35. Certains nombres commandent secrètement la Terre, la vie, la matière… Les chercheurs n’en finissent pas de démonter les ressorts de ces grandeurs qui nouent le destin du monde.
 
 **Comment on a commencé à écrire 1, 2, 3…**  
