@@ -1,7 +1,7 @@
 ---
 layout: magazine
 date: "2024-03-15 21:10"
-title: "La Revue Dessinée La Revue Dessinée 43"
+title: "La Revue Dessinée 43"
 ---
 ![Couverture](/img/larevuedessinee-43.png)_Sortie le 6 mars 2024  
 Couverture : Matthieu Méron_   
