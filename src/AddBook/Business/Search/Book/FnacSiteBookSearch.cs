@@ -52,7 +52,9 @@ namespace AddBook.Business.Search.Book
                     .First(node => node.FirstElementChild.TextContent == "Editeur")
                     .Children[1].TextContent).Trim();
 
-                var coverUrl = htmlDoc.QuerySelector("img.f-productMedias__poster")?.Attributes["src"]?.Value ?? "";
+                var coverUrl = htmlDoc.QuerySelector("img.f-productMedias__poster")?.Attributes["src"]?.Value
+                                ?? htmlDoc.QuerySelector("img.f-zoomable__image zoomed")?.Attributes["src"]?.Value
+                                ?? "";
 
                 var title = WebUtility.HtmlDecode(htmlDoc.QuerySelector("h1.f-productHeader-Title")?.TextContent?.Trim());
 
