@@ -41,24 +41,24 @@ namespace AddBook.Business.Search.Book
                         {
                             if (postLine.StartsWith("title:"))
                             {
-                                book.Title = postLine.Substring(8).Trim('"');
+                                book.Title = postLine[8..].Trim('"');
                                 continue;
                             }
                             if (postLine.StartsWith("author:"))
                             {
-                                book.Author = postLine.Substring(9).Trim('"');
+                                book.Author = postLine[9..].Trim('"');
                                 continue;
                             }
                             if (postLine.StartsWith("editor:"))
                             {
-                                book.Editor = postLine.Substring(9).Trim('"');
+                                book.Editor = postLine[9..].Trim('"');
                                 continue;
                             }
 
                             if (postLine.StartsWith("![Couverture]"))
                             {
-                                book.CoverUrl = postLine.Substring(14, postLine.IndexOf(')') - 14);
-                                summary.AppendLine(postLine.Substring(postLine.IndexOf(')') + 1));
+                                book.CoverUrl = postLine[14..postLine.IndexOf(')')];
+                                summary.AppendLine(postLine[(postLine.IndexOf(')') + 1)..]);
                                 continue;
                             }
 
@@ -69,7 +69,7 @@ namespace AddBook.Business.Search.Book
 
                             if (postLine.StartsWith("isbn:"))
                             {
-                                if (postLine.Substring(7).Trim('"') == isbn)
+                                if (postLine[7..].Trim('"') == isbn)
                                 {
                                     goodBook = true;
                                     continue;
@@ -86,9 +86,9 @@ namespace AddBook.Business.Search.Book
                             return Result<Book>.Success(book);
                         }
                     }
-                    return Result<Book>.Fail("Post not found in repository");
+                    return Result<Book>.Fail($"Post not found in repository amon pathes:{string.Join(Environment.NewLine, postPathes)}");
 
-                }, () => Task.FromResult(Result<Book>.Fail("Post not found in repository.")));
+                }, () => Task.FromResult(Result<Book>.Fail($"Post not found in repository with date '{bi.Date}'.")));
             }, () => Task.FromResult(Result<Book>.Fail("Not in the base yet.")));
         }
     }
