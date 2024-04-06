@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    document.getElementById("coverUrl").addEventListener("input", () => SetCoverImage((document.getElementById("coverUrl") as HTMLInputElement).value));
+    document.getElementById("coverUrl")!.addEventListener("input", () => SetCoverImage((document.getElementById("coverUrl") as HTMLInputElement).value));
 
     bookRadio.addEventListener("change", () => SwitchToType(bookRadio.value));
     if (bookRadio.checked) {
@@ -70,23 +70,23 @@ function SwitchToType(type: string) {
 
     let showBook = type === "book";
 
-    const isbnElement = document.getElementById("isbn");
+    const isbnElement = document.getElementById("isbn")!;
     isbnElement.hidden = !showBook;
     if (showBook) {
         isbnElement.focus();
     }
     (document.querySelector(`label[for='isbn']`) as HTMLLabelElement).hidden = !showBook;
 
-    document.getElementById("author").hidden = !showBook;
+    document.getElementById("author")!.hidden = !showBook;
     (document.querySelector(`label[for='author']`) as HTMLLabelElement).hidden = !showBook;
 
-    document.getElementById("editor").hidden = !showBook;
+    document.getElementById("editor")!.hidden = !showBook;
     (document.querySelector(`label[for='editor']`) as HTMLLabelElement).hidden = !showBook;
 
-    document.getElementById("name").hidden = showBook;
+    document.getElementById("name")!.hidden = showBook;
     (document.querySelector(`label[for='name']`) as HTMLLabelElement).hidden = showBook;
 
-    document.getElementById("number").hidden = showBook;
+    document.getElementById("number")!.hidden = showBook;
     (document.querySelector(`label[for='number']`) as HTMLLabelElement).hidden = showBook;
 
     (document.getElementById("search-book") as HTMLInputElement).disabled = true;
@@ -96,16 +96,16 @@ function SetCoverImage(coverUrl: string) {
     if (/\/img\/[0-9]{13}\.[a-z]{3,4}/.test(coverUrl)) {
         coverUrl = "https://readinglist.laedit.net" + coverUrl;
     }
-    document.getElementById("cover-img").setAttribute("src", coverUrl);
+    document.getElementById("cover-img")!.setAttribute("src", coverUrl);
 }
 
 async function SearchInfo(url: string, name: string) {
-    let formElements = Array.from(document.getElementById("submit-book-form").children);
+    let formElements = Array.from(document.getElementById("submit-book-form")!.children);
     formElements.forEach(element => (element as HTMLInputElement).disabled = true);
 
     // loader
-    let searchBookButton = document.getElementById("search-book");
-    searchBookButton.firstChild.remove();
+    let searchBookButton = document.getElementById("search-book")!;
+    searchBookButton.firstChild!.remove();
     var dotFlashingDiv = document.createElement("div");
     dotFlashingDiv.classList.add("dot-flashing");
     searchBookButton.appendChild(dotFlashingDiv);
@@ -138,7 +138,7 @@ async function SearchInfo(url: string, name: string) {
         DisplayMessage(error, "error");
     }
 
-    searchBookButton.firstChild.remove();
+    searchBookButton.firstChild!.remove();
     searchBookButton.appendChild(document.createTextNode("Search"));
     formElements.forEach(element => (element as HTMLInputElement).disabled = false);
 }
