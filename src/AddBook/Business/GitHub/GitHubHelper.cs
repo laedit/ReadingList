@@ -111,7 +111,7 @@ namespace AddBook.Business.GitHub
                 In = new[] { CodeInQualifier.Path },
                 Path = "site/_posts",
                 Extensions = new[] { "md" },
-                FileName = $"{postDate}-*"
+                FileName = $"{postDate}-"
             };
 
             var searchResult = await githubClient.Search.SearchCode(searchRequest);

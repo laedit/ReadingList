@@ -39,6 +39,10 @@ namespace AddBook.Business.Search.Book
                         var summary = new StringBuilder();
                         foreach (var postLine in postContent)
                         {
+                            if (postLine.StartsWith("date:"))
+                            {
+                                continue;
+                            }
                             if (postLine.StartsWith("title:"))
                             {
                                 book.Title = postLine[8..].Trim('"');
