@@ -1,6 +1,6 @@
 ---
 layout: book
-date: "2024-04-27 18:29"
+date: "2024-04-27 17:19"
 title: "Banished from the Hero's Party, I Decided to Live a Quiet Life in the Countryside, Vol. 6"
 author: "Zappon, Masahiro Ikeno, Yasumo, Dale DeLucia, Dayeun kim"
 isbn: "9781975342807"
