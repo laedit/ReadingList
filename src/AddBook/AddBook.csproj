@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <TypeScriptTarget>ES2019</TypeScriptTarget>
+    <TypeScriptTarget>ES2022</TypeScriptTarget>
     <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
     <TypeScriptModuleKind>None</TypeScriptModuleKind>
     <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
