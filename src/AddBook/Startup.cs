@@ -31,12 +31,23 @@ namespace AddBook
         {
             services.AddControllersWithViews();
 
+            // FIXME
+            // https://stackoverflow.com/questions/46243697/asp-net-core-persistent-authentication-custom-cookie-authentication
+            // https://learn.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-7.0
+            // https://stackoverflow.com/questions/53533894/asp-net-core-cookie-authentication-sliding-expiration-not-working
+            // IsPersistent = true ?
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
                 {
                     options.LoginPath = "/Login";
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                    options.SlidingExpiration = true;
                 });
+            // TODO check if necessary
+            services.AddAuthentication(options =>
+                 {
+                     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                 });
 
             services.AddSingleton<BookPostGenerator>();
             services.AddSingleton<GitHubHelper>();
