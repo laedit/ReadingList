@@ -1,8 +1,9 @@
-﻿using AddBook.Business.Database;
+using AddBook.Business.Database;
 using AddBook.Business.GitHub;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace AddBook.Business.Search.Book
 {
@@ -12,13 +13,14 @@ namespace AddBook.Business.Search.Book
 
         private static List<IBookSearch> _bookSearches;
 
-        public BookFinder(BooksRepository booksRepository, GitHubHelper gitHubHelper)
+        public BookFinder(BooksRepository booksRepository, GitHubHelper gitHubHelper, IHttpClientFactory httpClientFactory)
         {
             _bookSearches = new List<IBookSearch>
             {
                 new PostsBookSearch(booksRepository, gitHubHelper),
-                new KleberLibraryBookSearch(),
-                new FnacSiteBookSearch()
+                new KleberLibraryBookSearch(httpClientFactory),
+                new FnacSiteBookSearch(httpClientFactory),
+                new YenPressBookSearch(httpClientFactory)
             };
         }
 

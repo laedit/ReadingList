@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
+using System.Net;
+using System.Net.Http;
 
 namespace AddBook
 {
@@ -48,6 +50,12 @@ namespace AddBook
                  {
                      options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                  });
+
+            services.AddHttpClient();
+            services.AddHttpClient("fnac").ConfigurePrimaryHttpMessageHandler(_ => new HttpClientHandler
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            });
 
             services.AddSingleton<BookPostGenerator>();
             services.AddSingleton<GitHubHelper>();

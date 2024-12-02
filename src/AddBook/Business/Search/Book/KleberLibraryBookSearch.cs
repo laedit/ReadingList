@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -15,9 +15,9 @@ namespace AddBook.Business.Search.Book
 
         public string Name => "Librairie Kléber";
 
-        public KleberLibraryBookSearch()
+        public KleberLibraryBookSearch(IHttpClientFactory httpClientFactory)
         {
-            httpClient = new HttpClient();
+            httpClient = httpClientFactory.CreateClient();
         }
 
         public async Task<Result<Book>> Search(string isbn)
@@ -74,8 +74,14 @@ namespace AddBook.Business.Search.Book
                         Summary = jsonDoc.RootElement.GetProperty("description").GetString()
                     };
                 }
-
-                return Result<Book>.Success(book);
+                if (book != null)
+                {
+                    return Result<Book>.Success(book);
+                }
+                else
+                {
+                    return Result<Book>.Fail("Json data not found at 'script[type='application/ld+json']'");
+                }
             }
             catch (Exception ex)
             {

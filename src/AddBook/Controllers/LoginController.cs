@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -45,7 +45,15 @@ namespace AddBook.Controllers
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+                    // FIXME à tester si la solution mise en place ne marche pas mieux
+                    // https://stackoverflow.com/questions/46243697/asp-net-core-persistent-authentication-custom-cookie-authentication
+                    var principal = new ClaimsPrincipal(identity);
+                    var authenticationProperties = new AuthenticationProperties();
+                    // One month for example
+                    // authenticationProperties.ExpiresUtc = DateTimeOffset.UtcNow.AddMonths(1);
+                    // authenticationProperties.IsPersistent = true;
+
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authenticationProperties);
 
                     return LocalRedirect(returnUrl ?? "/");
                 }

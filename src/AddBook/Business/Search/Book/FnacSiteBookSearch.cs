@@ -1,4 +1,4 @@
-﻿using AngleSharp.Html.Parser;
+using AngleSharp.Html.Parser;
 using System;
 using System.Linq;
 using System.Net;
@@ -13,9 +13,14 @@ namespace AddBook.Business.Search.Book
 
         public string Name => "Fnac";
 
-        public FnacSiteBookSearch()
+        public FnacSiteBookSearch(IHttpClientFactory httpClientFactory)
         {
-            httpClient = InstanciateHttpClient();
+            this.httpClient = httpClientFactory.CreateClient("fnac");
+            this.httpClient.DefaultRequestHeaders.Add("Accept", "*/*");
+            this.httpClient.DefaultRequestHeaders.Add("Accept-Language", "fr-FR");
+            this.httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate");
+            this.httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0");
+            // FIXME add dynamic referer?
         }
 
         public async Task<Result<Book>> Search(string isbn)
@@ -102,20 +107,6 @@ namespace AddBook.Business.Search.Book
             }
 
             return author;
-        }
-
-        private HttpClient InstanciateHttpClient()
-        {
-            var httpClient = new HttpClient(new HttpClientHandler
-            {
-                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
-            });
-            httpClient.DefaultRequestHeaders.Add("Accept", "*/*");
-            httpClient.DefaultRequestHeaders.Add("Accept-Language", "fr-FR");
-            httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate");
-            httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0");
-            // FIXME add dynamic referer?
-            return httpClient;
         }
     }
 }
