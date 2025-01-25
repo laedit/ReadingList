@@ -34,6 +34,8 @@ namespace AddBook
             services.AddControllersWithViews();
 
             // FIXME
+            // => et ben ça marche pas, voir si les liens proposent d'autres options
+            // le 20 minutes de base ne marche même pas
             // https://stackoverflow.com/questions/46243697/asp-net-core-persistent-authentication-custom-cookie-authentication
             // https://learn.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-7.0
             // https://stackoverflow.com/questions/53533894/asp-net-core-cookie-authentication-sliding-expiration-not-working

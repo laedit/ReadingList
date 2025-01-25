@@ -1,4 +1,4 @@
-﻿using AddBook.Business.Database;
+using AddBook.Business.Database;
 using AddBook.Business.GitHub;
 using System;
 using System.Text;
@@ -10,7 +10,7 @@ namespace AddBook.Business.Search.Book
     {
         private readonly BooksRepository booksRepository;
         private readonly GitHubHelper gitHubHelper;
-
+        // FIXME générer une base embarquée avec le site ne nécessitant pas de recherche dépendante de github
         public string Name => "Posts";
 
         public PostsBookSearch(BooksRepository booksRepository, GitHubHelper gitHubHelper)
@@ -22,6 +22,10 @@ namespace AddBook.Business.Search.Book
         public async Task<Result<Book>> Search(string isbn)
         {
             // Vérifier depuis books.yml et récupérer les infos depuis le post
+            // source generator basé sur les fichiers yaml ?
+            // nécessitera une fusion des branches
+            // exemple de génération basée sur des sources autre que dotnet
+            // https://github.com/affederaffe/Tmds.DBus.SourceGenerator
             return await (await booksRepository.GetBooks()).Find(isbn).Match(async bi =>
             {
                 var searchResult = await gitHubHelper.SearchPost(bi.Date);
