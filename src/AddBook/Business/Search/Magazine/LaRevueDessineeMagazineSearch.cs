@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AddBook.Business.Search.Magazine
@@ -40,8 +41,9 @@ namespace AddBook.Business.Search.Magazine
                 }
 
                 var magazinesInfo = await magazineResponse.Content.ReadFromJsonAsync<List<MagazineInfo>>();
-
-                var magazine = magazinesInfo.FirstOrDefault(mi => mi.Libelle.ToLowerInvariant().Contains(magazineSearchParameters.Number.ToLowerInvariant()));
+                // utiliser une regex ? $"[ °]{number}[ ]?"
+                // mais on perd la recherche des numéro spéciaux, ou alors les déporter via le titre ?
+                var magazine = magazinesInfo.FirstOrDefault(mi => mi.Libelle.ToLowerInvariant().Contains($" {magazineSearchParameters.Number.ToLowerInvariant()} "));
 
                 if (magazine == null)
                 {
