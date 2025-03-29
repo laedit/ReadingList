@@ -1,11 +1,10 @@
-﻿using AngleSharp.Html.Parser;
+using AngleSharp.Html.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AddBook.Business.Search.Magazine
@@ -30,10 +29,16 @@ namespace AddBook.Business.Search.Magazine
             try
             {
                 string urlBase = "https://boutique.4revues.fr";
-                string requestBody = "datas%5Boauth%5D%5Bscope%5D=public&datas%5Boauth%5D%5Beditor%5D=740&datas%5Boauth%5D%5Bcompany%5D=1&datas%5Bservice%5D=productsbycategories%2Ffr%2F6%2F0&datas%5Btarget%5D=prod";
-
                 var magazineResponse = await httpClient.PostAsync($"{urlBase}/core/getapi.php",
-                    new StringContent(requestBody, System.Text.Encoding.UTF8, "application/x-www-form-urlencoded"));
+                    new FormUrlEncodedContent(new Dictionary<string, string>()
+                        {
+                            { "datas[oauth][scope]", "public" },
+                            { "datas[oauth][editor]", "740" },
+                            { "datas[oauth][company]", "1" },
+                            { "datas[service]", "productsbycategories/fr/6/0" },
+                            { "datas[target]", "prod" },
+                            { "datas[scope]", "aboweb" }
+                        }));
 
                 if (magazineResponse.StatusCode != HttpStatusCode.OK)
                 {
@@ -41,9 +46,7 @@ namespace AddBook.Business.Search.Magazine
                 }
 
                 var magazinesInfo = await magazineResponse.Content.ReadFromJsonAsync<List<MagazineInfo>>();
-                // utiliser une regex ? $"[ °]{number}[ ]?"
-                // mais on perd la recherche des numéro spéciaux, ou alors les déporter via le titre ?
-                var magazine = magazinesInfo.FirstOrDefault(mi => mi.Libelle.ToLowerInvariant().Contains($" {magazineSearchParameters.Number.ToLowerInvariant()} "));
+                var magazine = magazinesInfo.FirstOrDefault(mi => mi.Libelle.ToLowerInvariant().Contains(magazineSearchParameters.Number.ToLowerInvariant()));
 
                 if (magazine == null)
                 {
