@@ -48,10 +48,10 @@ namespace AddBook
                     options.SlidingExpiration = true;
                 });
             // TODO check if necessary
-            services.AddAuthentication(options =>
-                 {
-                     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                 });
+            // services.AddAuthentication(options =>
+            //      {
+            //          options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //      });
 
             services.AddHttpClient();
             services.AddHttpClient("fnac").ConfigurePrimaryHttpMessageHandler(_ => new HttpClientHandler
