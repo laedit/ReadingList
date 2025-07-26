@@ -41,10 +41,10 @@ namespace AddBook
             // https://stackoverflow.com/questions/53533894/asp-net-core-cookie-authentication-sliding-expiration-not-working
             // IsPersistent = true ?
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+                .AddCookie(options =>
                 {
                     options.LoginPath = "/Login";
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                    options.ExpireTimeSpan = TimeSpan.FromDays(10);
                     options.SlidingExpiration = true;
                 });
             // TODO check if necessary
