@@ -16,7 +16,7 @@ before_build:
   - nuget restore src
 
 build_script:
-  - dotnet publish "src\AddBook.sln" --framework net8.0 --configuration Release --property:PublishDir="../../Publish" /logger:"C:\Program Files\AppVeyor\BuildAgent\dotnetcore\Appveyor.MSBuildLogger.dll"
+  - dotnet publish "src\AddBook.sln" --framework net9.0 --configuration Release --property:PublishDir="../../Publish" /logger:"C:\Program Files\AppVeyor\BuildAgent\dotnetcore\Appveyor.MSBuildLogger.dll"
 
 test: false
 
