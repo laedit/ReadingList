@@ -50,6 +50,7 @@ namespace AddBook.Controllers
                     var principal = new ClaimsPrincipal(identity);
                     var authenticationProperties = new AuthenticationProperties();
                     // One month for example
+                    // ça marche toujours pas
                     authenticationProperties.ExpiresUtc = DateTimeOffset.UtcNow.AddMonths(1);
                     authenticationProperties.IsPersistent = true;
 
