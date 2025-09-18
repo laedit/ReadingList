@@ -1,0 +1,8 @@
+---
+layout: magazine
+date: "2025-09-18 07:47"
+title: "S!CK #014 - Le numéro Tony Hawk"
+---
+![Couverture](/img/sick-14.jpeg)**C’est la saga de toute une génération, le porte-voix d’une contre-culture. Plongez dans les secrets des jeux Tony Hawk’s Pro Skater dans un numéro de 150 pages assaisonné au tricks, grabs et rotules virtuelles brisées, qui retrace la folle histoire de la mythique épopée du skateboard.** 
+
+Au crépuscule des 90’s, un nouveau champion émergeait de l’underground, jetant à la face du monde toutes les joies de la culture skate, ses riders, ses marques, son style de vie et ses groupes mythiques. Comment une poignée de programmeurs punk a pu engendrer l’un des plus gros phénomènes des années 2000 ? De **Pro Skater**  en passant par **Underground**  et **American Wasteland** , ce numéro de S!CK revient sur les épisodes mythiques enfantés par Neversoft. **Tony Hawk** , c’est aussi la culture de la contestation et du dépassement de soi. Celle qui n’a pas peur de remonter sur sa board après s’être assaisonné les prémolaires contre le bitume. Il y a eu un climax, il y a eu un déclin. Il y a eu de sommets, comme des ratés. Autant de faits d’armes que l’on explore dans un long dossier aux racines du phénomène. Au sommaire de ce numéro cross-culture, on revient aussi sur **Final Fantasy VII** , les musiques de Batman d’**Arkham Asylum** , **Doom Eternal** et **The Leftovers.** 
