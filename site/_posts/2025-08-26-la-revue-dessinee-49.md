@@ -6,8 +6,7 @@ title: "La Revue Dessinée - Automne 2025 - Numéro #49"
 ![Couverture](/img/larevuedessinee-49.jpeg)Couverture signée Olivier Bonhomme
 
 **Enquêtes :**
-- Pêche : Mal embarqués
-Par _Blandine Flipo, Iris Pouy_
+- Pêche : Mal embarqués par _Blandine Flipo, Iris Pouy_  
 Ils sont venus de Bretagne, de la Côte d’Opale et même d’Afrique de l’Ouest. En marge de la Conférence des Nations unies sur l’océan organisée à Nice en juin 2025, des « petits » pêcheurs ont tenté de se faire entendre auprès du public et des médias. « Laissez nos océans respirer, laissez-nous vivre », lance Diaba Diop, citée par La Voix du Nord. La présidente du Réseau des femmes de la pêche artisanale au Sénégal fulmine contre les chalutiers géants venus d’Europe, de Chine ou de Turquie, qui avalent goulûment sardines et maquereaux le long des côtes de son pays. Destinés à finir en huile ou en farine…
 
 - Matières premières : Terrain miné
