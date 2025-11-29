@@ -1,23 +1,16 @@
 using AngleSharp.Html.Parser;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Net.Http.Json;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace AddBook.Business.Search.Magazine
 {
     internal class LaRevueDessineeMagazineSearch : IMagazineSearch
     {
-        private readonly HttpClient httpClient;
-
-        public LaRevueDessineeMagazineSearch()
-        {
-            httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add("Accept", "application/json; charset=utf-8");
-        }
+        private const string BaseUrl = "https://www.larevuedessinee.fr";
+        private readonly HttpClient httpClient = new HttpClient();
 
         public bool CanSearch(MagazineName magazineName)
         {
@@ -28,38 +21,70 @@ namespace AddBook.Business.Search.Magazine
         {
             try
             {
-                string urlBase = "https://boutique.4revues.fr";
-                var magazineResponse = await httpClient.PostAsync($"{urlBase}/core/getapi.php",
-                    new FormUrlEncodedContent(new Dictionary<string, string>()
+                var parser = new HtmlParser();
+                var magazinesHtmlDoc = parser.ParseDocument(await httpClient.GetStringAsync($"{BaseUrl}/boutique/?categorie=numeros"));
+                var magazineDivs = magazinesHtmlDoc.QuerySelectorAll("div.product-card--shop");
+
+                if (magazineDivs.Any())
+                {
+                    var foundMagazineDiv = magazineDivs.FirstOrDefault(magazineDiv =>
+                    {
+                        var title = magazineDiv.QuerySelector("a.product-card__details__titre")?.TextContent;
+                        return !string.IsNullOrWhiteSpace(title) && title.Contains(magazineSearchParameters.Number);
+                    });
+
+                    if (foundMagazineDiv != null)
+                    {
+                        var magazineLink = foundMagazineDiv.QuerySelector("a.product-card__details__titre")?.GetAttribute("href");
+                        var magazineHtmlDoc = parser.ParseDocument(await httpClient.GetStringAsync(magazineLink));
+
+                        var summary = new StringBuilder();
+                        // Couverture
+                        summary.AppendLine($"Couverture signée {magazineHtmlDoc.QuerySelector(".cover-infos__author")?.TextContent?.Trim()}");
+                        summary.AppendLine();
+
+                        var enquetes = magazineHtmlDoc.QuerySelectorAll("div.enquete-card");
+                        if (enquetes.Count > 0)
                         {
-                            { "datas[oauth][scope]", "public" },
-                            { "datas[oauth][editor]", "740" },
-                            { "datas[oauth][company]", "1" },
-                            { "datas[service]", "productsbycategories/fr/6/0" },
-                            { "datas[target]", "prod" },
-                            { "datas[scope]", "aboweb" }
-                        }));
+                            summary.AppendLine("**Enquêtes :**  ");
+                            foreach (var enquete in enquetes)
+                            {
+                                // Titre = thème - titre
+                                summary.Append($"**{enquete.QuerySelector(".enquete-card__theme")?.TextContent?.Trim()} : {enquete.QuerySelector(".enquete-card__titre")?.TextContent?.Trim()}** ");
+                                // auteurs
+                                summary.Append($"par _");
+                                summary.AppendJoin(", ", enquete.QuerySelectorAll(".enquete-card__auteur__nom").Select(auteurCard => auteurCard?.TextContent?.Trim()));
+                                summary.AppendLine("_  ");
+                                // résumé
+                                summary.AppendLine(enquete.QuerySelector(".enquete-card__content")?.TextContent?.Trim());
+                                summary.AppendLine();
+                            }
+                        }
 
-                if (magazineResponse.StatusCode != HttpStatusCode.OK)
-                {
-                    throw new Exception($"Error during magazine search: {await magazineResponse.Content.ReadAsStringAsync()}");
+                        summary.AppendLine();
+
+                        var chroniques = magazineHtmlDoc.QuerySelectorAll("div.chronique-card");
+                        if (chroniques.Count > 0)
+                        {
+                            summary.AppendLine("**Chroniques :**");
+                            foreach (var chronique in chroniques)
+                            {
+                                summary.AppendLine($"- {chronique.QuerySelector(".card__surtitre").TextContent.Trim()} : {chronique.QuerySelector(".chronique-card__title").TextContent.Trim()} par _{string.Join(", ", chronique.QuerySelectorAll(".card__auteur__nom").Select(auteurCard => auteurCard?.TextContent?.Trim()))}_");
+                            }
+                        }
+
+                        // FIXME prendre en compte le cas où le numéro n'est pas dans la liste et qu'il faut chercher la suite
+                        return Result<Magazine>.Success(new Magazine
+                        {
+                            Title = $"{magazineHtmlDoc.QuerySelector("p.numero-header__saison-name")?.TextContent?.Trim()} - {magazineHtmlDoc.QuerySelector("h1")?.TextContent?.Trim()}",
+                            CoverUrl = magazineHtmlDoc.QuerySelector("figure.numero-hero__cover-image>img")?.GetAttribute("src"),
+                            Summary = summary.ToString()
+                        });
+                    }
+                    return Result<Magazine>.Fail($"Magazine {magazineSearchParameters.Name} - {magazineSearchParameters.Number} not found.");
                 }
 
-                var magazinesInfo = await magazineResponse.Content.ReadFromJsonAsync<List<MagazineInfo>>();
-                var magazine = magazinesInfo.FirstOrDefault(mi => mi.Libelle.ToLowerInvariant().Contains(magazineSearchParameters.Number.ToLowerInvariant()));
-
-                if (magazine == null)
-                {
-                    return Result<Magazine>.Fail($"No magazine found for search '{magazineSearchParameters.Number}' in {magazineSearchParameters.Name}.");
-                }
-
-                // FIXME prendre en compte le cas où le numéro n'est pas dans la liste et qu'il faut chercher la suite
-                return Result<Magazine>.Success(new Magazine
-                {
-                    Title = (!magazine.Libelle.Trim().StartsWith("La Revue Dessinée ") ? "La Revue Dessinée " : "") + magazine.Libelle.Trim(),
-                    CoverUrl = magazine.ImageGrandFormat,
-                    Summary = magazine.Tarif == null ? "" : HtmlToMarkdown.Convert(new HtmlParser().ParseDocument(WebUtility.HtmlDecode(magazine.Tarif.Description)))
-                });
+                return Result<Magazine>.Fail($"Magazines not found.");
             }
             catch (Exception ex)
             {
