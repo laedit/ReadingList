@@ -10,6 +10,8 @@ namespace AddBook.Business.Search.Magazine
         [Display(Name = "S!CK")]
         Sick,
         [Display(Name = "Inconnu")]
-        Unknown
+        Unknown,
+        [Display(Name = "Galaxies")]
+        Galaxies
     }
 }

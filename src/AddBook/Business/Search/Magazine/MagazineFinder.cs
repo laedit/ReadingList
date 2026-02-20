@@ -8,19 +8,20 @@ namespace AddBook.Business.Search.Magazine
 {
     public class MagazineFinder
     {
-        private static readonly ConcurrentDictionary<string, SearchResult<Magazine>> _cache = new ConcurrentDictionary<string, SearchResult<Magazine>>();
+        private static readonly ConcurrentDictionary<string, SearchResult<Magazine>> _cache = new();
 
         private static List<IMagazineSearch> _magazineSearches;
 
         public MagazineFinder(BooksRepository booksRepository, GitHubHelper gitHubHelper)
         {
-            _magazineSearches = new List<IMagazineSearch>
-            {
+            _magazineSearches =
+            [
                 new PostsMagazineSearch(booksRepository, gitHubHelper),
                 new EpsiloonMagazineSearch(),
                 new LaRevueDessineeMagazineSearch(),
-                new WooCommerceMagazineSearch()
-            };
+                new WooCommerceMagazineSearch(),
+                new GalaxiesMagazineSearch()
+            ];
         }
 
         internal async Task<SearchResult<Magazine>> Find(MagazineSearchParameters magazineSearchParameters)
