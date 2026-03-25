@@ -2,6 +2,8 @@
 
 namespace AddBook.Business.Search.Magazine
 {
+    // FIXME remplacer par un name sur IMagazineSearch et utiliser l'injection de dépendances pour s'éviter de devoir renseigner
+    // un nouveau magazine à plusieurs endroits ?
     public enum MagazineName
     {
         Epsiloon,
@@ -12,6 +14,8 @@ namespace AddBook.Business.Search.Magazine
         [Display(Name = "Inconnu")]
         Unknown,
         [Display(Name = "Galaxies")]
-        Galaxies
+        Galaxies,
+        [Display(Name = "JV le mag")]
+        JVLeMag
     }
 }

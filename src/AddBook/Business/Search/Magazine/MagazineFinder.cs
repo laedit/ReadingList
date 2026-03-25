@@ -20,7 +20,8 @@ namespace AddBook.Business.Search.Magazine
                 new EpsiloonMagazineSearch(),
                 new LaRevueDessineeMagazineSearch(),
                 new WooCommerceMagazineSearch(),
-                new GalaxiesMagazineSearch()
+                new GalaxiesMagazineSearch(),
+                new JVMagazineSearch()
             ];
         }
 

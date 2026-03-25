@@ -1,13 +1,12 @@
 ﻿using AngleSharp.Dom;
-using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
 namespace AddBook.Business
 {
-    internal static class HtmlToMarkdown
+    internal static partial class HtmlToMarkdown
     {
-        private static readonly Regex WhiteSpaceRegex = new Regex(@"\s+", RegexOptions.Compiled);
+        private static readonly Regex WhiteSpaceRegex = GetWhiteSpaceRegex();
 
         /// <summary>
         /// Convert HTML to Markdown.
@@ -155,5 +154,9 @@ namespace AddBook.Business
                     break;
             }
         }
+
+        [GeneratedRegex(@"\s+", RegexOptions.Compiled)]
+        private static partial Regex GetWhiteSpaceRegex();
+
     }
 }
