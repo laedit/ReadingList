@@ -1,7 +1,7 @@
 ---
 layout: book
 date: "2026-05-01 16:00"
-title: "MANCHU - L'Architecte des Mondes - ODYSSÉES : Livre I - Odyssées"
+title: "MANCHU - L'Architecte des Mondes : Livre I - Odyssées"
 author: "Manchu, David Fossé, David Bakonyi"
 isbn: "9791095362173"
 editor: "Bureau 21 Éditions"
