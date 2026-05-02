@@ -1,7 +1,7 @@
 ---
 layout: book
 date: "2026-05-02 14:43"
-title: "MANCHU - L'Architecte des Mondes - HORIZONS : Livre II - Horizons"
+title: "MANCHU - L'Architecte des Mondes : Livre II - Horizons"
 author: "Manchu, David Bakonyi"
 isbn: "9791095362180"
 editor: "Bureau 21 Éditions"

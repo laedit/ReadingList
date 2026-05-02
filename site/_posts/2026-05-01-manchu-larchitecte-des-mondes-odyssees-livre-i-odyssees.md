@@ -1,12 +1,12 @@
 ---
 layout: book
 date: "2026-05-01 16:00"
-title: "MANCHU - L'Architecte des Mondes - ODYSSÉES : Livre I - Odyssées"
+title: "MANCHU - L'Architecte des Mondes : Livre I - Odyssées"
 author: "Manchu, David Fossé, David Bakonyi"
 isbn: "9791095362173"
 editor: "Bureau 21 Éditions"
 ---
-![Couverture](/img/9791095362173.png)Depuis plus de quarante ans, Manchu façonne l'imaginaire de la science-fiction contemporaine avec une signature visuelle immédiatement reconnaissable. Vaisseaux spatiaux, paysages extra-solaires, robots, missions spatiales...
+![Couverture](/img/9791095362173.jpg)Depuis plus de quarante ans, Manchu façonne l'imaginaire de la science-fiction contemporaine avec une signature visuelle immédiatement reconnaissable. Vaisseaux spatiaux, paysages extra-solaires, robots, missions spatiales...
 Son oeuvre associe un imaginaire futuriste à une exigence du détail rarement égalée.
 Odyssées propose une immersion dans cet univers singulier, à travers une sélection emblématique de 176 illustrations couvrant plusieurs décennies de création. Ce livre d'art respecte le sens de lecture naturel des oeuvres et accompagne le regard dans un voyage narratif.
 La dernière partie de l'ouvrage est consacrée à l'homme derrière l'artiste. Une série d'entretiens croisés avec Manchu et son cercle proche éclaire son parcours et ses influences, révélant une figure aujourd'hui reconnue comme une référence incontournable de la science-fiction française et internationale.
