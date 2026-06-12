@@ -1,0 +1,10 @@
+---
+layout: magazine
+date: "2026-06-12 09:52"
+title: "S!CK #032 - Le numéro Prince of Persia"
+---
+![Couverture](/img/sick-32.png)**Le temps est comme un océan en pleine tempête… S!CK #032 explore l’art et la création de Prince of Persia. Au fil des époques et des épisodes, nous avons remonté le fil de la saga imaginée par Jordan Mechner dans un volume jeu vidéo de 228 pages, raconté par les artistes et créateurs/trices phares des différents épisodes.** 
+
+
+
+Pour ce numéro, le créateur de Prince of Persia, **Jordan Mechner**  est revenu sur les inspirations et défis de l’épisode originel, mais aussi sur son approche narrative. Durant +100 pages, on explore l’art et la création des différents épisodes aux côtés des artistes de la saga, comme le directeur artistique **Raphaël Lacoste**  (Les Sables du Temps), **Nicolas « Sparth » Bouvier**  (L’Âme du Guerrier) ou encore le concept artiste **Maxime Desmettre** , qui nous parle de l’épisode illustratif de 2008. **Lucie Dewagnier**  (Game Director) et **Dylan Eurlings**  (Directeur Artistique) nous ont retracés la naissance de The Rogue Prince of Persia, et la compositrice **Mentrix**  s’est replongé dans la (sublime) musique traditionnelle de The Lost Crown. Dans ce numéro, vous trouverez aussi des dizaines d’interviews qui immortalisent la création des jeux vidéo, comme **Animal Well**  (Billy Basso, Dan Adelman), **Still Wakes the Deep**  (Dan Pinchbeck, Jason Graves, Michele Nucera, Iain Gillespie), **Lorelei & the Laser Eyes**  (Simon Flesser), **Tinykin**  (Marie Marquet, Romain Claude, Simon « Hutt » Trousselier) ou encore**Firewatch**  (Chris Remo). Des discussions parsemées **d’illustrations inédites d’une dizaine d’artistes**  (Aynaz Najafi, Gauthier Colin, K. James Duval, Lilian El Sayed, Matt Kehler, Milena Gontard, Nicolas Bazin, Przemysław Berestko, Quentin Marroule & Sevan Grand).
