@@ -29,6 +29,7 @@
     <TypeScriptSourceMap>True</TypeScriptSourceMap>
     <TypeScriptMapRoot />
     <TypeScriptSourceRoot />
+    <TypeScriptModuleKind>es2020</TypeScriptModuleKind>
   </PropertyGroup>
 
 </Project>
