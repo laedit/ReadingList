@@ -134,8 +134,12 @@ async function SearchInfo(url: string, name: string) {
         }
     }
     catch (error) {
-        console.error(error);
-        DisplayMessage(error, "error");
+      console.error(error);
+      if (typeof error === "string") {
+          DisplayMessage(error, "error");
+      } else if (error instanceof Error){
+          DisplayMessage(error.message, "error");
+      }
     }
 
     searchBookButton.firstChild!.remove();
