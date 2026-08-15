@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text.Json;
@@ -26,6 +25,7 @@ namespace AddBook.Business.Search.Book
             {
                 var parser = new HtmlParser();
                 IHtmlDocument htmlDoc;
+
                 var response = await httpClient.GetAsync($"https://www.librairie-kleber.com/detailrewrite.php?ean={isbn}");
 
                 if (response.StatusCode == HttpStatusCode.OK)
@@ -45,7 +45,7 @@ namespace AddBook.Business.Search.Book
                     htmlDoc = parser.ParseDocument(await response.Content.ReadAsStringAsync());
 
                     var noResultDivs = htmlDoc.QuerySelectorAll("p.msg_no_result");
-                    if (noResultDivs.Any())
+                    if (noResultDivs.Length > 0)
                     {
                         return Result<Book>.Fail("Data not found.");
                     }
