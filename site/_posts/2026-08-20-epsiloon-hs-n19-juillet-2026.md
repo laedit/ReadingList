@@ -9,7 +9,7 @@ Rien à voir avec une dystopie. Notre espèce est bien en train de déserter des
 **À la recherche des autres Terre**  
 Sommes-nous seuls dans l’Univers ? La sempiternelle question a pris un tour nouveau avec la découverte de milliers d’exoplanètes. Les chercheurs se focalisent aujourd'hui sur 5 petits mondes en particulier.
 
-**Faut-il refroidir la Terre? **  
+**Faut-il refroidir la Terre?**  
 La question n’a plus rien de théorique. Peut-on sauver la planète en modifiant son atmosphère ? Alors que le nombre de projets explose, parfois hors de tout cadre légal, les chercheurs alertent sur un mécanisme potentiellement dévastateur.
 
 **Les grands mystères de la Terre**  
