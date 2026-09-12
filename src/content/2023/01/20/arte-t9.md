@@ -1,0 +1,14 @@
++++
+template = "reading-details.html"
+title = "Arte t.9"
+date = "2023-01-20 16:00"
+aliases = ["2023/01/20/arte-t9.html"]
+[extra]
+kind = "book"
+author = "Kei Ohkubo"
+isbn = "9782372873406"
+editor = "Komikku"
++++
+![Couverture](/img/9782372873406.jpg)Florence. Début du XVIe siècle.
+Dans ce berceau de la Renaissance, qui vit l'art s'épanouir dans toute sa splendeur, une jeune aristocrate prénommée Arte rêve de devenir artiste peintre et aspire à entrer en apprentissage dans un des nombreux ateliers de la ville...
+Hélas ! Cette époque de foisonnement culturel était aussi celle de la misogynie, et il n'était pas concevable qu'une jeune femme ambitionne de vivre de son art et de son travail. Les nombreux obstacles qui se dresseront sur le chemin d'Arte auront-ils raison de la folle énergie de cette aristo déjantée ?

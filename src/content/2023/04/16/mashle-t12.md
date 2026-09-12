@@ -1,0 +1,12 @@
++++
+template = "reading-details.html"
+title = "Mashle t.12"
+date = "2023-04-16 21:15"
+aliases = ["2023/04/16/mashle-t12.html"]
+[extra]
+kind = "book"
+author = "Hajime Komoto"
+isbn = "9782820344113"
+editor = "Crunchyroll"
++++
+![Couverture](/img/9782820344113.jpg)L'épreuve finale est perturbée par l'intervention inopinée d'Innocent Zero et de Doom, son fils aîné à l'écrasante puissance. Mash affronte ce dernier, mais se retrouve immobilisé par un mal mystérieux... Innocent Zero quitte alors les lieux en possession de la Baguette des Prémices et le processus de sélection de l'Élu divin est suspendu. Le destin du monde est plus que jamais incertain. Mash, Lance, Dot ainsi que tous leurs camarades commencent un nouvel entraînement draconien en vue de l'ultime combat !

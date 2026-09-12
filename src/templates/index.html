@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+{%- set allPages = section.pages | reverse -%}
+
+<section>
+  {%- for page in allPages[:5] %}
+  {{ <book.article page={page} header={"1" if loop.first else "2"} titleLink={true} /> }}
+  {%- endfor -%}
+</section>
+
+<section class="archive">
+  <h3>Précédemment</h3>
+  <ul class="archives">
+    {%- set_global year = "" %}
+    {%- for page in allPages[5:] %}
+    {%- set post_year = page.year %}
+    {%- if year and year != post_year %}
+    <li>
+      {% set yearSection = get_section(path=post_year~"/_index.md") %}
+      <a href="{{yearSection.permalink}}">
+        <hr class="hr-text" data-content="{{ post_year }} ({{ yearSection.pages | length }})">
+      </a>
+    </li>
+    {% endif %}
+    <li>
+      {#- FIXME date(format="dd MMM yy", locale="fr") #}
+      {#- padding nécessaire ? | format(spec=" <5")  #}
+      <time class="olderpostdate" datetime="{{ page.date | date(format="%Y-%m-%d") }}">{{ page.date | date(format="%d") }} {{ page.date | date(format="%b") }} {{ page.date | date(format="%y") }}</time> <a href="{{ page.permalink }}">{{ page.title }}</a>
+    </li>
+    {%- set_global year = post_year %}
+    {%- endfor %}
+  </ul>
+</section>
+
+{% endblock content %}

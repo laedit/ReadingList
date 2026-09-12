@@ -1,0 +1,12 @@
++++
+template = "reading-details.html"
+title = "Rogatons"
+date = "2022-04-15"
+aliases = ["2022/04/15/rogatons.html"]
+[extra]
+kind = "book"
+author = "Boulet"
+isbn = "9782492926136"
+editor = "Exemplaire"
++++
+![Couverture](/img/9782492926136.jpg)Rogatons est le recueil inattendu de six mois de chroniques du quotidien publiées sur Instagram. Ce sont de petits strips ayant pour thème la vie de tous les jours et les petits tracas qui l'accompagnent, le tout parsemé de réflexions plus ou moins absurdes ou profondes sur le temps qui passe et la vie qui s'effiloche.

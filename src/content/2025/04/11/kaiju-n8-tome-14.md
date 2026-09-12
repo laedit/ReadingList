@@ -1,0 +1,12 @@
++++
+template = "reading-details.html"
+title = "Kaiju n°8 Tome 14"
+date = "2025-04-11 16:26"
+aliases = ["2025/04/11/kaiju-n8-tome-14.html"]
+[extra]
+kind = "book"
+author = "Naoya Matsumoto"
+isbn = "9782820351814"
+editor = "Crunchyroll"
++++
+![Couverture](/img/9782820351814.jpeg)L'intervention de ses camarades a permis à Kafka de voler au secours de Mina. L'heure est enfin venue d'affronter le redoutable Kaiju n° 9 à l'aide des techniques martiales dont il a peaufiné la maîtrise au cours de son intense entraînement ! Le choc entre les deux numérotés est titanesque. Néanmoins, la panoplie offensive déployée par le N° 8 ne semble pas avoir de secrets pour son adversaire...

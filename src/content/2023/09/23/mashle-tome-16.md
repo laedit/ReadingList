@@ -1,0 +1,13 @@
++++
+template = "reading-details.html"
+title = "Mashle Tome 16"
+date = "2023-09-23 21:15"
+aliases = ["2023/09/23/mashle-tome-16.html"]
+[extra]
+kind = "book"
+author = "Hajime Komoto"
+isbn = "9782820346391"
+editor = "Crunchyroll"
++++
+![Couverture](/img/9782820346391.jpg)Face à Doom, Mash a l'occasion de prouver que son entraî nement rigoureux a porté ses fruits !
+Il connaî t parfaitement les mécanismes de son corps et le maî trise jusqu'au bout des doigts. Sa force musculaire a désormais dépassé les limites de l'entendement humain... mais son adversaire ne s'en laisse pas conter et libère toute l'étendue de sa puissance. L'éclipse solaire qui doit doter Innocent Zero de pouvoirs vertigineux approche... Les affrontements s'enchaî nent dans une surenchère de coups et de techniques surpuissantes !

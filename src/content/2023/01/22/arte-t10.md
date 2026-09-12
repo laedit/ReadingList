@@ -1,0 +1,13 @@
++++
+template = "reading-details.html"
+title = "Arte t.10"
+date = "2023-01-22 07:00"
+aliases = ["2023/01/22/arte-t10.html"]
+[extra]
+kind = "book"
+author = "Kei Ohkubo"
+isbn = "9782372874595"
+editor = "Komikku"
++++
+![Couverture](/img/9782372874595.jpg)La relève de BRIDE STORIES prend place en pleine Renaissance à Florence ! Florence. Début du XVIe siècle. Dans ce berceau de la Renaissance, qui vit l'art s'épanouir dans toute sa splendeur, une jeune aristocrate prénommée Arte rêve de devenir artiste peintre et aspire à entrer en apprentissage dans un des nombreux ateliers de la ville... Hélas ! Cette époque de foisonnement culturel était aussi celle de la misogynie, et il n'était pas concevable qu'une jeune femme ambitionne de vivre de son art et de son travail.
+Les nombreux obstacles qui se dresseront sur le chemin d'Arte auront-ils raison de la folle énergie de cette aristo déjantée ?

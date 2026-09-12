@@ -1,0 +1,21 @@
+# https://www.getzola.org/documentation/getting-started/configuration/
+# The URL the site will be built for
+base_url = "https://laedit.net"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+default_language = "fr"
+
+
+[slugify]
+# Whether to remove date prefixes for page path slugs.
+# For example, content/posts/2016-10-08_a-post-with-dates.md => posts/a-post-with-dates
+# When true, content/posts/2016-10-08_a-post-with-dates.md => posts/2016-10-08-a-post-with-dates
+paths_keep_dates = false
+
+[extra]
+# Put all your custom variables here

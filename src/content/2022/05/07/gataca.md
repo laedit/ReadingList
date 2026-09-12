@@ -1,0 +1,15 @@
++++
+template = "reading-details.html"
+title = "Gataca"
+date = "2022-05-07"
+aliases = ["2022/05/07/gataca.html"]
+[extra]
+kind = "book"
+author = "Franck Thilliez"
+isbn = "9782266227605"
+editor = "Pocket"
++++
+![Couverture](/img/9782266227605.jpg)Quel lien entre onze psychopathes gauchers et l'homme de Cro-Magnon ?  
+ Alors que Lucie Henebelle peine à se remettre de ses traumatismes, l'ex-commissaire Sharko se voit relégué à des enquêtes de seconde zone. Telle la découverte du corps de cette jeune scientifique, battue à mort par un grand singe.  
+ À nouveau réunis pour le pire, les deux flics plongent aux origines de la violence, là où le génome humain détermine son avenir : l'extinction.  
+ Bienvenue à GATACA...
