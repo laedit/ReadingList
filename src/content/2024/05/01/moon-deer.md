@@ -1,0 +1,15 @@
++++
+template = "reading-details.html"
+title = "Moon Deer"
+date = "2024-05-01 21:44"
+aliases = ["2024/05/01/moon-deer.html"]
+[extra]
+kind = "book"
+author = "Yoann Kavege"
+isbn = "9782956991519"
+editor = "BUBBLE EDITIONS"
++++
+![Couverture](/img/9782956991519.jpeg)Un roman graphique qui nous entraîne dans une courte poursuite à travers les galaxies. Un voyage cosmique avec ce premier roman graphique du talentueux Yoann Kavege, désormais reconnu comme un auteur "à suivre".
+
+Pour protéger son oeuf d'une mystérieuse poursuivante, le petit Moon Deer traverse l'espace immense et vide au péril de sa vie.
+ Une course poursuite intergalactique dont l'issue pourrait sceller le sort de l'univers, frappé par le Grand Silence...

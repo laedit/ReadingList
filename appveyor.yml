@@ -9,8 +9,7 @@ environment:
     secure: 6wrMkWW2J1r3Yhg4o1bfxkuIKwNG05EW0ZkpryokBzI=
 
 install:
-  - choco upgrade pretzel -y
-  - choco upgrade pretzel.scriptcs -y
+  - choco upgrade Zola -y
   - ps: $env:Path += ";C:\\Python310;C:\\Python310\\Scripts"
   - C:\Python310\python.exe -m pip install creep
 

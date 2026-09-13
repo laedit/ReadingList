@@ -1,0 +1,14 @@
++++
+template = "reading-details.html"
+title = "Rifteurs"
+date = "2021-09-14"
+aliases = ["2021/09/14/rifteurs.html"]
+[extra]
+kind = "book"
+author = "Peter Watts"
+isbn = "9782266220569"
+editor = "Pocket"
++++
+![Couverture](/img/9782266220569.jpg)Lenie Clarke a survécu à l’explosion nucléaire qui a détruit la station des abysses dans laquelle elle travaillait. De retour sur la côte américaine, elle découvre les ravages du tsunami causé par l’explosion. Dans le chaos ambiant, personne ne la remarque, personne ne sait quel danger elle représente : porteuse de la bactérie ßehemoth, elle est susceptible d’anéantir la vie sur Terre.   
+  
+Mais bientôt Lenie est repérée par Maelström, cette entité pensante et indépendante qu’on appelait autrefois Internet…

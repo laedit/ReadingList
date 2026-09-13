@@ -1,0 +1,13 @@
++++
+template = "reading-details.html"
+title = "Touch"
+date = "2016-12-08"
+aliases = ["2016/12/08/touch.html"]
+[extra]
+kind = "book"
+author = "Claire North"
+isbn = "9782811218621"
+editor = "Milady"
++++
+
+![Couverture](/img/9782811218621.jpg)« Je suis Kepler. Je pourrais être vous. » Alors que la vie s’échappait de mon corps, j’ai tendu la main vers mon assassin. Et tout à coup, je voyais le monde à travers ses yeux, mon corps étendu, brisé et ensanglanté, dans uneruelle sombre.Plus je passe d’un corps à l’autre, plus l’échange est facile, que je reste quelques minutes ouquelques années. Maintenant, on me poursuit et on tue mes hôtes les uns après les autres, sansque je sache qui ni pourquoi.Je suis Kepler. Je pourrais être vous.

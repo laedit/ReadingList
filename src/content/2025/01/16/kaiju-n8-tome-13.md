@@ -1,0 +1,12 @@
++++
+template = "reading-details.html"
+title = "Kaiju n°8 Tome 13"
+date = "2025-01-16 08:06"
+aliases = ["2025/01/16/kaiju-n8-tome-13.html"]
+[extra]
+kind = "book"
+author = "Naoya Matsumoto"
+isbn = "9782820348937"
+editor = "Crunchyroll"
++++
+![Couverture](/img/9782820348937.jpeg)La situation est critique ! Face à la puissance écrasante du n° 9, la commandante Ashiro est en difficulté. De son côté, Kafka est incapable de lui porter secours car la pluie de mégakaiju qui s'est abattue sur la capitale lui barre la route. Le voilà désormais confronté à un terrible dilemme : rejoindre Mina ou protéger les civils. Mais soudain, il détecte un nouveau signal kaiju...

@@ -1,0 +1,13 @@
++++
+template = "reading-details.html"
+title = "La trilogie du vide - Tome 2 : Vide temporel"
+date = "2017-07-19"
+aliases = ["2017/07/19/la-trilogie-du-vide-tome-2-vide-temporel.html"]
+[extra]
+kind = "book"
+author = "Peter F. Hamilton"
+isbn = "9782811207502"
+editor = "Milady"
++++
+
+![Couverture](/img/9782811207502.jpg)Le Commonwealth intersolaire est en ébullition. Le mouvement Rêve vivant est sur le point de lancer un vaste pèlerinage pour pénétrer dans le Vide, cet univers artificiel logé au centre de notre galaxie. Ce projet risque de déclencher une phase d'expansion incontrôlable qui dévorera tous les mondes aux alentours. Alarmées, des puissances extraterrestres mobilisent leurs flottes, tandis que les factions posthumaines du Commonwealth se déchirent pour imposer leur vision de l'avenir.

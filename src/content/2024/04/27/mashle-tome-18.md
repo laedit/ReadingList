@@ -1,0 +1,12 @@
++++
+template = "reading-details.html"
+title = "Mashle Tome 18"
+date = "2024-04-27 18:07"
+aliases = ["2024/04/27/mashle-tome-18.html"]
+[extra]
+kind = "book"
+author = "Hajime Komoto"
+isbn = "9782820348029"
+editor = "CRUNCHYROLL"
++++
+![Couverture](/img/9782820348029.jpeg)Innocent Zero a atteint le stade ultime de son évolution et est désormais l'égal d'un dieu... Désespérés, les habitants du monde de la magie n'ont d'autre choix que de se prosterner à ses pieds. Mais c'est compter sans Mash, qui, avec sa musculature d'une tout autre dimension, s'est façonné une technique ravageuse ! Même mis en difficulté par son adversaire, il revient encore et toujours à la charge, galvanisé par le soutien du peuple tout entier ! Mash va-t-il prouver une dernière fois que la force de ses muscles et celle de son amitié sont capables d'accomplir des miracles ?!

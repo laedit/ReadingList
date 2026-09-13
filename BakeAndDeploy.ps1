@@ -1,5 +1,4 @@
-Set-Culture fr-FR
-pretzel bake site
+zola --root src build
 
 if ($lastExitCode -ne 0)
 {
@@ -9,7 +8,7 @@ else
 {
     Write-Host "Starting deploy"
     $envConf = '""environment"": {{""default"": {{""connection"": ""ftp://{0}:{1}@laedit.net""}}}}' -f $env:ftp_user, $env:ftp_password
-    creep -d "{""""tracker"""": """"hash"""", $envConf}" -b site/_site -y
+    creep -d "{""""tracker"""": """"hash"""", $envConf}" -b src/public -y
 
     if ($lastExitCode -ne 0)
     {

@@ -1,0 +1,13 @@
++++
+template = "reading-details.html"
+title = "Banished from the Hero's Party, I Decided to Live a Quiet Life in the Countryside, Vol. 3 "
+date = "2023-01-18 07:00"
+aliases = ["2023/01/18/banished-from-the-heros-party-i-decided-to-live-a-quiet-life-in-the-countryside-vol-3.html"]
+[extra]
+kind = "book"
+author = "Zappon, Masahiro Ikeno, Yasumo"
+isbn = "9781975341558"
+editor = "Yen Press"
++++
+![Couverture](/img/9781975341558.jpg)"i don’t care if i have to lose my position as loggervian royalty."
+An ominous shadow falls over Rit and Red as they try their best to enjoy their new lives—the unscrupulous Fire Mage Dir, who still holds a grudge against them for thwarting his attempt to betray the Hero’s party, has made his way to Zoltan. Jealous of their happiness, he’s sure to do all that he can to ruin their lives. But just what is he plotting...?!

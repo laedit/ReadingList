@@ -1,0 +1,12 @@
++++
+template = "reading-details.html"
+title = "Saga Tome 12"
+date = "2025-06-09 10:32"
+aliases = ["2025/06/09/saga-tome-12.html"]
+[extra]
+kind = "book"
+author = "Brian k. Vaughan, Fiona Staples"
+isbn = "9791026821526"
+editor = "Urban Comics"
++++
+![Couverture](/img/9791026821526.jpeg)Hazel a désormais douze ans et vit avec sa mère, son frère Écuyer et bien d'autres, au sein d'un cirque itinérant. Chacun tente à sa façon de surmonter les traumatismes du passé, mais la disparition de Marko reste encore et toujours une douleur bien difficile à apaiser. Un tourment partagé par Le Testament et Gwendolyn, que la perte de Sophie plonge dans un désespoir sans précédent. Chacun devra trouver la force de s'ouvrir à l'autre et de faire de nouveau confiance. Malheureusement, ces périodes de fragilité profitent bien souvent aux gens les bien moins intentionnés.

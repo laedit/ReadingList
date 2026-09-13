@@ -1,0 +1,13 @@
++++
+template = "reading-details.html"
+title = "Racines"
+date = "2024-11-18 16:40"
+aliases = ["2024/11/18/racines.html"]
+[extra]
+kind = "book"
+author = "Lou Lubie"
+isbn = "9782413082743"
+editor = "Delcourt"
++++
+![Couverture](/img/9782413082743.jpeg)On n'est jamais content de ses cheveux : Rose, qui a les cheveux crépus, rêve de les avoir lisses. Pour se conformer aux normes sociales, elle sera prête à tout, quitte à gommer son identité métissée. 
+Entre enquête de société et récit de vie, une BD riche et touchante qui parle de sexisme, de racisme, d'héritage et d'acceptation de soi.

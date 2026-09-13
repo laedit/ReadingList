@@ -1,0 +1,25 @@
+{% component time(date: string) %}
+{# FIXME https://github.com/getzola/zola/pull/3255 date(format="d MMMM y", locale="fr") #}
+<time class="postdate" datetime="{{ date | date(format="%Y-%m-%d") }}">{{ date | date(format="%e %B %Y") | lower }}</time>
+{% endcomponent time %}
+
+{% component book.article(page, header = "1", titleLink = false) %}
+<article>
+  <h{{header}}>{% if titleLink %}<a href="{{ page.permalink }}">{%endif%} {{ page.title }} {% if titleLink %}</a>{%endif%}</h{{header}}>
+  {{ <time date={page.date}/> }}
+  {%- if page.extra.author or page.extra.editor or page.extra.isbn %}
+  <ul class="book-infos">
+    {% if page.extra.author -%}
+    <li>{{ page.extra.author }}</li>
+    {%- endif %}
+    {% if page.extra.editor -%}
+    <li>{{ page.extra.editor }}</li>
+    {%- endif %}
+    {% if page.extra.isbn -%}
+    <li>{{ page.extra.isbn }}</li>
+    {%- endif %}
+  </ul>
+  {%- endif %}
+  {{ page.content | safe }}
+</article>
+{% endcomponent book.article %}

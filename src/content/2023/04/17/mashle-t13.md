@@ -1,0 +1,12 @@
++++
+template = "reading-details.html"
+title = "Mashle t.13"
+date = "2023-04-17 04:34"
+aliases = ["2023/04/17/mashle-t13.html"]
+[extra]
+kind = "book"
+author = "Hajime Komoto"
+isbn = "9782820346001"
+editor = "Crunchyroll"
++++
+![Couverture](/img/9782820346001.jpg)Le moment de l'éclipse solaire se rapproche et, déjà, des armées de créatures diaboliques attaquent la ville et sèment le chaos ! Renatos et d'autres Élus divins mènent la contre-attaque et sont rapidement contraints d'affronter quatre des fils d'Innocent Zero. Ce dernier exhorte la population terrifiée à lui livrer Mash... De son côté, notre héros est toujours inconscient : sa survie dépend uniquement d'une étrange clé qui doit à tout prix être remontée ! Le monde est sur le point de basculer dans les ténèbres et aurait bien besoin d'une lueur d'espoir...
