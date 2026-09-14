@@ -8,9 +8,6 @@ namespace AddBook.Business.Generation
 {
     public abstract class PostGenerator
     {
-        private const string PostsFolder = "site/_posts/";
-        private const string ImagesFolder = "site/img/";
-
         private static readonly HttpClient httpClient;
 
         static PostGenerator()
@@ -33,7 +30,7 @@ namespace AddBook.Business.Generation
                 imageContent = await imageResponse.Content.ReadAsByteArrayAsync();
 
                 var extension = imageResponse.Content.Headers.ContentType.MediaType?.Replace("image/", "");
-                if(string.IsNullOrEmpty(extension))
+                if (string.IsNullOrEmpty(extension))
                 {
                     extension = Path.GetExtension(bookPost.CoverUrl.AbsolutePath);
                 }
@@ -42,14 +39,14 @@ namespace AddBook.Business.Generation
                     extension = $".{extension}";
                 }
                 imageFileName = $"{bookPost.GetKey().Slugify()}{extension}";
-                imagePath = $"{ImagesFolder}{imageFileName}";
+                imagePath = $"{SiteHelper.ImagesFolder}/{imageFileName}";
             }
             else
             {
                 imageFileName = bookPost.CoverUrl.OriginalString.Replace("/img/", "");
             }
 
-            var postPath = $"{PostsFolder}{bookPost.StartDate:yyyy-MM-dd}-{bookPost.Title.Slugify()}.md";
+            var postPath = $"{SiteHelper.PostsFolder}/{bookPost.StartDate:yyyy}/{bookPost.StartDate:MM}/{bookPost.StartDate:dd}/{bookPost.Title.Slugify()}.md";
             var postContent = FormatContent(bookPost, imageFileName);
             return new GeneratedPost { ImagePath = imagePath, ImageContent = imageContent, PostPath = postPath, PostContent = postContent, PostTitle = bookPost.Title };
         }

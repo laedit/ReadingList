@@ -4,15 +4,19 @@ namespace AddBook.Business.Generation
 {
     public sealed class BookPostGenerator : PostGenerator
     {
-        private const string PostTemplate = @"---
-layout: book
-date: ""{6}""
-title: ""{0}""
-author: ""{1}""
-isbn: ""{2}""
-editor: ""{3}""
----
-![Couverture](/img/{4}){5}";
+        private const string PostTemplate = """
++++
+template = "reading-details.html"
+title = "{0}"
+date = "{6}"
+[extra]
+kind = "book"
+author = "{1}"
+isbn = "{2}"
+editor = "{3}"
++++
+![Couverture](/img/{4}){5}
+""";
 
         protected override string FormatContent(Post bookPost, string imageFileName)
         {

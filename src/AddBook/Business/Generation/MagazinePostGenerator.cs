@@ -4,12 +4,16 @@ namespace AddBook.Business.Generation
 {
     public sealed class MagazinePostGenerator : PostGenerator
     {
-        private const string PostTemplate = @"---
-layout: magazine
-date: ""{3}""
-title: ""{0}""
----
-![Couverture](/img/{1}){2}";
+        private const string PostTemplate = """
++++
+template = "reading-details.html"
+title = "{0}"
+date = "{3}"
+[extra]
+kind = "magazine"
++++
+![Couverture](/img/{1}){2}
+""";
 
         protected override string FormatContent(Post bookPost, string imageFileName)
         {

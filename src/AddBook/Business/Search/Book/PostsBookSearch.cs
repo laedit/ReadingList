@@ -37,29 +37,30 @@ namespace AddBook.Business.Search.Book
                         var goodBook = false;
                         var book = new Book { Isbn = isbn };
 
-                        var postContent = (await gitHubHelper.GetFileContent(postPath)).Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                        var postContent = (await gitHubHelper.GetFileContent(postPath)).Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries);
 
                         // Parsing post content
                         var summary = new StringBuilder();
+                        // FIXME use toml parser?
                         foreach (var postLine in postContent)
                         {
-                            if (postLine.StartsWith("date:"))
+                            if (postLine.StartsWith("date = "))
                             {
                                 continue;
                             }
-                            if (postLine.StartsWith("title:"))
+                            if (postLine.StartsWith("title = "))
                             {
-                                book.Title = postLine[8..].Trim('"');
+                                book.Title = postLine[9..].Trim('"');
                                 continue;
                             }
-                            if (postLine.StartsWith("author:"))
+                            if (postLine.StartsWith("author = "))
                             {
-                                book.Author = postLine[9..].Trim('"');
+                                book.Author = postLine[10..].Trim('"');
                                 continue;
                             }
-                            if (postLine.StartsWith("editor:"))
+                            if (postLine.StartsWith("editor = "))
                             {
-                                book.Editor = postLine[9..].Trim('"');
+                                book.Editor = postLine[10..].Trim('"');
                                 continue;
                             }
 
@@ -70,14 +71,16 @@ namespace AddBook.Business.Search.Book
                                 continue;
                             }
 
-                            if (postLine.StartsWith("---") || postLine.StartsWith("layout:"))
+                            if (postLine.StartsWith("+++") || postLine.StartsWith("template =")
+                                || postLine == "[extra]" || postLine.StartsWith("kind =")
+                                || postLine.StartsWith("aliases ="))
                             {
                                 continue;
                             }
 
-                            if (postLine.StartsWith("isbn:"))
+                            if (postLine.StartsWith("isbn = "))
                             {
-                                if (postLine[7..].Trim('"') == isbn)
+                                if (postLine[8..].Trim('"') == isbn)
                                 {
                                     goodBook = true;
                                     continue;
@@ -94,7 +97,7 @@ namespace AddBook.Business.Search.Book
                             return Result<Book>.Success(book);
                         }
                     }
-                    return Result<Book>.Fail($"Post not found in repository amon pathes:{string.Join(Environment.NewLine, postPathes)}");
+                    return Result<Book>.Fail($"Post not found in repository in pathes:{string.Join(Environment.NewLine, postPathes)}");
 
                 }, () => Task.FromResult(Result<Book>.Fail($"Post not found in repository with date '{bi.Date}'.")));
             }, () => Task.FromResult(Result<Book>.Fail("Not in the base yet.")));

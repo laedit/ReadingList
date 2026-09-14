@@ -63,7 +63,10 @@ namespace AddBook.Controllers
             var filesToCommit = new List<CommitItem>
                 {
                     CommitItem.Create(BooksRepository.Path, booksContentUpdated),
-                    CommitItem.Create(generatedPost.PostPath, generatedPost.PostContent)
+                    CommitItem.Create(generatedPost.PostPath, generatedPost.PostContent),
+                    CommitItem.Create(DateIndexGenerator.GetYearIndexPath(post.StartDate), DateIndexGenerator.Content),
+                    CommitItem.Create(DateIndexGenerator.GetMonthIndexPath(post.StartDate), DateIndexGenerator.Content),
+                    CommitItem.Create(DateIndexGenerator.GetDayIndexPath(post.StartDate), DateIndexGenerator.Content)
                 };
             if (!string.IsNullOrEmpty(generatedPost.ImagePath))
             {

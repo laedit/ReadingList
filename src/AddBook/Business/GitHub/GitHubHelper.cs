@@ -23,7 +23,7 @@ namespace AddBook.Business.GitHub
         /// <summary>
         /// Create image tree item
         /// </summary>
-        private static NewTreeItem CreateImageTreeItem(string imagePath, byte[] imageContent, IGitHubClient githubClient, string owner, string repo)
+        private static NewTreeItem CreateImageTreeItem(string imagePath, byte[] imageContent, GitHubClient githubClient, string owner, string repo)
         {
             var newImageBlob = new NewBlob
             {
@@ -95,7 +95,7 @@ namespace AddBook.Business.GitHub
         {
             var githubClient = InstanciateGitHubClient();
             var fileContent = await githubClient.Repository.Content.GetAllContents(Owner, Repository, filePath);
-            return fileContent.First().Content;
+            return fileContent?[0]?.Content;
         }
 
         /// <summary>
@@ -105,13 +105,14 @@ namespace AddBook.Business.GitHub
         /// <returns>Path of the post</returns>
         internal async Task<Option<IEnumerable<string>>> SearchPost(string postDate)
         {
+            var parsedPostDate = DateTime.Parse(postDate);
             var githubClient = InstanciateGitHubClient();
-            var searchRequest = new SearchCodeRequest(postDate, Owner, Repository)
+            var searchRequest = new SearchCodeRequest($"{SiteHelper.PostsFolder}/{parsedPostDate.Year}/{parsedPostDate.Month:00}/{parsedPostDate.Day:00}", Owner, Repository)
             {
-                In = new[] { CodeInQualifier.Path },
-                Path = "site/_posts",
-                Extensions = new[] { "md" },
-                FileName = $"{postDate}-"
+                In = [CodeInQualifier.Path],
+                Path = $"{SiteHelper.PostsFolder}/{parsedPostDate.Year}/{parsedPostDate.Month:00}/{parsedPostDate.Day:00}",
+                Extensions = ["md"],
+                Language = Language.Markdown
             };
 
             var searchResult = await githubClient.Search.SearchCode(searchRequest);
@@ -124,7 +125,7 @@ namespace AddBook.Business.GitHub
             return Option<IEnumerable<string>>.Some(searchResult.Items.Select(i => i.Path));
         }
 
-        private IGitHubClient InstanciateGitHubClient()
+        private GitHubClient InstanciateGitHubClient()
         {
             return new GitHubClient(new ProductHeaderValue("Laedit-ReadingList"))
             {

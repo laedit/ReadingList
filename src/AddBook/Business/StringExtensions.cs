@@ -4,22 +4,22 @@ using System.Text.RegularExpressions;
 
 namespace AddBook.Business
 {
-    internal static class StringExtensions
+    internal static partial class StringExtensions
     {
         /// <summary>
         /// white space, em-dash, en-dash, underscore
         /// </summary>
-        private static readonly Regex WordDelimiters = new Regex(@"[\s—–_]", RegexOptions.Compiled);
+        private static readonly Regex WordDelimiters = GetWordDelimitersRegex();
 
         /// <summary>
         /// characters that are not valid
         /// </summary>
-        private static readonly Regex InvalidChars = new Regex(@"[^a-z0-9\-]", RegexOptions.Compiled);
+        private static readonly Regex InvalidChars = GetInvalidCharsRegex();
 
         /// <summary>
         /// multiple hyphens
         /// </summary>
-        private static readonly Regex MultipleHyphens = new Regex(@"-{2,}", RegexOptions.Compiled);
+        private static readonly Regex MultipleHyphens = GetMultipleHyphensRegex();
 
         private static string RemoveDiacritics(string stIn)
         {
@@ -44,5 +44,14 @@ namespace AddBook.Business
             value = MultipleHyphens.Replace(value, "-"); // replace multiple hyphens (-) with a single hyphen
             return value.Trim('-'); // trim hyphens (-) from ends
         }
+
+        [GeneratedRegex(@"[\s—–_]", RegexOptions.Compiled)]
+        private static partial Regex GetWordDelimitersRegex();
+
+        [GeneratedRegex(@"[^a-z0-9\-]", RegexOptions.Compiled)]
+        private static partial Regex GetInvalidCharsRegex();
+
+        [GeneratedRegex(@"-{2,}", RegexOptions.Compiled)]
+        private static partial Regex GetMultipleHyphensRegex();
     }
 }

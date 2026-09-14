@@ -38,16 +38,21 @@ namespace AddBook.Business.Search.Magazine
                         var goodMagazine = false;
                         var magazine = new Magazine();
 
-                        var postContent = (await gitHubHelper.GetFileContent(postPath)).Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                        var postContent = (await gitHubHelper.GetFileContent(postPath)).Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries);
 
                         // Parsing post content
                         var summary = new StringBuilder();
+                        // FIXME use toml parser?
                         foreach (var postLine in postContent)
                         {
-                            if (postLine.StartsWith("title:"))
+                            if (postLine.StartsWith("date = "))
                             {
-                                var postTitle = postLine.Substring(8).Trim('"');
-                                if (postTitle.ToLowerInvariant().Contains(magazineSearchParameters.Name.ToString().ToLowerInvariant())
+                                continue;
+                            }
+                            if (postLine.StartsWith("title ="))
+                            {
+                                var postTitle = postLine[9..].Trim('"');
+                                if (postTitle.Contains(magazineSearchParameters.Name.ToString(), StringComparison.InvariantCultureIgnoreCase)
                                 && postTitle.Contains(magazineSearchParameters.Number))
                                 {
                                     goodMagazine = true;
@@ -59,12 +64,14 @@ namespace AddBook.Business.Search.Magazine
 
                             if (postLine.StartsWith("![Couverture]"))
                             {
-                                magazine.CoverUrl = postLine.Substring(14, postLine.LastIndexOf(')') - 14);
-                                summary.AppendLine(postLine.Substring(postLine.IndexOf(')') + 1));
+                                magazine.CoverUrl = postLine[14..postLine.LastIndexOf(')')];
+                                summary.AppendLine(postLine[(postLine.IndexOf(')') + 1)..]);
                                 continue;
                             }
 
-                            if (postLine.StartsWith("---") || postLine.StartsWith("layout:"))
+                            if (postLine.StartsWith("+++") || postLine.StartsWith("template =")
+                                || postLine == "[extra]" || postLine.StartsWith("kind =")
+                                || postLine.StartsWith("aliases ="))
                             {
                                 continue;
                             }
