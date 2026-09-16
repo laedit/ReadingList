@@ -1,6 +1,6 @@
 # https://www.getzola.org/documentation/getting-started/configuration/
 # The URL the site will be built for
-base_url = "https://laedit.net"
+base_url = "https://readinglist.laedit.net"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
