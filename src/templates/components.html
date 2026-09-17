@@ -1,6 +1,5 @@
 {% component time(date: string) %}
-{# FIXME https://github.com/getzola/zola/pull/3255 date(format="d MMMM y", locale="fr") #}
-<time class="postdate" datetime="{{ date | date(format="%Y-%m-%d") }}">{{ date | date(format="%e %B %Y") | lower }}</time>
+<time class="postdate" datetime="{{ date | date(format="%Y-%m-%d") }}">{{ date | date(format="d MMMM y", locale="fr") }}</time>
 {% endcomponent time %}
 
 {% component book.article(page, header = "1", titleLink = false) %}
