@@ -18,9 +18,7 @@
     {%- if year and year != post_year %}
     <li>
       {% set yearSection = get_section(path=post_year~"/_index.md") %}
-      <a href="{{yearSection.permalink}}">
         <hr class="hr-text" data-content="{{ post_year }} ({{ yearSection.pages | length }})">
-      </a>
     </li>
     {% endif %}
     <li>
