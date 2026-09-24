@@ -5,7 +5,7 @@ date = "2026-09-20 21:33"
 [extra]
 kind = "magazine"
 +++
-![Couverture](/img/epsiloon-63.text/plain)**Lunettes connectées: l’interface qui dérange**  
+![Couverture](/img/epsiloon-63.png)**Lunettes connectées: l’interface qui dérange**  
 C’est un vrai bijou technologique. Le futur mode d’accès principal au monde numérique, annoncent les constructeurs. Les experts en doutent. Et s’inquiètent surtout de l’impact de ces nouvelles lunettes connectées sur notre attention et notre vie privée.
 
 **On a retrouvé nos souvenirs d’enfance**  
