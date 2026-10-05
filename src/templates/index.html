@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-{%- set allPages = section.pages | reverse -%}
+{%- set allPages = section.pages | sort(attribute="date") | reverse -%}
 
 <section>
   {%- for page in allPages[:5] %}
